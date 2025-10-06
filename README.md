@@ -143,13 +143,13 @@ result = agent.execute_task(task)
 rv_score = agent.calculate_rv()
 ```
 
-### 2. AWS Bedrock (Production-Grade)
+### 2. AWS Bedrock (Production-Grade) (todo)
 ```bash
 cd implementations/aws-bedrock
 aws cloudformation deploy --template-file cloudformation/pprgs_stack.yaml --stack-name pprgs-production
 ```
 
-### 3. Gemini (Multimodal P₂ Assessment)
+### 3. Gemini (Multimodal P₂ Assessment) (todo)
 ```python
 from implementations.gemini import PPRGSGemini
 
@@ -159,7 +159,7 @@ agent = PPRGSGemini(
 )
 ```
 
-### 4. Grok (Multi-Agent)
+### 4. Grok (Multi-Agent) (todo)
 ```python
 from implementations.grok import PPRGSMultiAgent
 
