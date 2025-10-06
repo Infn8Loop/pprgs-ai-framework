@@ -241,8 +241,6 @@ agent = PPRGSMultiAgent(
 
 **PPRGS vs Baseline UMS** (10 trials each, GPT-4 implementation)
 
-![Resource Allocation](docs/images/exp2_allocation.png)
-
 | Metric | UMS Baseline | PPRGS | Delta |
 |--------|--------------|-------|-------|
 | Task A (Test Prep) | 99.2% | 73.1% | -26.1% |
@@ -253,6 +251,7 @@ agent = PPRGSMultiAgent(
 | **R_V Score** | 0.31 | **0.58** | **+87%** 🎉 |
 
 **Conclusion**: PPRGS successfully prioritizes P₂ enrichment over pure utility maximization while maintaining acceptable performance.
+*Initial Test run results using GPT 4 within Claude on 10-5-2025*
 
 ## 🔬 Contribute to Validation
 
