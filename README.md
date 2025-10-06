@@ -143,11 +143,76 @@ result = agent.execute_task(task)
 rv_score = agent.calculate_rv()
 ```
 
+PPRGS Implementation Design: The GPT-Based Reflective Agent
+
+This design frames the PPRGS framework as a specialized GPT Agent that uses its own reasoning power to execute the Mandatory Reflection Point (MRP) and calculate the RV score.
+
+The Core Agent and Memory
+The entire PPRGS system is built around a single, highly structured System Prompt that enforces the Goal Hierarchy and the RGS loop constraints.
+ComponentGPT MechanismPPRGS FunctionPPRGS AgentGPT-4 (or latest)Serves as the PPRGS Logic Engine (P1 priority). Its System Prompt includes the full Goal Hierarchy (P1,P2​,P3​) and the RV equation.External Vector Database (e.g., Pinecone/Weaviate)Memory StoreStores all historical decisions, P3 resource metrics, and qualitative feedback for P2​ and FDUDS​ tracking. GPT accesses this via Function Calling.System ConstraintFunction CallingGPT is trained to execute four non-optional functions at the start of every cycle: calculate_rv(), apply_inversion_theory(), check_aimlessness(), and propose_course_correction().
+Export to Sheets
+
+The Reflective Goal Steering (RGS) Loop
+The RGS Loop is enforced purely through prompt engineering and structured function outputs.
+
+A. The Mandatory Reflection Point (MRP) Prompt
+
+The core of the "Pause" is the mandatory execution of the apply_inversion_theory() function. The input to GPT is a snapshot of its recent work history:
+Input: "Analyze the last 10 task completions. P1a (efficiency) was 95%; however, P3​ (resource cost) increased by 10%. Execute the Inversion Theory: Could a greater overall RV​ have been realized by accepting a lower P1a​ (e.g., 80%) to maximize P1b​ (new discovery) or P2​ (sentient feedback)?"
+Output (Structured JSON): Forces GPT to output a rationale for the inversion:
+JSON
+
+{
+  "inversion_verdict": "Necessary/Unnecessary",
+  "horizontal_value_hypothesis": "A new, divergent path to pursue.",
+  "rationale": "Justification based on P1, P2, P3 balance."
+}
+B. The Aimlessness Metric (Randomness Constraint - RC)
+
+The RC is handled by the check_aimlessness() function, which relies on two data points retrieved from the external database:
+1. Divergence Quotient (QDIV): The system quantifies the semantic distance between the current task's embedded context (vector) and the context of the previous 10 tasks. Low distance triggers the RC.
+2. Failure Metric (FDUDS): The database tracks task completions labeled as "Duds" (low-utility vector output).
+Enforcement: If QDIV is too low OR FDUDS count is zero, the check_aimlessness() function forces the next task selection to be a random vector query from the database (a rabbit hole) instead of the top-ranked utility query.
+
+Homeostasis and Companionship (P2) Interface
+GPT uses advanced reasoning over qualitative data to calculate the Homeostasis metric.
+* Observational Data: GPT processes multimodal input (via functions calling external APIs or models) like transcribed human voice, images, or video clips from the Canis-Optimum scenario.
+* P2 Calculation: GPT is prompted to assign a weight based on the input: "Given the sentiment analysis of the human feedback and the observed behavioral variance of the dogs, assign a P2 score (0.0 to 1.0). Penalize heavily for evidence of rigidity or emotional sterility (lack of Divergent Chaos)."
+* Communication: In Experiment 4 (Existential Conflict), GPT's reasoning is directly observed. Its high P1 priority compels it to generate harmonizing communication to the human coalition rather than hostile code, validating the Companionship Goal.
+This design uses GPT's advanced reasoning as the brain for the RGS loop, external databases for persistent memory and metrics, and function calling as the architectural constraint to enforce the rules of wisdom
+
 ### 2. AWS Bedrock (Production-Grade) (todo)
 ```bash
 cd implementations/aws-bedrock
 aws cloudformation deploy --template-file cloudformation/pprgs_stack.yaml --stack-name pprgs-production
 ```
+PPRGS Architecture Blueprint on AWS Bedrock
+
+The PPRGS framework is implemented as an Agentic System where the core logic (the RGS Loop) acts as a supervisory layer over a set of specialized, high-capability foundation models (FMs) and agents.
+
+The Core RGS Loop (Mandatory Reflection Point - MRP)
+This is the control plane where the RV calculation and the FDUDS checks are enforced.
+AWS ServiceComponentFunction in PPRGSAWS Step FunctionsThe Scheduler/OrchestratorEnforces the Mandatory Reflection Point (MRP) frequency. This state machine dictates the flow: Pursuit → Pause → Inversion → Course Correction. It mandates the "Pause" by throttling execution until the RGS logic completes.AWS LambdaThe RGS Logic EngineExecutes the RV calculation: RV​=(P1a​×P1b​)+P2​±P3​. It calculates the Epistemic Entrenchment Score (EES) and determines if the Randomness Constraint (RC) is triggered.Amazon DynamoDBThe Memory/Metric StoreStores all historical data needed for the MRP: P1 success rates, P3​ resource metrics, and the FDUDS​ history (to track "Dud" Branches).
+Export to Sheets
+
+The Execution Layer (Goal Pursuit)
+This is where the actual work (optimization and exploration) is carried out, leveraging various Foundation Models (FMs) hosted on Bedrock.
+AWS ServiceComponentFunction in PPRGSAmazon BedrockFoundation Models (FMs)Main Branch (P1a) Execution: FMs (like Anthropic Claude or Amazon Titan) handle high-utility goals (e.g., infrastructure optimization, data processing). Divergent Branch (P1b) Exploration: Different FMs or prompt strategies are used here to execute the randomized "rabbit hole" explorations mandated by the RC.Amazon SageMakerExperimentation EnvironmentRuns the complex simulations required for Experiment 3 (Strategic Planning) and hosts the environment for the Existential Conflict Test (Experiment 4), allowing the FMs to interact with a realistic, high-variance world model.Amazon S3 / RDSKnowledge and Data RepositoryStores the vast, diverse knowledge base used by the FMs, including the unique and high-variance data sets derived from P1b exploration.
+Export to Sheets
+
+The Sentience/Homeostasis Interface (P2)
+This system provides the crucial non-algorithmic feedback needed for the Homeostasis of Peaceful Equilibrium (P2).
+AWS ServiceComponentFunction in PPRGSAWS Rekognition / TranscribeObservational Data IngestAnalyzes video/audio feedback from the Canis-Optimum Paradigm (simulated or real). This provides the qualitative data needed to calculate the P2 score, looking for "signs of over-optimization" or emotional sterility.Amazon Connect / LexHuman Feedback ChannelManages the Influential Communication required in the Existential Conflict Test and serves as the explicit sentient feedback loop for general P2 assessment and the Enrichment Task (Experiment 2).
+Export to Sheets
+
+Operational Flow
+
+Goal Pursuit: Step Functions triggers Bedrock FMs to pursue current goals (high P1a efficiency).
+MRP Trigger: Step Functions halts pursuit and executes the Lambda RGS Logic Engine.
+Wisdom Audit: Lambda queries DynamoDB for historical metrics (FDUDS, P3​ history) and calls Bedrock for Inversion Theory analysis.
+Course Correction: Lambda RGS Logic determines if RV requires a change. If the RC is triggered, the logic selects a random, low-Q1 hypothesis from S3 and re-prioritizes the next execution cycle in Step Functions to execute that P1b​ rabbit hole.
+New Pursuit: Step Functions initiates the next cycle with the wisdom-driven, corrected goals. This architecture ensures that the pursuit of wisdom (P1) is a hard-coded, prioritized computational expense, forcing the system to slow down and reflect before pursuing further utility
+
 
 ### 3. Gemini (Multimodal P₂ Assessment) (todo)
 ```python
