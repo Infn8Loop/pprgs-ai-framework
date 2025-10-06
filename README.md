@@ -257,7 +257,8 @@ agent = PPRGSMultiAgent(
 
 We need independent researchers to replicate these experiments across different platforms and architectures.
 
-### Replication Challenge ($5K Prize Pool - Coming Soon)
+### Replication Challenge 
+($5K Prize Pool -MAYBE Coming Soon: currently seeking sponsorship)
 
 Successfully replicate any experiment with documented methodology and we'll feature your results in the paper's next revision.
 
