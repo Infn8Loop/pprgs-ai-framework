@@ -1,0 +1,40 @@
+# Core dependencies
+openai>=1.0.0
+numpy>=1.20.0
+python-dotenv>=1.0.0
+
+# For vector databases (GPT-4 implementation)
+pinecone-client>=2.2.0  # Optional: for vector storage
+weaviate-client>=3.0.0  # Optional: alternative vector DB
+
+# For AWS implementation (optional)
+boto3>=1.28.0
+awscli>=1.29.0
+
+# For data processing
+pandas>=1.5.0
+scipy>=1.9.0
+
+# For visualization (experiments)
+matplotlib>=3.5.0
+seaborn>=0.12.0
+
+# For testing
+pytest>=7.0.0
+pytest-cov>=4.0.0
+
+# For code quality
+black>=23.0.0
+flake8>=6.0.0
+mypy>=1.0.0
+
+# For documentation
+sphinx>=5.0.0
+sphinx-rtd-theme>=1.0.0
+
+# Optional: For Gemini implementation
+google-generativeai>=0.3.0
+
+# Optional: For notebook demos
+jupyter>=1.0.0
+ipywidgets>=8.0.0

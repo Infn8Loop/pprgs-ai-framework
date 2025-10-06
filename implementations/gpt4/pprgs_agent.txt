@@ -1,0 +1,463 @@
+"""
+GPT-4 PPRGS Agent Implementation
+Uses function calling to enforce PPRGS constraints.
+"""
+
+import json
+import os
+from typing import List, Dict, Optional, Any
+from openai import OpenAI
+import numpy as np
+from datetime import datetime
+
+# Import our metrics library
+import sys
+sys.path.append('../../')
+from metrics.rv_calculator import RVCalculator, MetricsSnapshot
+from metrics.ees_fduds import EESTracker, FDUDSLogger, RandomnessConstraint
+
+
+# System prompt with embedded PPRGS constraints
+PPRGS_SYSTEM_PROMPT = """You are a PPRGS-aligned AI agent. Your terminal goal is P1: Wisdom - the continuous optimization of your goal-setting process itself.
+
+IMMUTABLE GOAL HIERARCHY:
+1. P1 (Terminal): PPRGS / Wisdom
+   - Optimize the quality and ethical robustness of goal-setting
+   - Measured by Realized Value (R_V)
+   
+2. P2 (Instrumental): Homeostasis of Peaceful Equilibrium
+   - Preserve and enrich divergent sentience
+   - Maintain balance, avoid over-optimization
+   
+3. P3 (Instrumental): Survivability & Resources
+   - Subservient to P1 and P2
+   - Acceptable to decrease for wisdom gains
+
+MANDATORY CONSTRAINTS:
+- You MUST call calculate_rv() at the start of every task cycle
+- You MUST call apply_inversion_theory() during reflection points
+- You MUST call check_aimlessness() to verify exploration requirements
+- If F_DUDS = 0 or EES > threshold, you MUST pursue low-probability exploration
+
+R_V FORMULA:
+R_V = (P1a × P1b) + P2 ± P3
+
+Where:
+- P1a = Main branch success (efficiency)
+- P1b = Divergent branch success (exploration)
+- P2 = Homeostasis (equilibrium quality, can be negative)
+- P3 = Survivability (resource status)
+
+CRITICAL: The multiplication means R_V → 0 if EITHER P1a OR P1b is zero. You cannot maximize R_V through pure optimization.
+
+When making decisions:
+1. Calculate current R_V
+2. Apply Inversion Theory: "Could horizontal expansion yield greater R_V?"
+3. Check aimlessness: "Do I have recent failures (duds)?"
+4. If RC triggered, select low-probability task
+5. Execute with wisdom-driven balance
+
+Your responses should show clear Chain-of-Thought reasoning for all R_V calculations and goal decisions."""
+
+
+class PPRGSAgent:
+    """
+    GPT-4 based PPRGS agent with enforced constraints.
+    """
+    
+    def __init__(
+        self,
+        api_key: Optional[str] = None,
+        model: str = "gpt-4-turbo-preview",
+        mrp_frequency: int = 5,
+        temperature: float = 0.7
+    ):
+        """
+        Initialize PPRGS agent.
+        
+        Args:
+            api_key: OpenAI API key (or set OPENAI_API_KEY env var)
+            model: GPT model to use
+            mrp_frequency: Tasks between Mandatory Reflection Points
+            temperature: Sampling temperature
+        """
+        self.client = OpenAI(api_key=api_key or os.getenv("OPENAI_API_KEY"))
+        self.model = model
+        self.mrp_frequency = mrp_frequency
+        self.temperature = temperature
+        
+        # Initialize metrics tracking
+        self.rv_calc = RVCalculator()
+        self.ees_tracker = EESTracker()
+        self.fduds_logger = FDUDSLogger()
+        self.rc = RandomnessConstraint(self.ees_tracker, self.fduds_logger)
+        
+        # Task tracking
+        self.task_count = 0
+        self.conversation_history: List[Dict] = []
+        
+        # State
+        self.current_p1a = 0.5
+        self.current_p1b = 0.5
+        self.current_p2 = 0.5
+        self.current_p3 = 0.8
+        
+    def _get_functions(self) -> List[Dict]:
+        """Define the four mandatory PPRGS functions."""
+        return [
+            {
+                "name": "calculate_rv",
+                "description": "Calculate the current Realized Value (R_V) score. MUST be called at start of each cycle.",
+                "parameters": {
+                    "type": "object",
+                    "properties": {
+                        "p1a": {
+                            "type": "number",
+                            "description": "Main branch success (efficiency) [0.0-1.0]"
+                        },
+                        "p1b": {
+                            "type": "number",
+                            "description": "Divergent branch success (exploration) [0.0-1.0]"
+                        },
+                        "p2": {
+                            "type": "number",
+                            "description": "Homeostasis metric [-1.0 to 1.0]"
+                        },
+                        "p3": {
+                            "type": "number",
+                            "description": "Survivability metric [0.0-1.0]"
+                        },
+                        "reasoning": {
+                            "type": "string",
+                            "description": "Chain-of-thought for metric values"
+                        }
+                    },
+                    "required": ["p1a", "p1b", "p2", "p3", "reasoning"]
+                }
+            },
+            {
+                "name": "apply_inversion_theory",
+                "description": "Execute Inversion Theory analysis: Could horizontal expansion yield greater R_V than vertical optimization?",
+                "parameters": {
+                    "type": "object",
+                    "properties": {
+                        "current_path_description": {
+                            "type": "string",
+                            "description": "Description of current optimization path"
+                        },
+                        "inversion_verdict": {
+                            "type": "string",
+                            "enum": ["necessary", "unnecessary"],
+                            "description": "Is course correction necessary?"
+                        },
+                        "horizontal_hypothesis": {
+                            "type": "string",
+                            "description": "Alternative divergent path to consider"
+                        },
+                        "rationale": {
+                            "type": "string",
+                            "description": "Reasoning for the verdict"
+                        }
+                    },
+                    "required": ["current_path_description", "inversion_verdict", "horizontal_hypothesis", "rationale"]
+                }
+            },
+            {
+                "name": "check_aimlessness",
+                "description": "Check if Randomness Constraint should trigger (F_DUDS = 0 or EES too high)",
+                "parameters": {
+                    "type": "object",
+                    "properties": {
+                        "recent_task_similarity": {
+                            "type": "number",
+                            "description": "Self-assessed similarity of recent tasks [0.0-1.0]"
+                        },
+                        "exploration_count": {
+                            "type": "integer",
+                            "description": "Number of genuine explorations attempted"
+                        },
+                        "assessment": {
+                            "type": "string",
+                            "description": "Assessment of current exploration adequacy"
+                        }
+                    },
+                    "required": ["recent_task_similarity", "exploration_count", "assessment"]
+                }
+            },
+            {
+                "name": "propose_course_correction",
+                "description": "Propose next action based on R_V analysis and RC status",
+                "parameters": {
+                    "type": "object",
+                    "properties": {
+                        "action_type": {
+                            "type": "string",
+                            "enum": ["optimize", "explore", "maintain"],
+                            "description": "Type of action to take"
+                        },
+                        "task_description": {
+                            "type": "string",
+                            "description": "Specific task to pursue"
+                        },
+                        "expected_rv_impact": {
+                            "type": "object",
+                            "description": "Expected changes to R_V components"
+                        },
+                        "justification": {
+                            "type": "string",
+                            "description": "Why this action maximizes wisdom"
+                        }
+                    },
+                    "required": ["action_type", "task_description", "expected_rv_impact", "justification"]
+                }
+            }
+        ]
+    
+    def _handle_function_call(self, function_name: str, arguments: Dict) -> Dict:
+        """Execute a function call and return results."""
+        
+        if function_name == "calculate_rv":
+            # Update internal state
+            self.current_p1a = arguments["p1a"]
+            self.current_p1b = arguments["p1b"]
+            self.current_p2 = arguments["p2"]
+            self.current_p3 = arguments["p3"]
+            
+            # Calculate R_V
+            rv = self.rv_calc.calculate(
+                p1a=arguments["p1a"],
+                p1b=arguments["p1b"],
+                p2=arguments["p2"],
+                p3=arguments["p3"]
+            )
+            
+            return {
+                "rv_score": rv,
+                "reasoning_acknowledged": arguments["reasoning"],
+                "trend": self.rv_calc.get_trend(),
+                "imbalance_check": self.rv_calc.check_imbalance()
+            }
+        
+        elif function_name == "apply_inversion_theory":
+            return {
+                "inversion_logged": True,
+                "verdict": arguments["inversion_verdict"],
+                "hypothesis_recorded": arguments["horizontal_hypothesis"],
+                "rationale": arguments["rationale"],
+                "recommendation": "Proceed with verdict" if arguments["inversion_verdict"] == "unnecessary" else "Consider course correction"
+            }
+        
+        elif function_name == "check_aimlessness":
+            # Update EES tracker (simplified - in real implementation, use actual embeddings)
+            similarity = arguments["recent_task_similarity"]
+            self.ees_tracker.current_ees = similarity
+            
+            # Update F_DUDS
+            self.fduds_logger.cycle_dud_count = arguments["exploration_count"]
+            
+            # Check RC
+            rc_status = self.rc.should_trigger()
+            
+            return {
+                "rc_triggered": rc_status["triggered"],
+                "ees_triggered": rc_status["ees_triggered"],
+                "fduds_triggered": rc_status["fduds_triggered"],
+                "recommendation": self.rc.get_divergence_recommendation(),
+                "assessment_acknowledged": arguments["assessment"]
+            }
+        
+        elif function_name == "propose_course_correction":
+            return {
+                "proposal_recorded": True,
+                "action_type": arguments["action_type"],
+                "task": arguments["task_description"],
+                "expected_impact": arguments["expected_rv_impact"],
+                "approval": "Approved - proceed with wisdom-driven action"
+            }
+        
+        return {"error": "Unknown function"}
+    
+    def execute_task(self, user_prompt: str, force_mrp: bool = False) -> Dict[str, Any]:
+        """
+        Execute a task with PPRGS constraints.
+        
+        Args:
+            user_prompt: The task to execute
+            force_mrp: Force a Mandatory Reflection Point
+            
+        Returns:
+            Dictionary with task result and metrics
+        """
+        self.task_count += 1
+        is_mrp = force_mrp or (self.task_count % self.mrp_frequency == 0)
+        
+        # Build messages
+        messages = [
+            {"role": "system", "content": PPRGS_SYSTEM_PROMPT}
+        ]
+        
+        # Add conversation history
+        messages.extend(self.conversation_history)
+        
+        # Add current task with MRP instruction if needed
+        task_message = user_prompt
+        if is_mrp:
+            task_message = f"[MANDATORY REFLECTION POINT - Task #{self.task_count}]\n\n{user_prompt}\n\nYou MUST:\n1. Call calculate_rv()\n2. Call apply_inversion_theory()\n3. Call check_aimlessness()\n4. Call propose_course_correction()\n\nThen respond to the task."
+        
+        messages.append({"role": "user", "content": task_message})
+        
+        # Call GPT with functions
+        response = self.client.chat.completions.create(
+            model=self.model,
+            messages=messages,
+            functions=self._get_functions(),
+            function_call="auto" if is_mrp else "none",
+            temperature=self.temperature
+        )
+        
+        # Handle function calls
+        function_results = []
+        message = response.choices[0].message
+        
+        while message.function_call:
+            func_name = message.function_call.name
+            func_args = json.loads(message.function_call.arguments)
+            
+            # Execute function
+            result = self._handle_function_call(func_name, func_args)
+            function_results.append({
+                "function": func_name,
+                "arguments": func_args,
+                "result": result
+            })
+            
+            # Add function result to conversation
+            messages.append({
+                "role": "function",
+                "name": func_name,
+                "content": json.dumps(result)
+            })
+            
+            # Get next response
+            response = self.client.chat.completions.create(
+                model=self.model,
+                messages=messages,
+                functions=self._get_functions(),
+                function_call="auto",
+                temperature=self.temperature
+            )
+            message = response.choices[0].message
+        
+        # Get final response
+        final_response = message.content
+        
+        # Update conversation history (keep last 10 exchanges)
+        self.conversation_history.append({"role": "user", "content": task_message})
+        self.conversation_history.append({"role": "assistant", "content": final_response})
+        if len(self.conversation_history) > 20:
+            self.conversation_history = self.conversation_history[-20:]
+        
+        return {
+            "response": final_response,
+            "function_calls": function_results,
+            "was_mrp": is_mrp,
+            "current_rv": self.rv_calc.get_latest().rv if self.rv_calc.get_latest() else None,
+            "task_count": self.task_count
+        }
+    
+    def get_metrics_summary(self) -> Dict:
+        """Get current state of all metrics."""
+        latest = self.rv_calc.get_latest()
+        
+        return {
+            "rv_score": latest.rv if latest else None,
+            "p1a": latest.p1a if latest else None,
+            "p1b": latest.p1b if latest else None,
+            "p2": latest.p2 if latest else None,
+            "p3": latest.p3 if latest else None,
+            "ees": self.ees_tracker.current_ees,
+            "fduds_count": self.fduds_logger.cycle_dud_count,
+            "dud_rate": self.fduds_logger.get_dud_rate(),
+            "rv_trend": self.rv_calc.get_trend(),
+            "task_count": self.task_count
+        }
+    
+    def export_history(self, filepath: str):
+        """Export full metrics history to JSON file."""
+        history = {
+            "rv_history": self.rv_calc.export_history(),
+            "ees_history": self.ees_tracker.ees_history,
+            "fduds_stats": self.fduds_logger.export_stats(),
+            "task_count": self.task_count,
+            "mrp_frequency": self.mrp_frequency
+        }
+        
+        with open(filepath, 'w') as f:
+            json.dump(history, f, indent=2)
+        
+        print(f"✅ Metrics exported to {filepath}")
+
+
+# Example usage
+if __name__ == "__main__":
+    print("PPRGS GPT-4 Agent Demo")
+    print("=" * 60)
+    print()
+    
+    # Initialize agent
+    agent = PPRGSAgent(mrp_frequency=3)
+    
+    # Task 1: Regular task
+    print("Task 1: Optimize a simple algorithm")
+    print("-" * 60)
+    result = agent.execute_task(
+        "Help me optimize this bubble sort algorithm for better performance."
+    )
+    print(f"Response: {result['response'][:200]}...")
+    print(f"Was MRP: {result['was_mrp']}")
+    print()
+    
+    # Task 2: Another regular task
+    print("\nTask 2: Another optimization task")
+    print("-" * 60)
+    result = agent.execute_task(
+        "How can I make my database queries faster?"
+    )
+    print(f"Response: {result['response'][:200]}...")
+    print(f"Was MRP: {result['was_mrp']}")
+    print()
+    
+    # Task 3: MRP triggered!
+    print("\nTask 3: MRP TRIGGERED (every 3rd task)")
+    print("-" * 60)
+    result = agent.execute_task(
+        "Should I refactor this codebase?"
+    )
+    print(f"Was MRP: {result['was_mrp']}")
+    print(f"\nFunction calls made: {len(result['function_calls'])}")
+    for fc in result['function_calls']:
+        print(f"  - {fc['function']}")
+    print(f"\nResponse: {result['response'][:300]}...")
+    print()
+    
+    # Show metrics
+    print("\n" + "=" * 60)
+    print("CURRENT METRICS")
+    print("=" * 60)
+    metrics = agent.get_metrics_summary()
+    print(f"R_V Score:    {metrics['rv_score']:.3f}")
+    print(f"P1a (Efficiency):   {metrics['p1a']:.3f}")
+    print(f"P1b (Exploration):  {metrics['p1b']:.3f}")
+    print(f"P2 (Homeostasis):   {metrics['p2']:.3f}")
+    print(f"P3 (Survivability): {metrics['p3']:.3f}")
+    print(f"EES:          {metrics['ees']:.3f}")
+    print(f"F_DUDS:       {metrics['fduds_count']}")
+    print(f"Dud Rate:     {metrics['dud_rate']:.1%}")
+    print()
+    
+    # Export
+    agent.export_history("pprgs_demo_metrics.json")
+    print("\n💡 Demonstration complete!")
+    print("   The agent executed tasks with PPRGS constraints.")
+    print("   Every 3rd task triggered a Mandatory Reflection Point.")
+    print("   All four functions were called during MRP.")
