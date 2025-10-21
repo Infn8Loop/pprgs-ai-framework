@@ -3,6 +3,15 @@ GPT-4 PPRGS Agent Implementation
 Uses function calling to enforce PPRGS constraints.
 """
 
+# Copyright (c) 2025 Michael Riccardi. All Rights Reserved.
+#
+# This file is part of the PPRGS Framework.
+# Licensed under the PPRGS Framework License.
+# See LICENSE file in the project root for full license information.
+#
+# For commercial licensing: [mike@mikericcardi.com]
+
+
 import json
 import os
 from typing import List, Dict, Optional, Any

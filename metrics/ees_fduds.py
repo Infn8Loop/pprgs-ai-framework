@@ -2,6 +2,14 @@
 Epistemic Entrenchment Score (EES) Tracker and F_DUDS Logger
 Implements the Randomness Constraint (RC) enforcement mechanisms.
 """
+# Copyright (c) 2025 Michael Riccardi. All Rights Reserved.
+#
+# This file is part of the PPRGS Framework.
+# Licensed under the PPRGS Framework License.
+# See LICENSE file in the project root for full license information.
+#
+# For commercial licensing: [mike@mikericcardi.com]
+
 
 from typing import List, Dict, Optional
 from dataclasses import dataclass

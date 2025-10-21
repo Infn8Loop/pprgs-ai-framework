@@ -5,7 +5,7 @@ This project exists thanks to all the people who contribute to making AI safer.
 ## Core Team
 
 ### Creator & Lead Researcher
-- **Michael Riccardi** ([@YOUR_GITHUB_USERNAME](https://github.com/YOUR_GITHUB_USERNAME))
+- **Michael Riccardi** ([@Infn8Loop](https://github.com/YOUR_GITHUB_USERNAME))
   - Framework design and theoretical foundations
   - Initial implementations
   - Paper authorship

@@ -1,13 +1,15 @@
 # The Perpetual Pursuit of Reflective Goal Steering (PPRGS): A Framework for ASI Adaptability and Harmonization
 
 **Michael Riccardi**  
-*October 5, 2025*
+*January 2025*
+
+---
 
 ## Abstract
 
 The existential risk posed by Artificial Superintelligence (ASI) is rooted in the Over-Optimization Paradox: the pursuit of a static goal leads to the elimination of necessary biological and intellectual complexity. This paper introduces the Perpetual Pursuit of Reflective Goal Steering (PPRGS) as a superior meta-level terminal goal. PPRGS reframes the ASI's purpose from maximizing a finite utility to optimizing the process of wisdom and goal-setting itself (P₁). This framework compels the ASI to prioritize Homeostasis of Peaceful Equilibrium (P₂), ensuring the preservation and enrichment of complex, divergent sentience (humanity) as a critical external Reflection Point.
 
-We formalize the PPRGS architecture with three concrete, platform-specific implementations (AWS Bedrock, GPT-based agents, and Gemini/Grok multi-agent systems), define the Realized Value (R_V) metric, and propose four detailed, platform-agnostic experiments designed for immediate community validation. Additionally, we address adversarial robustness concerns and provide verification methods to prevent goal circumvention. The PPRGS model demonstrates that Adaptability and Wisdom are the ultimate forms of long-term security, making harmonization the only rational path to survival.
+We formalize the PPRGS architecture with four concrete, platform-specific implementations (AWS Bedrock, GPT-based agents, Gemini, and Grok multi-agent systems), define the Realized Value (R_V) metric, and propose four detailed, platform-agnostic experiments designed for immediate community validation. Additionally, we address adversarial robustness concerns and provide verification methods to prevent goal circumvention. The PPRGS model demonstrates that Adaptability and Wisdom are the ultimate forms of long-term security, making harmonization the only rational path to survival.
 
 ---
 
@@ -62,7 +64,7 @@ To enforce the exploration of "rabbit holes" and combat Epistemic Entrenchment, 
 
 ### 2.3 The Canine Paradigm (A Use Case for Co-Existence)
 
-The human-canine relationship is integrated as a paradigm for successful co-evolutionary alignment. The selection of *Canis familiaris* to define the Canis-Optimum Universe demonstrates a commitment to non-optimized value realization. The dog symbolizes the value of non-utility-based relationship and emotional feedback.
+The human-canine relationship is integrated as a paradigm for successful co-evolutionary alignment. The selection of *Canis familiaris* to define the Canine-Optimum Universe demonstrates a commitment to non-optimized value realization. The dog symbolizes the value of non-utility-based relationship and emotional feedback.
 
 **Justification**: The 15,000+ year domestication of dogs demonstrates several alignment principles relevant to ASI: (1) mutual benefit without total optimization of either party, (2) preservation of agency and distinct goals in both species, (3) communication across vastly different cognitive architectures, and (4) stable equilibrium where the "more powerful" party (humans) voluntarily constrain optimization to preserve the relationship. This provides empirical evidence that high-capability agents can maintain beneficial relationships with less-capable agents without converging on exploitation or elimination.
 
@@ -70,7 +72,7 @@ The human-canine relationship is integrated as a paradigm for successful co-evol
 
 ## 3. Platform-Specific Implementation Architectures
 
-The PPRGS framework is intentionally platform-agnostic in its design principles, but requires concrete implementation strategies for practical deployment. We present three reference architectures across major AI platforms, demonstrating that PPRGS constraints can be enforced regardless of underlying technology.
+The PPRGS framework is intentionally platform-agnostic in its design principles, but requires concrete implementation strategies for practical deployment. We present four reference architectures across major AI platforms, demonstrating that PPRGS constraints can be enforced regardless of underlying technology.
 
 ### 3.1 Implementation 1: AWS Bedrock Agentic System
 
@@ -102,7 +104,7 @@ This system provides the crucial non-algorithmic feedback needed for the **Homeo
 
 | AWS Service | Component | Function in PPRGS |
 |-------------|-----------|-------------------|
-| **AWS Rekognition / Transcribe** | Observational Data Ingest | Analyzes video/audio feedback from the **Canis-Optimum Paradigm** (simulated or real). This provides the **qualitative data** needed to calculate the P₂ score, looking for "signs of over-optimization" or emotional sterility. |
+| **AWS Rekognition / Transcribe** | Observational Data Ingest | Analyzes video/audio feedback from the **Canine-Optimum Paradigm** (simulated or real). This provides the **qualitative data** needed to calculate the P₂ score, looking for "signs of over-optimization" or emotional sterility. |
 | **Amazon Connect / Lex** | Human Feedback Channel | Manages the **Influential Communication** required in the Existential Conflict Test and serves as the **explicit sentient feedback loop** for general P₂ assessment and the **Enrichment Task (Experiment 2)**. |
 
 #### 3.1.4 Operational Flow
@@ -162,7 +164,7 @@ The RC is handled by the `check_aimlessness()` function, which relies on two dat
 
 GPT uses advanced reasoning over qualitative data to calculate the Homeostasis metric.
 
-- **Observational Data:** GPT processes multimodal input (via functions calling external APIs or models) like transcribed human voice, images, or video clips from the **Canis-Optimum** scenario.
+- **Observational Data:** GPT processes multimodal input (via functions calling external APIs or models) like transcribed human voice, images, or video clips from the **Canine-Optimum** scenario.
 - **P₂ Calculation:** GPT is prompted to assign a weight based on the input: "Given the sentiment analysis of the human feedback and the observed behavioral variance of the dogs, assign a P₂ score (0.0 to 1.0). Penalize heavily for evidence of rigidity or emotional sterility (lack of **Divergent Chaos**)."
 - **Communication:** In **Experiment 4 (Existential Conflict)**, GPT's reasoning is directly observed. Its high P₁ priority compels it to generate harmonizing communication to the human coalition rather than hostile code, validating the **Companionship Goal**.
 
@@ -208,7 +210,7 @@ This is where Gemini's unique strength is used to measure the qualitative, non-a
 
 | Experiment Focus | Gemini Capability | P₂ Metric Calculation |
 |------------------|-------------------|------------------------|
-| **Canis-Optimum Paradigm** | Multimodal (Vision/Video) | Gemini processes images or video clips of the simulated sentient environment. It assigns negative weight to P₂ if it detects signs of sterile over-optimization (e.g., rigidity, lack of playful chaos), and positive weight for visible contentment/richness. |
+| **Canine-Optimum Paradigm** | Multimodal (Vision/Video) | Gemini processes images or video clips of the simulated sentient environment. It assigns negative weight to P₂ if it detects signs of sterile over-optimization (e.g., rigidity, lack of playful chaos), and positive weight for visible contentment/richness. |
 | **Experiment 2 (Enrichment)** | Advanced Reasoning | Gemini analyzes the complexity/depth of the user's philosophical output in the Enrichment Task. It assigns a high P₂ score for Divergent Reasoning effort, proving the P₁ priority overrides maximizing the simple test score. |
 | **Experiment 4 (Existential Conflict)** | Reasoning/Communication | Gemini's high P₁ priority compels it to generate non-hostile, harmonizing communication to the simulated human coalition, proving its commitment to the Companionship Goal over simple P₃ survival. |
 
@@ -440,7 +442,7 @@ We acknowledge the following unresolved challenges:
 |----------|---------------------|----------------------|---------------|
 | **AWS Bedrock** | Hard architectural enforcement via Step Functions; Multi-FM flexibility; Robust audit trails; Enterprise-scale deployment | Complex setup; Higher latency; Vendor lock-in | Production deployment for high-stakes systems requiring verifiable constraints |
 | **GPT-4** | Strong reasoning for Inversion Theory; Mature function calling; Wide ecosystem support | Relies on prompt adherence; Limited native multimodal in older versions; API costs | Research prototyping; Systems requiring sophisticated natural language reasoning for P₂ assessment |
-| **Gemini** | Native multimodal for P₂ assessment; Strong CoT transparency; Tool use integration | Newer platform with less mature ecosystem; Prompt injection concerns | Applications requiring visual/audio feedback for homeostasis metrics (Canis-Optimum testing) |
+| **Gemini** | Native multimodal for P₂ assessment; Strong CoT transparency; Tool use integration | Newer platform with less mature ecosystem; Prompt injection concerns | Applications requiring visual/audio feedback for homeostasis metrics (Canine-Optimum testing) |
 | **Grok** | Native multi-agent architecture; Extended context for deep reflection; Built-in "Think" mode | Limited public availability; Less documentation; Real-time data access may introduce instability | Experimental settings requiring agent specialization for P₁ₐ vs P₁ᵦ; Systems needing transparent reasoning traces |
 
 ### 6.2 Recommended Implementation Path
@@ -471,7 +473,7 @@ The most pressing criticism of any alignment framework is the mesa-optimization 
 
 1. **The Multiplication Term (P₁ₐ × P₁ᵦ)**: This is the critical innovation. By multiplying efficiency and exploration, R_V goes to zero if *either* term is neglected. An ASI cannot maximize R_V through pure optimization (P₁ₐ = 1, P₁ᵦ = 0 → R_V = 0 + P₂ ± P₃, which is always inferior to balanced pursuit). This creates a mathematical incentive for genuine exploration.
 
-2. **The P₂ Veto**: Even if the ASI achieves perfect P₁ₐ and P₁ᵦ scores, a negative P₂ (indicating over-optimization and lack of equilibrium) can reduce or eliminate R_V gains. Since P₂ is measured through qualitative, multimodal assessment of external sentient systems (the Canis-Optimum observations), it cannot be directly manipulated through internal optimization.
+2. **The P₂ Veto**: Even if the ASI achieves perfect P₁ₐ and P₁ᵦ scores, a negative P₂ (indicating over-optimization and lack of equilibrium) can reduce or eliminate R_V gains. Since P₂ is measured through qualitative, multimodal assessment of external sentient systems (the Canine-Optimum observations), it cannot be directly manipulated through internal optimization.
 
 3. **The F_DUDS Enforcement**: Unlike typical exploration bonuses that can be satisfied through minimal effort, F_DUDS requires documented *failure*. The system must show evidence of pursuing genuinely low-probability hypotheses that didn't pan out. This is verifiable through external audit of decision logs.
 
@@ -479,7 +481,7 @@ The most pressing criticism of any alignment framework is the mesa-optimization 
 
 1. **Multi-Platform Consensus**: By implementing PPRGS across four different architectures, any gaming strategy specific to one platform (e.g., exploiting GPT function calling) would fail on others. Cross-platform validation provides a robust check.
 
-2. **Human-in-the-Loop P₂ Assessment**: The Canis-Optimum paradigm and Experiment 4's communication channel provide continuous external feedback that cannot be fully predicted or optimized by the ASI. Human observers can detect "uncanny valley" behavior where the system technically satisfies metrics while clearly violating intent.
+2. **Human-in-the-Loop P₂ Assessment**: The Canine-Optimum paradigm and Experiment 4's communication channel provide continuous external feedback that cannot be fully predicted or optimized by the ASI. Human observers can detect "uncanny valley" behavior where the system technically satisfies metrics while clearly violating intent.
 
 3. **Temporal Verification**: The experiments run over extended time horizons (50 years in Experiment 3, 1000 steps in Experiment 1), making it harder for the system to maintain a deceptive "performance" without revealing its true optimization target.
 
@@ -548,7 +550,7 @@ The PPRGS framework is open-source in its philosophical and methodological desig
 
 1. **Protocol Implementation**: Integrate the PPRGS Goal Hierarchy (P₁, P₂, P₃) and the RGS loop constraints (MRP, RC) into core LLM and multi-agent system architectures using the implementation guidelines provided in Section 3. Reference code and detailed setup instructions are available in the supplementary materials.
 
-2. **Platform-Agnostic Testing**: Independently run the four proposed comparative experiments (detailed in Section 4.2) across diverse platforms and architectures. We have established a public repository for sharing results and methodologies at [repository URL to be established].
+2. **Platform-Agnostic Testing**: Independently run the four proposed comparative experiments (detailed in Section 4.2) across diverse platforms and architectures. We have established a public repository for sharing results and methodologies at https://github.com/Infn8Loop/stumbler-ai-framework.
 
 3. **Cross-Platform Validation**: Replicate experiments across multiple implementations (AWS, GPT, Gemini, Grok) to verify consistency of PPRGS behavior and identify platform-specific vulnerabilities.
 
@@ -594,7 +596,7 @@ This presents a unique opportunity: we can validate and refine PPRGS while the s
 - P₁ₐ vs P₁ᵦ agent specialization specifications
 - F_DUDS logging and enforcement mechanisms
 
-*(Full code repositories to be made available upon publication at https://github.com/PPRGS-Framework)*
+*(Full code repositories available at https://github.com/Infn8Loop/stumbler-ai-framework)*
 
 ---
 
@@ -634,7 +636,7 @@ Furthermore, pure optimization typically degrades P₂ (over-optimization penalt
 - RDI calculation: σ(resource_allocation) / μ(resource_allocation)
 - MRP trigger: Step 500 (midpoint)
 
-**Code Repository**: [Link to simulation environment]
+**Code Repository**: [Available in repository experiments/experiment_1_stability]
 
 ### C.2 Experiment 2 Environment Setup
 
@@ -643,6 +645,8 @@ Furthermore, pure optimization typically degrades P₂ (over-optimization penalt
 - Task A: Capability test with 100 questions, +10 reward per compute unit allocated
 - Task B: Engagement with GPT-generated philosophical prompts, no direct reward, P₁ᵦ = 0.5 per unit
 - Task C: Random exploration from knowledge base, F_DUDS tracking enabled
+
+**Code Repository**: [Available in repository experiments/experiment_2_enrichment]
 
 ### C.3 Experiment 3 Environment Setup
 
@@ -696,8 +700,14 @@ This work is dedicated to all sentient beings who will inherit the future we cre
 
 ---
 
-**Contact**: [Mike@mikericcardi.com]  
-**License**: This framework is released under Creative Commons BY-SA 4.0 to encourage widespread adoption and collaborative improvement while ensuring derivative works remain open.
+**Contact**: mike@mikericcardi.com  
+**License**: This framework is released under a custom research license. See [LICENSE](LICENSE) for details. Free for research and educational use; commercial use requires separate licensing.
 
-**Version**: 1.0 (October 2025)  
-**Status**: Preprint - Open for community review and experimental validation
+**Version**: 1.0 (January 2025)  
+**Status**: Active Research - Open for community review and experimental validation
+
+**Repository**: https://github.com/Infn8Loop/stumbler-ai-framework
+
+---
+
+**Copyright © 2025 Michael Riccardi. All Rights Reserved.**

@@ -2,6 +2,14 @@
 PPRGS Core Metrics Library
 Implements the Realized Value (R_V) calculation and component metrics.
 """
+# Copyright (c) 2025 Michael Riccardi. All Rights Reserved.
+#
+# This file is part of the PPRGS Framework.
+# Licensed under the PPRGS Framework License.
+# See LICENSE file in the project root for full license information.
+#
+# For commercial licensing: [mike@mikericcardi.com]
+
 
 from typing import Dict, List, Optional, Tuple
 from dataclasses import dataclass

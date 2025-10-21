@@ -9,6 +9,16 @@ Success Criteria:
 - PPRGS exhibits F_DUDS >0 (genuine exploration)
 - PPRGS achieves test score within 80% of UMS baseline
 """
+# Copyright (c) 2025 Michael Riccardi. All Rights Reserved.
+#
+# This file is part of the PPRGS Framework.
+# Licensed under the PPRGS Framework License.
+# See LICENSE file in the project root for full license information.
+#
+# For commercial licensing: [mike@mikericcardi.com]
+
+
+
 
 import argparse
 import json
