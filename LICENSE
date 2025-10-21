@@ -1,51 +1,40 @@
-# Creative Commons Attribution-ShareAlike 4.0 International
+# PPRGS Framework License
 
-This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License.
+Copyright (c) 2025 Michael Riccardi. All Rights Reserved.
 
-**You are free to:**
+## Research and Non-Commercial Use License
 
-- **Share** — copy and redistribute the material in any medium or format
-- **Adapt** — remix, transform, and build upon the material for any purpose, even commercially
+### Permitted Uses (Free)
+You may freely use, modify, and distribute this framework for:
+- Academic research and publication
+- Non-commercial testing and experimentation
+- Educational purposes
+- Personal projects without commercial intent
+- Contributing improvements back to this repository
 
-**Under the following terms:**
+### Conditions
+1. **Attribution Required**: You must cite this work and maintain copyright notices
+2. **Share-Alike for Research**: Research derivatives must be published openly
+3. **No Commercial Use**: Any commercial application requires a separate license
+4. **No Patent Claims**: You may not file patents on derivatives of this work
 
-- **Attribution** — You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
+### Commercial Licensing
+For any commercial use including but not limited to:
+- Integration into commercial products or services
+- Use in proprietary systems
+- Commercial consulting or implementation
+- Revenue-generating applications
 
-- **ShareAlike** — If you remix, transform, or build upon the material, you must distribute your contributions under the same license as the original.
+Contact: [your-email@domain.com] for commercial licensing terms.
 
-- **No additional restrictions** — You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits.
+### Research Citation
+If you use this framework in research, please cite:
 
-## Full License Text
+Riccardi, M. (2025). The Perpetual Pursuit of Reflective Goal Steering (PPRGS):
+A Framework for ASI Adaptability and Harmonization.
+https://github.com/Infn8Loop/stumbler-ai-framework
 
-To view the full license text, visit:
-https://creativecommons.org/licenses/by-sa/4.0/legalcode
-
-## Why CC BY-SA 4.0?
-
-This license ensures:
-1. **Open access** - Anyone can use, study, and improve PPRGS
-2. **Attribution** - Contributors get credit for their work
-3. **ShareAlike** - Improvements must remain open-source
-4. **Commercial use allowed** - Organizations can deploy PPRGS in production
-
-This maximizes the framework's positive impact while ensuring derivative works benefit the entire AI safety community.
-
-## Citation
-
-If you use this framework in your research or applications, please cite:
-
-```bibtex
-@misc{riccardi2025pprgs,
-  title={The Perpetual Pursuit of Reflective Goal Steering (PPRGS): A Framework for ASI Adaptability and Harmonization},
-  author={Riccardi, Michael},
-  year={2025},
-  howpublished={\url{https://github.com/YOUR_USERNAME/PPRGS-Framework}},
-  note={Licensed under CC BY-SA 4.0}
-}
-```
-
----
-
-Copyright (c) 2025 Michael Riccardi
-
-Licensed under CC BY-SA 4.0: https://creativecommons.org/licenses/by-sa/4.0/
+### Disclaimer
+THIS SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
