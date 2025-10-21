@@ -1,4 +1,4 @@
-# PPRGS Framework: Perpetual Pursuit of Reflective Goal Steering
+# Stumbler AI (PPRGS) Framework: Perpetual Pursuit of Reflective Goal Steering
 
 **A Novel Approach to AI Alignment Through Wisdom-Seeking and Adaptive Goal Optimization**
 
@@ -38,7 +38,21 @@ This is enforced through:
 - **Homeostasis of Peaceful Equilibrium (P₂)** - Preserves divergent sentience as an external reflection point
 
 ---
+## 📚 Documentation
 
+### Getting Started
+- **[Quick Start](QUICKSTART.md)** ⚡ Get running in 15 minutes
+- **[Glossary](docs/GLOSSARY.md)** 📖 Look up any term or concept
+
+### Learning More
+- **[FAQ](docs/FAQ.md)** ❓ Common questions answered
+- **[Implementation Guide](docs/IMPLEMENTATION-GUIDE.md)** 🔧 Full step-by-step implementation
+- **[Academic Paper](paper/PAPER.md)** 📄 Complete theoretical framework
+
+### Reference
+- **[Glossary](docs/GLOSSARY.md)** - All terms, acronyms, and concepts
+- **[License](LICENSE)** - Usage terms (free for research, paid for commercial)
+---
 ## 📜 License
 
 **PPRGS is free for research and testing, but commercial use requires a license.**
