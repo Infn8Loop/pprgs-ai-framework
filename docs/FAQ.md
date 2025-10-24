@@ -1,6 +1,7 @@
 # PPRGS Framework - Frequently Asked Questions
 
-**Updated: January 2025**
+**Updated: January 2025**  
+**License: GPL-3.0**
 
 ---
 
@@ -11,7 +12,6 @@
 - [Technical Questions](#technical-questions)
 - [Implementation Questions](#implementation-questions)
 - [Research Questions](#research-questions)
-- [Commercial Use Questions](#commercial-use-questions)
 
 ---
 
@@ -56,77 +56,169 @@ This is an **open research framework** - we're actively seeking validation and f
 
 ## Licensing Questions
 
+### What license is PPRGS under?
+
+**GNU General Public License v3.0 (GPL-3.0)**
+
+This is a **copyleft** open-source license. Key points:
+
+✅ **Freedoms:**
+- Use for any purpose (including commercial!)
+- Study and modify the source code
+- Distribute copies
+- Distribute modified versions
+
+⚠️ **Obligations (if you distribute):**
+- Must license derivatives under GPL-3.0
+- Must provide source code
+- Must preserve copyright notices
+- Must document changes
+
+**Full text:** [LICENSE](../LICENSE) | [GNU Official](https://www.gnu.org/licenses/gpl-3.0.en.html)
+
+### Can I use PPRGS commercially?
+
+**Yes!** GPL-3.0 permits commercial use without fees or licenses.
+
+You can:
+- ✅ Build commercial products using PPRGS
+- ✅ Offer paid services using PPRGS
+- ✅ Deploy in production systems
+- ✅ Sell PPRGS-based solutions
+
+**BUT** if you distribute your software (give it to customers, deploy as SaaS*, sell products), you must:
+- Share your source code under GPL-3.0
+- Allow customers to modify and redistribute
+
+*Note: There's debate about whether SaaS counts as "distribution" under GPL. See AGPL if you want explicit SaaS coverage.
+
+### Do I need to pay to use PPRGS?
+
+**No.** PPRGS is free and open-source forever.
+
+- ❌ No licensing fees
+- ❌ No royalties
+- ❌ No commercial license required
+- ❌ No "contact for pricing"
+
+**Zero cost** for any use, including commercial.
+
 ### Can I use PPRGS for my PhD research?
 
-**Yes!** Academic research is fully permitted under the non-commercial license at no cost.
+**Absolutely!** Academic research is exactly what open-source is for.
 
 Requirements:
-- ✅ Cite the framework properly
-- ✅ Share your research results openly (publish your findings)
-- ✅ Maintain attribution in any code/papers
-
-You do NOT need to ask permission - just use it and cite it.
+- ✅ Cite the framework properly (see [citation](#how-do-i-cite-this-work))
+- ✅ Share modifications if you distribute code
+- ❌ No permission needed
+- ❌ No fees
 
 ### Can I write a paper about PPRGS without asking permission?
 
-**Absolutely.** You can:
+**Yes!** You can:
 - Critique the framework
 - Test the experiments
 - Propose improvements
 - Compare to other approaches
 - Build on the ideas
+- Publish anywhere
 
-Just cite the work properly:
+Just **cite the work** properly:
+
 ```bibtex
 @software{riccardi2025pprgs,
   author = {Riccardi, Michael},
   title = {PPRGS Framework: Perpetual Pursuit of Reflective Goal Steering},
   year = {2025},
-  url = {https://github.com/Infn8Loop/stumbler-ai-framework}
+  url = {https://github.com/Infn8Loop/stumbler-ai-framework},
+  license = {GPL-3.0}
 }
 ```
 
-### What if I'm not sure if my use is "commercial"?
-
-**Email mike@mikericcardi.com** with your use case. We'll clarify within 24 hours.
-
-**Generally commercial** if:
-- You're selling a product/service that uses PPRGS
-- You're generating revenue from PPRGS-based systems
-- You're offering paid consulting using PPRGS
-
-**Generally non-commercial** if:
-- Academic research (even at private universities)
-- Personal learning projects
-- Open-source contributions
-- Educational use (teaching)
-- Non-profit mission work
-
 ### Can I fork the repo and modify it?
 
-**Yes** - for non-commercial use.
+**Yes!** That's the whole point of GPL-3.0.
 
 You can:
 - ✅ Fork the repository
-- ✅ Modify the code
-- ✅ Test your modifications
-- ✅ Contribute improvements back (encouraged!)
+- ✅ Modify any code
+- ✅ Add features
+- ✅ Fix bugs
+- ✅ Create your own version
 
 You must:
-- ⚠️ Maintain the license and attribution
-- ⚠️ Share research derivatives openly
-- ⚠️ Not use for commercial purposes without a license
+- ⚠️ Keep it under GPL-3.0
+- ⚠️ Share source code if you distribute
+- ⚠️ Maintain copyright notices
+- ⚠️ Document your changes
 
-### Can my startup use PPRGS?
+**Pro tip:** Consider contributing improvements back via Pull Request - everyone benefits!
 
-**Yes** - with a commercial license.
+### Can I create proprietary derivatives?
 
-Contact mike@mikericcardi.com for licensing. Typical terms:
-- **Startups (<$1M revenue)**: $5K-15K/year
-- **Enterprises**: $50K-500K/year
-- **Strategic partners**: Custom terms
+**No.** That's what "copyleft" means.
 
-We want to support innovative applications while sustaining development.
+If you create a derivative work and distribute it, it **must** be GPL-3.0.
+
+**Examples:**
+
+❌ **Not allowed:**
+- Build a closed-source commercial product using PPRGS and distribute it
+- Create a proprietary fork and sell licenses
+- Integrate PPRGS into proprietary software and distribute binaries without source
+
+✅ **Allowed:**
+- Use PPRGS internally (no distribution = no obligation)
+- Create open-source derivatives under GPL-3.0
+- Dual-license your own original code that *uses* PPRGS (but PPRGS parts stay GPL)
+
+**Borderline:** If your code merely *calls* PPRGS as a separate program, it might not be a derivative work. Consult a lawyer if this matters to your business.
+
+### What if I only use PPRGS internally?
+
+**No obligations!**
+
+If you don't **distribute** PPRGS (give it to others, sell it, deploy as a service customers download), GPL-3.0 imposes zero requirements.
+
+Internal use = completely free, no strings attached.
+
+**Example:** Your company uses PPRGS to build internal AI tools. Nobody outside the company gets the code. → No obligation to share source.
+
+### Can I patent improvements I make to PPRGS?
+
+**Legally:** Maybe, depending on jurisdiction. (Not a lawyer.)
+
+**Ethically:** Please don't. The GPL-3.0 philosophy is about keeping knowledge open.
+
+**Practically:** Even if you patent an improvement:
+- You still must license your code under GPL-3.0 if you distribute it
+- You grant an implicit patent license to GPL-3.0 recipients
+- The community will likely work around your patent or fork before the improvement
+
+**Better approach:** Contribute improvements openly. You get community support, visibility, and collaboration.
+
+### What about AGPL vs GPL?
+
+**Current license: GPL-3.0** (not AGPL)
+
+**Difference:**
+- **GPL-3.0:** Distribution triggers obligations
+- **AGPL-3.0:** Network use (SaaS) also triggers obligations
+
+**For PPRGS:** We chose GPL-3.0 to avoid complexity, but if you're running PPRGS as a service and want to ensure others can't make proprietary SaaS forks, consider AGPL-3.0 for your derivative.
+
+**Not legal advice.** If this matters to your business, talk to an open-source licensing attorney.
+
+### Can I get support or consulting?
+
+**Community support:** Free via GitHub Issues and Discussions
+
+**Professional support:** Not officially offered, but:
+- You're free to hire any developer who knows PPRGS
+- No restrictions on paid consulting
+- Companies can offer PPRGS implementation services
+
+**No vendor lock-in** - that's the beauty of open source.
 
 ---
 
@@ -265,6 +357,8 @@ Currently:
 
 The framework is **platform-agnostic** in principle - you can implement in any language. The core logic (Goal Hierarchy, R_V calculation, MRP) is language-independent.
 
+**Want to port to your language?** Contributions welcome!
+
 ### What AI platforms/models work with PPRGS?
 
 Implementations exist or are planned for:
@@ -276,6 +370,7 @@ Implementations exist or are planned for:
 | **AWS Bedrock** | 📝 Planned | Production deployment, verification |
 | **Grok** | 📝 Planned | Multi-agent systems, transparent reasoning |
 | **Claude** | 📝 Planned | Constitutional AI integration |
+| **Local LLMs** | ⏳ Community | Llama, Mistral, etc. (adapters needed) |
 
 You can adapt PPRGS to any LLM that supports:
 - System prompts or instructions
@@ -354,7 +449,7 @@ For **fully offline**, you'd need:
 - Adapter layer to PPRGS interface
 - More compute resources
 
-This is possible but not in current reference implementations.
+This is possible but not in current reference implementations. **Contributions welcome!**
 
 ---
 
@@ -423,6 +518,7 @@ Relevant venues:
 - **ICML** (ML safety track)
 - **FAccT** (Fairness, Accountability, Transparency)
 - **AAAI** (AI Safety papers)
+- **ICLR** (Safety & Robustness track)
 - **arXiv** (preprints)
 
 Also consider:
@@ -440,64 +536,32 @@ Ways to contribute:
 4. **Improve documentation** - clarify confusing parts
 5. **Propose extensions** - new metrics, experiments, implementations
 6. **Peer review** - critique the theory constructively
+7. **Port to other languages** (JavaScript, Rust, Go, etc.)
 
 See [CONTRIBUTING.md](../CONTRIBUTING.md) for details.
 
----
+All contributions are GPL-3.0 and become part of the commons!
 
-## Commercial Use Questions
+### How do I cite this work?
 
-### How much does a commercial license cost?
+**BibTeX:**
+```bibtex
+@software{riccardi2025pprgs,
+  author = {Riccardi, Michael},
+  title = {PPRGS Framework: Perpetual Pursuit of Reflective Goal Steering},
+  year = {2025},
+  url = {https://github.com/Infn8Loop/stumbler-ai-framework},
+  license = {GPL-3.0},
+  note = {A framework for AI alignment through wisdom-seeking and adaptive goal optimization}
+}
+```
 
-**Licensing tiers**:
-
-- **Startup** ($5K-15K/year): Companies <$1M revenue, up to 5 deployments
-- **Enterprise** ($50K-500K/year): Unlimited deployments, priority support
-- **Strategic Partnership**: Custom terms for frontier AI labs
-
-Pricing depends on:
-- Company size/revenue
-- Deployment scale
-- Support needs
-- Whether you want co-development
-
-### What's included in a commercial license?
-
-- ✅ Perpetual license to use PPRGS in commercial applications
-- ✅ Access to enterprise support and implementation guidance
-- ✅ Patent indemnification (when patents issue)
-- ✅ Custom development and integration assistance (Enterprise tier)
-- ✅ Priority feature requests
-
-### Can I use PPRGS in a free/freemium product?
-
-**It depends**:
-
-- **Free product with no revenue**: Non-commercial license applies (free)
-- **Freemium with paid tier**: Commercial license required
-- **Free with ads**: Commercial license required (generating revenue)
-
-**Gray area?** Email mike@mikericcardi.com - we're reasonable.
-
-### Can I get an academic discount for commercial use?
-
-**Yes** - we offer special terms for:
-- University spinouts (first 2 years)
-- Research commercialization
-- Non-profit tech (mission-aligned)
-
-Contact us to discuss your situation.
-
-### What if PPRGS becomes essential to my business?
-
-We understand the concern about dependency. Our approach:
-
-1. **No sudden changes**: 90-day notice for license term changes
-2. **Reasonable pricing**: We want sustainable relationships, not maximum extraction
-3. **Open research license**: Your research stays free
-4. **Buyout option**: Enterprise customers can negotiate terms
-
-**Philosophy**: We want PPRGS to succeed in the world, not maximize short-term revenue.
+**Academic paper citation:**
+```
+Riccardi, M. (2025). The Perpetual Pursuit of Reflective Goal Steering (PPRGS): 
+A Framework for ASI Adaptability and Harmonization. 
+GitHub repository: https://github.com/Infn8Loop/stumbler-ai-framework
+```
 
 ---
 
@@ -507,7 +571,7 @@ We understand the concern about dependency. Our approach:
 
 - **Technical questions**: [GitHub Issues](https://github.com/Infn8Loop/stumbler-ai-framework/issues)
 - **Research discussions**: [GitHub Discussions](https://github.com/Infn8Loop/stumbler-ai-framework/discussions)
-- **Commercial licensing**: mike@mikericcardi.com
+- **General inquiries**: mike@mikericcardi.com
 - **Security issues**: mike@mikericcardi.com (mark "Confidential")
 
 ---
@@ -516,4 +580,5 @@ We understand the concern about dependency. Our approach:
 
 ---
 
-**Copyright © 2025 Michael Riccardi. All Rights Reserved.**
+**Copyright © 2025 Michael Riccardi**  
+**Licensed under GNU General Public License v3.0**
