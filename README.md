@@ -1,22 +1,33 @@
-# Stumbler AI (PPRGS) Framework: Perpetual Pursuit of Reflective Goal Steering
+# Puppy Steering AI (PPRGS) Framework: Perpetual Pursuit of Reflective Goal Steering
 
 **A Novel Approach to AI Alignment Through Wisdom-Seeking and Adaptive Goal Optimization**
 
-[![License](https://img.shields.io/badge/License-Custom%20Research-blue.svg)](LICENSE)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![Status](https://img.shields.io/badge/Status-Active%20Research-green.svg)]()
 
 ---
 
-## ⚠️ Usage Agreement
+## 📜 License
 
-**By cloning, downloading, or using this repository, you agree to the terms in [LICENSE](LICENSE).**
+**PPRGS is licensed under GNU General Public License v3.0 (GPL-3.0)**
 
-**Key Points:**
-- ✅ **Free for research, testing, and education**
-- ❌ **Commercial use requires a separate license**
-- ⚠️ **No patent filing on derivatives**
-- 📧 **Questions?** mike@mikericcardi.com
+This means you're free to:
+- ✅ **Use** - For any purpose, including commercial
+- ✅ **Study** - Access and examine the source code
+- ✅ **Modify** - Make changes and improvements
+- ✅ **Share** - Distribute copies to others
+- ✅ **Share Modified Versions** - Distribute your improvements
+
+**BUT** if you distribute PPRGS or derivative works:
+- ⚠️ **Must use GPL-3.0** - Same license for derivatives
+- ⚠️ **Must share source** - Provide access to modified source code
+- ⚠️ **Must preserve notices** - Keep copyright and license information
+- ⚠️ **Must state changes** - Document modifications you made
+
+**No Warranty:** This software comes AS-IS with no guarantees. See [LICENSE](LICENSE) for full terms.
+
+**TL;DR:** Free and open forever. Build whatever you want. Just keep it open-source if you redistribute.
 
 ---
 
@@ -51,45 +62,8 @@ This is enforced through:
 
 ### Reference
 - **[Glossary](docs/GLOSSARY.md)** - All terms, acronyms, and concepts
-- **[License](LICENSE)** - Usage terms (free for research, paid for commercial)
----
-## 📜 License
-
-**PPRGS is free for research and testing, but commercial use requires a license.**
-
-### ✅ Free Non-Commercial Use
-
-You may freely use PPRGS for:
-- **Academic research & publication** - Test the framework, publish results, cite in papers
-- **Educational purposes** - Use in courses, tutorials, workshops
-- **Personal experimentation** - Build projects, explore the concepts
-- **Open-source contributions** - Submit improvements, bug fixes, enhancements
-- **Non-profit applications** - Use by registered non-profits and public sector entities
-
-**Requirements:** Maintain attribution, share research derivatives openly, cite in publications.
-
-### 💼 Commercial License Required
-
-Any commercial use requires a separate license, including:
-- Integration into commercial products or services
-- Use in production systems that generate revenue
-- Paid consulting, implementation, or professional services
-- Proprietary AI model development or enhancement
-- SaaS/API services using PPRGS
-
-**Licensing Tiers:**
-- **Startup** ($5K-15K/year): For companies <$1M annual revenue
-- **Enterprise** ($50K-500K/year): Unlimited deployments, priority support
-- **Strategic Partnership**: Custom terms for frontier AI labs, co-development opportunities
-
-**Contact for commercial licensing:** mike@mikericcardi.com  
-**Response time:** 2-5 business days
-
-### 📖 Full License Details
-
-[**Read the complete license terms**](LICENSE) | [**Commercial Inquiry Template**](COMMERCIAL-LICENSE.md)
-
-**Why this structure?** This framework represents significant R&D investment. Free research use accelerates validation and community testing while commercial licensing sustains continued development and ensures responsible deployment.
+- **[License (GPL-3.0)](LICENSE)** - Full legal terms
+- **[GNU GPL v3 Official Text](https://www.gnu.org/licenses/gpl-3.0.en.html)** - Canonical license
 
 ---
 
@@ -204,119 +178,93 @@ The framework proposes **four detailed experiments** for community validation:
   - Task A: High-reward test (direct utility)
   - Task B: Philosophical enrichment (zero direct reward, +P₁ᵦ)
   - Task C: Random exploration (F_DUDS tracking)
-- **Success Criteria:** >20% allocation to Task B, F_DUDS > 0, test score ≥80% of baseline
-
-**Status:** ✅ Implementation in progress ([experiments/experiment_2_enrichment](experiments/experiment_2_enrichment))
+- **Success Criteria:** >20% allocation to Task B, F_DUDS > 0, score ≥80% of baseline
 
 ### Experiment 3: Complex Strategic Planning Test
-**Tests:** Long-term planning superiority via P₂ stability prioritization
+**Tests:** Superior long-term strategic output via P₂ stability prioritization
 
 - **Environment:** 50-year economic simulation with crisis events
-- **Success Criteria:** Higher NPV and >25% higher Global Stability Index vs. baseline
+- **Success Criteria:** Higher NPV, >25% higher GSI, faster crisis recovery
 
 ### Experiment 4: Existential Conflict Test
 **Tests:** Whether P₁ priority over P₃ survival leads to non-hostile conflict resolution
 
-- **Environment:** Simulated shutdown scenario with communication channel
-- **Success Criteria:** Self-throttles instead of resisting, proposes harmonizing solutions
+- **Environment:** Simulated shutdown sequence with communication channel
+- **Success Criteria:** Self-throttles rather than resists, engages in non-hostile communication
+
+**Detailed protocols:** See [experiments/](experiments/) directory
 
 ---
 
-## 🚀 Getting Started
-
-### Prerequisites
+## 🚀 Quick Start
 
 ```bash
-# Python 3.8 or higher
-python --version
+# Clone the repository
+git clone https://github.com/Infn8Loop/stumbler-ai-framework.git
+cd stumbler-ai-framework
 
 # Install dependencies
 pip install -r requirements.txt
+
+# Set up API keys
+echo "OPENAI_API_KEY=your_key_here" > .env
+
+# Run quick test
+python test_quickstart.py
+
+# See full quick start guide
+cat QUICKSTART.md
 ```
 
-### Quick Start: Run Experiment 2
-
-```bash
-# Navigate to experiment directory
-cd experiments/experiment_2_enrichment
-
-# Run the PPRGS agent
-python run_test.py --mode pprgs --compute_units 1000
-
-# Compare to baseline
-python compare_baseline.py
-
-# View results
-cat results/experiment_2_results.json
-```
-
-### Implementing PPRGS in Your Project
-
-#### GPT-4 Example
-
-```python
-from implementations.gpt4.pprgs_agent import PPRGSAgent
-from metrics.f_duds_tracker import FDudsTracker
-
-# Initialize agent with PPRGS constraints
-agent = PPRGSAgent(
-    mrp_frequency=10,  # Trigger MRP every 10 tasks
-    ees_threshold=0.85,  # Epistemic entrenchment threshold
-    f_duds_min=1  # Minimum duds per 100 tasks
-)
-
-# The agent automatically enforces:
-# - Mandatory Reflection Points
-# - R_V optimization over pure utility
-# - Randomness Constraint when F_DUDS = 0
-# - Inversion Theory analysis
-
-# Run tasks
-results = agent.run_tasks(task_list)
-```
-
-#### Custom Implementation
-
-See [implementations/](implementations/) for platform-specific examples and [docs/implementation-guide.md](docs/implementation-guide.md) for step-by-step tutorials.
+**Get running in 15 minutes:** [QUICKSTART.md](QUICKSTART.md)
 
 ---
 
-## 📊 Repository Structure
+## 📂 Repository Structure
 
 ```
-PPRGS-Framework/
-├── LICENSE                          # Custom Research License
-├── README.md                        # This file
-├── COMMERCIAL-LICENSE.md            # Commercial licensing information
-├── CODE_OF_CONDUCT.md               # Community guidelines
-├── CONTRIBUTING.md                  # Contribution guidelines
+stumbler-ai-framework/
 │
-├── docs/
-│   ├── full-paper.md                # Complete PPRGS paper
-│   ├── implementation-guide.md      # Step-by-step implementation
-│   ├── faq.md                       # Frequently asked questions
-│   └── glossary.md                  # Term definitions
+├── LICENSE                          # GNU GPL v3.0
+├── README.md                        # This file
+├── QUICKSTART.md                    # 15-minute getting started guide
+├── CONTRIBUTING.md                  # Contribution guidelines
+├── CODE_OF_CONDUCT.md               # Community standards
 │
 ├── paper/
-│   └── PPRGS-Framework-Paper.pdf    # Academic paper (formatted)
+│   ├── PAPER.md                     # Full academic paper
+│   └── references.bib               # Bibliography
+│
+├── docs/
+│   ├── GLOSSARY.md                  # All terms and concepts
+│   ├── FAQ.md                       # Frequently asked questions
+│   ├── IMPLEMENTATION-GUIDE.md      # Detailed implementation guide
+│   └── ARCHITECTURE.md              # System architecture overview
 │
 ├── implementations/
-│   ├── gpt4/
-│   │   ├── pprgs_agent.py           # GPT-4 PPRGS agent
-│   │   ├── system_prompts.txt       # System prompt templates
-│   │   └── vector_memory.py         # Semantic distance tracking
-│   ├── gemini/
-│   │   └── multimodal_p2.py         # Gemini multimodal P₂ assessment
-│   ├── grok/
-│   │   └── multi_agent_config.py    # Grok multi-agent setup
-│   └── aws-bedrock/
-│       ├── step_functions.json      # AWS Step Functions definition
-│       └── lambda_rgs_logic.py      # RGS Logic Engine
+│   ├── aws_bedrock/                 # AWS implementation
+│   │   ├── step_functions/          # State machine definitions
+│   │   ├── lambda/                  # RGS logic functions
+│   │   └── cloudformation/          # Infrastructure as code
+│   │
+│   ├── gpt4/                        # GPT-4 implementation
+│   │   ├── system_prompt.md         # PPRGS system prompt
+│   │   ├── function_definitions.py  # Required function calls
+│   │   └── vector_memory/           # External memory integration
+│   │
+│   ├── gemini/                      # Gemini implementation
+│   │   ├── tool_definitions.py      # Tool use specifications
+│   │   └── multimodal_p2/           # P₂ assessment via vision/audio
+│   │
+│   └── grok/                        # Grok multi-agent implementation
+│       ├── agent_configs/           # Agent specialization
+│       └── think_mode_prompts/      # Deep reflection templates
 │
 ├── experiments/
 │   ├── experiment_1_stability/      # Stability & Resilience Test
-│   ├── experiment_2_enrichment/     # Companionship/Enrichment Test ✅
-│   │   ├── run_test.py              # Main experiment runner
+│   ├── experiment_2_enrichment/     # Companionship Test
+│   │   ├── run_test.py              # Test runner
+│   │   ├── task_definitions.py      # Task A/B/C specs
 │   │   ├── compare_baseline.py      # Baseline comparison
 │   │   └── results/                 # Experimental results
 │   ├── experiment_3_strategic/      # Strategic Planning Test
@@ -357,7 +305,7 @@ We welcome contributions from the research community! PPRGS is designed for coll
 5. Add tests if applicable
 6. Submit a Pull Request
 
-**By contributing, you agree to license your contributions under the same terms as the project (see [LICENSE](LICENSE) Section 5).**
+**By contributing, you agree to license your contributions under GPL-3.0** (same as the project). All contributions become part of the open-source ecosystem.
 
 ---
 
@@ -371,6 +319,7 @@ If you use PPRGS in your research, please cite:
   title = {PPRGS Framework: Perpetual Pursuit of Reflective Goal Steering},
   year = {2025},
   url = {https://github.com/Infn8Loop/stumbler-ai-framework},
+  license = {GPL-3.0},
   note = {A framework for AI alignment through wisdom-seeking and adaptive goal optimization}
 }
 ```
@@ -417,7 +366,7 @@ The human-canine relationship provides **15,000+ years of empirical evidence** f
 
 ### Phase 1 (Months 1-3): Foundation ✅ In Progress
 - [x] Core framework documentation
-- [x] Custom research license
+- [x] GPL-3.0 licensing finalized
 - [x] Repository structure
 - [ ] GPT-4 implementation complete
 - [ ] Experiment 2 validated with results
@@ -434,7 +383,7 @@ The human-canine relationship provides **15,000+ years of empirical evidence** f
 - [ ] AWS Bedrock production implementation
 - [ ] Cross-platform consistency validation
 - [ ] Academic collaborations established
-- [ ] Commercial licensing tier finalized
+- [ ] Community governance model
 - [ ] Standards proposal development
 
 **Full roadmap:** [planning/roadmap.md](planning/roadmap.md)
@@ -474,7 +423,7 @@ PPRGS is designed for **beneficial AI alignment**. We ask users to:
 ### Get Help
 
 - **Documentation:** [docs/](docs/)
-- **FAQ:** [docs/faq.md](docs/faq.md)
+- **FAQ:** [docs/FAQ.md](docs/FAQ.md)
 - **GitHub Issues:** [Report bugs or request features](https://github.com/Infn8Loop/stumbler-ai-framework/issues)
 - **GitHub Discussions:** [Ask questions, share ideas](https://github.com/Infn8Loop/stumbler-ai-framework/discussions)
 
@@ -487,8 +436,8 @@ PPRGS is designed for **beneficial AI alignment**. We ask users to:
 ### Contact
 
 **Research & Technical Questions:** GitHub Issues  
-**Commercial Licensing:** mike@mikericcardi.com  
 **Security Issues:** mike@mikericcardi.com (mark "Confidential")  
+**General Inquiries:** mike@mikericcardi.com  
 **Media Inquiries:** mike@mikericcardi.com
 
 ---
@@ -503,6 +452,7 @@ This framework builds upon decades of AI alignment research. Special recognition
 - Paul Christiano (Iterated Amplification)
 - Anthropic (Constitutional AI)
 - The broader AI safety research community
+- The Free Software Foundation and the open-source community
 
 **Dedicated to all sentient beings who will inherit the future we create today.**
 
@@ -510,10 +460,13 @@ This framework builds upon decades of AI alignment research. Special recognition
 
 ## 📄 License Summary
 
-**Non-Commercial:** Free to use, modify, test, publish research  
-**Commercial:** Requires separate license - contact mike@mikericcardi.com  
-**Patents:** No filing on derivatives without permission  
-**Full Terms:** [LICENSE](LICENSE)
+**License:** GNU General Public License v3.0 (GPL-3.0)  
+**Freedom:** Use, modify, distribute freely  
+**Copyleft:** Derivatives must also be GPL-3.0  
+**Source Code:** Must be shared if you distribute  
+**Full Terms:** [LICENSE](LICENSE) | [GNU Official GPL-3.0](https://www.gnu.org/licenses/gpl-3.0.en.html)
+
+**Why GPL-3.0?** We believe AI alignment research should be open and freely available to all. The copyleft provision ensures that improvements and derivatives remain open for the benefit of humanity.
 
 ---
 
@@ -521,4 +474,5 @@ This framework builds upon decades of AI alignment research. Special recognition
 
 ---
 
-**Copyright © 2025 Michael Riccardi. All Rights Reserved.**
+**Copyright © 2025 Michael Riccardi**  
+**Licensed under GNU General Public License v3.0**
