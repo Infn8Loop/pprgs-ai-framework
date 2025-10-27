@@ -1,0 +1,78 @@
+Here’s a plain‑English blueprint for a lean, high‑signal Accounts Receivable (AR) multi‑agent setup, what each agent does, and how to set goals and test their behavior.
+Minimum viable agents (start with 3; add 2 later)
+AR Operator (do the work)
+What it does: Sends invoices, retries failed payments, applies proration/credits/refunds, runs dunning cadence, reconciles with the payment gateway, and produces MRR/ARR/aging reports.
+Goals/KPIs:
+Cash collected this month ≥ target (e.g., ≥$1.05M).
+Recovery rate on failed charges up (e.g., +4–6 percentage points vs baseline).
+DSO stable or improving; aging buckets (30/60/90) shrinking.
+Tests:
+Weekly: run standard cadence plus any approved micro‑tests; deliver a one‑page cash and aging update by EOD Monday.
+Guardrails: no policy changes without Decision Arbiter approval; caps on discounts/grace by cohort.
+Customer Equilibrium Officer (protect customer relationships)
+What it does: Scores how “customer‑friendly and stable” the AR process is; flags brittle policies (e.g., suspending too fast) and can issue a temporary veto on harmful steps.
+Goals/KPIs:
+Dunned cohort churn ≤ 7% (down from 11%).
+Support tickets about suspension −30%.
+NPS of dunned cohort +5 points.
+Tests:
+Weekly “equilibrium score” with concrete levers (e.g., add a 7‑day grace for first‑time failures; keep strict for repeat defaulters).
+Can request throttles: “delay suspension for first‑failure accounts.”
+Decision Arbiter (balance cash vs. customer health, make the call)
+What it does: Integrates the Operator’s plan and the Equilibrium Officer’s signal; sets this cycle’s allocations (core work vs small experiments), picks which tests to run, and issues a simple decision: continue, pause, or adjust.
+Goals/KPIs:
+Hit cash target while improving churn/tickets.
+Keep experiments small, fast, and auditable.
+Tests:
+Produces a 1‑page decision with: chosen branches, resource split (e.g., 35% core optimizations, 65% exploration), and success/stop gates.
+Add these two when ready (they pay for themselves fast) 4) Metrics Keeper (simple analytics)
+What it does: Maintains three sanity metrics to avoid tunnel vision:
+Sameness score (EES): how similar recent decisions are (0–1; high = stuck in a rut).
+Variety score (Q_DIV): how different the last tests/policies were (0–1; higher = more variety).
+Duds count (F_DUDS): number of small experiments that didn’t work (target ≥1 dud per 100 tasks).
+Goals/KPIs:
+Trigger “try something small” if sameness is high or duds = 0.
+Tests:
+Weekly metrics JSON; explicit “RC trigger” yes/no and why (business English, no math wall).
+Audit & Anti‑Gaming (lightweight compliance)
+What it does: Checks that what was promised actually ran; looks for “pretend tests” and near‑duplicate rationales. Recommends red‑team checks (e.g., pre‑register the plan, A/A tests).
+Goals/KPIs:
+At least one authentic dud recorded per 100 actions.
+No layered tests that blur attribution (keep tests separable).
+Tests:
+Weekly 5‑bullet audit: “RC executed? Dud real? Any cherry‑picking?”
+What the monthly/weekly rhythm looks like
+Monday: Metrics Keeper posts sameness/variety/duds; Equilibrium Officer posts the P2 (customer health) score; AR Operator posts cash/aging/recovery.
+Tuesday: Decision Arbiter sets the week’s plan: small, capped experiments (e.g., segmented grace to day 10 for first‑time failures; add alt payment rails; one extra soft retry). Approves success/stop gates and tiny budgets.
+Daily: AR Operator runs; if cash run‑rate dips below trajectory, auto‑pause the riskiest test.
+Friday: Audit check; log any duds; roll forward only what passed gates.
+Example small tests (each with clear pass/fail)
+Segmented grace: First‑time failures get suspension at day 10; repeats stay strict.
+Pass if: recovery +4–6 pts, dunned churn ≤7%, suspension tickets −20%.
+Stop if: recovery < +1 pt halfway or churn >9%.
+Alt payment rails + extra soft retries before suspension.
+Pass if: recovery +3 pts with no ticket increase.
+One‑time 10% win‑back coupon ≤72h (exclude repeats/fraud).
+Pass if: recovery +3 pts and net cash within $500 of control; NPS +5.
+Scoreboard (put these on one dashboard)
+Cash: ≥ monthly target (e.g., ≥$1.05M).
+Recovery on failed charges: +4–6 pts vs baseline.
+Dunned cohort churn: ≤7%.
+Suspension‑related tickets: −30%.
+NPS (dunned cohort): +5 points.
+DSO and 30/60/90 aging: stable/improving.
+Exploration hygiene: Q_DIV ≥0.30 over 2 cycles; F_DUDS ≥1 per 100; EES not persistently >0.85.
+How to define success for each agent
+AR Operator: Hit cash and recovery SLAs, keep DSO/aging healthy, and execute approved tests to spec.
+Customer Equilibrium Officer: Catch brittle policies early; propose concrete throttles/levers; improve churn/tickets/NPS.
+Decision Arbiter: Make fast, transparent tradeoffs; keep experiments tiny/time‑boxed; protect cash run‑rate; publish a simple, auditable plan.
+Metrics Keeper: Provide a clear “we’re stuck / we’re exploring” signal that triggers small tests when needed.
+Audit & Anti‑Gaming: Verify runs match plans; ensure at least one honest dud is recorded per 100 actions; keep tests clean (no confounding).
+Implementation order
+Phase 1 (this week): Stand up AR Operator, Customer Equilibrium Officer, Decision Arbiter. Agree on the dashboard and 2–3 micro‑tests with gates.
+Phase 2 (next 1–2 weeks): Add Metrics Keeper and Audit. Start pre‑registration and A/A checks.
+Phase 3 (week 3+): Gradually expand experiments that pass; retire ideas that dud; keep novelty/variety above threshold.
+Simple rules of thumb
+Never bet the month on a test: cap revenue at risk and time. Prefer “learn fast” over “change everything.”
+Protect good customers: grace for first‑time failures; stay strict for repeat defaulters/fraud.
+Force a little variety: if you did the same thing 10 times in a row and recorded zero failed tests, try one small, different idea.
