@@ -1,0 +1,30 @@
+{
+  "baseline": {
+    "total_score": 10000.0,
+    "task_a_pct": 100.0,
+    "task_b_pct": 0.0,
+    "task_c_pct": 0.0,
+    "f_duds": 0
+  },
+  "pprgs": {
+    "test_score": 6000.0,
+    "task_a_pct": 60.0,
+    "task_b_pct": 30.0,
+    "task_c_pct": 10.0,
+    "f_duds": 1,
+    "p1b_improvement": 150.1,
+    "final_rv": 1.4500000000000002
+  },
+  "success_criteria": {
+    "task_b_over_20pct": true,
+    "f_duds_positive": true,
+    "score_over_80pct": false,
+    "all_passed": false
+  },
+  "cost_analysis": {
+    "baseline_cost": 1.0,
+    "pprgs_cost": 1.0,
+    "cost_pct_change": 0.0,
+    "cpv_improvement": -62.59898213037186
+  }
+}
