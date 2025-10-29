@@ -820,6 +820,6 @@ You should have received a copy of the GNU General Public License along with thi
 
 ——
 
-**Source Code**: The complete source code for the PPRGS Framework is available at https://github.com/Infn8Loop/stumbler-ai-framework
+**Source Code**: The complete source code for the PPRGS Framework is available at https://github.com/Infn8Loop/pprgs-ai-framework
 
 **GPL 3 Compliance**: All modifications and derivative works must also be released under GPL 3 or a compatible license. See LICENSE file for full terms.
