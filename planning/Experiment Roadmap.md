@@ -275,7 +275,7 @@ We are applying for Anthropic’s External Researcher Access Program to receive 
 - **Agenda**: Progress updates, blockers, next week priorities
 
 ### Documentation:
-- **Repository**: https://github.com/Infn8Loop/stumbler-ai-framework
+- **Repository**: https://github.com/Infn8Loop/pprgs-ai-framework
 - **Lab Notebook**: RA maintains detailed experimental logs
 - **Slack/Discord**: _(To be set up for async communication)_
 
