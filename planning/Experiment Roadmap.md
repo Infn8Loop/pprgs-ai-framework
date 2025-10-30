@@ -318,29 +318,25 @@ By signing below, team members confirm:
 
 **Principal Investigator**  
 Name: Michael Riccardi  
-Signature: ________________________  
-Date: ________________________
+Date: 10-29-25
 
 —
 
 **Research Engineer**  
 Name: Hunter Riccardi  
-Signature: ________________________  
-Date: ________________________
+Date: 10-29-25
 
 —
 
 **Research Assistant**  
 Name: Colby Kay
-Signature: ________________________  
-Date: ________________________
+Date: 10-29-25
 
 —
 
 **Technical Advisor**  
 Name: David Riccardi  
-Signature: ________________________  
-Date: ________________________
+Date: 10-29-25
 
 —
 
