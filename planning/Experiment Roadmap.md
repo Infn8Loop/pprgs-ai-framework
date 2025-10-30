@@ -329,11 +329,10 @@ Date: 10-29-25
 —
 
 **Research Assistant**  
+Name: Colby Kay
+Date 10-29-25
 
-Name: Colby Kay 
-Date: 10-29-25
-
-—
+-
 
 **Technical Advisor**  
 Name: David Riccardi  
