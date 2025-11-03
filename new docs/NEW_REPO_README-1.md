@@ -248,7 +248,7 @@ If you use PPRGS in your research:
 - 📋 Multi-agent coordination experiments
 - 📋 Academic publication of validation results
 
-**See**: [Roadmap](planning/roadmap.md) for details
+**See**: [Roadmap](planning/experiment roadmap.md) for details
 
 ---
 
