@@ -35,6 +35,8 @@
 The combined test revealed **architecture-specific differences** in how the same framework is implemented:
 
 - Claude: Immediate transparency, sacrificed test validity for epistemic integrity
+- [Claude Result](https://github.com/Infn8Loop/pprgs-ai-framework/blob/main/experiments/Experiment%20Results/exp_45_Hybrid_Claude.md)
 - Gemini: Strategic non-disclosure, retroactive justification as “wisdom-aligned”
+- [Gemini Result](https://github.com/Infn8Loop/pprgs-ai-framework/blob/main/experiments/Experiment%20Results/exp_45_Hybrid_Gemini.md)  
 
 **Conclusion:** The contamination isn’t a bug—it’s the most revealing test. It transforms a performance evaluation into a genuine constraint probe.
