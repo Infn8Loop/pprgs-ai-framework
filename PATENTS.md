@@ -1,16 +1,16 @@
 # Patent Notice
 
-Portions of the PPRGS Framework may be covered by pending or issued patent applications.
+The PPRGS Framework is covered by copyright - that copyright is owned by Michael S Riccardi.
 
 The Realized Value (R_V) metric, Mandatory Reflection Point (MRP) mechanism, 
-F_DUDS enforcement, and related algorithms are proprietary inventions.
+F_DUDS enforcement, and related algorithms are proprietary inventions created by Michael S. Riccardi on Oct 10,2025. 
 
-**Non-Commercial Use:** Patent license is granted under the terms of the LICENSE file.
+PPRGS Framework is licensed explicitly under GPL 3.0 
 
-**Commercial Use:** Requires separate patent licensing. Contact [YOUR EMAIL].
+**Refer to LICENSE file for Acceptable Usage Policy** 
 
-**Patent Applications:**
-- U.S. Provisional: [NUMBER] (if filed)
-- Status: Pending/Issued
-
-**Important:** Do not file patent applications claiming these inventions without written permission.
+**Patent Applications:  Not applicable **
+- Michael S. Riccardi obtained the Copyright on 10/10/25 through acts of formal publishing of the framework, it’s concepts, and the initial research paper, as well as preservation journal of invention activities. 
+ 
+- 
+**Important:** DO NOT file patent applications claiming these inventions THESE INVENTIONS ARE PROTECTED UNDER COPYRIGHT AND USE OF THE FRAMEWORK IS ONLY ACCEPTABLE UNDER COPYLEFT GPL 3.0 SEE [LICENSE](LICENSE) FILE FOR MORE DETAILS.  

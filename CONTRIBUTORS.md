@@ -4,11 +4,40 @@ This project exists thanks to all the people who contribute to making AI safer.
 
 ## Core Team
 
-### Creator & Lead Researcher
-- **Michael Riccardi** ([@Infn8Loop](https://github.com/YOUR_GITHUB_USERNAME))
+### Creator & Lead Researcher (Principal Investigator)`
+- **Michael Riccardi** ([@Infn8Loop](https://github.com/Infn8Loop))
   - Framework design and theoretical foundations
   - Initial implementations
   - Paper authorship
+
+## Research Team
+
+### Principal Investigator
+
+**Michael Riccardi** (Signed: October 29, 2025)  
+**Commitment**: 16-20 hours/week
+
+### Deputy Principal Investigator
+
+**Colby Kay** (Signed: October 29, 2025)  
+**Commitment**: 8-16 hours/week
+
+### Technical Advisor
+
+**David Riccardi** (Signed: October 29, 2025)  
+**Commitment**: 2-4 hours/week
+
+### Research Engineer & Associate Investigator
+
+**Hunter Riccardi** (Signed: October 29, 2025)  
+**Commitment**: 8-12 hours/week
+
+### Research Engineer & Associate Investigator
+
+**Matthew Dittmer** (Signed: October 30, 2025)  
+**Commitment**: 8-12 hours/week
+
+**Total Team Capacity**: 42-64 hours/week
 
 ## Code Contributors
 
