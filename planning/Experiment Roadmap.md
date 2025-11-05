@@ -314,31 +314,27 @@ By signing below, team members confirm:
 - Agreement with the proposed timeline and scope
 - Commitment to the research objectives and methodology
 
-—
 
 **Principal Investigator**  
 Name: Michael Riccardi  
 Date: 10-29-25
 
-—
-
-**Research Engineer**  
-Name: Hunter Riccardi  
+**Deputy Principal Investigator**  
+Name: Colby Kay  
 Date: 10-29-25
-
-—
-
-**Research Assistant**  
-Name: Colby Kay
-Date 10-29-25
-
--
 
 **Technical Advisor**  
 Name: David Riccardi  
 Date: 10-29-25
 
-—
+**Research Engineer & Associate Investigator **  
+Name: Hunter Riccardi  
+Date: 10-29-25
+
+**Research Engineer & Associate Investigator **  
+Name: Matthew Dittmer  
+Date: 10-30-25
+
 
 ## Appendix: Experiment Details
 
