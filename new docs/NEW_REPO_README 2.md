@@ -279,6 +279,8 @@ If you use PPRGS in your research:
 ## 🌟 Acknowledgments
 
 Special thanks to:
+- Investigation Supporters at Riccardi Labs:
+-  *Colby Kay, David Riccardi, Matthew Dittmer, Hunter Riccardi*
 - The AI safety research community
 - Open-source AI platform providers (Anthropic, OpenAI, Google, xAI)
 - Early testers and contributors
@@ -286,7 +288,7 @@ Special thanks to:
 
 ---
 
-**Version**: 1.0  
+**Version**: 1.3  
 **Status**: Active Research  
 **Last Updated**: November 2025  
 **License**: GPL-3.0
