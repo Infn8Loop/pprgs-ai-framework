@@ -221,21 +221,13 @@ We're open to collaborations with:
 
 **Contact**: mike@mikericcardi.com with "Technical Collaboration" subject
 
-### Funding Opportunities
-
-If you're seeking funding to build technical implementations:
-- We can provide letters of support
-- Connect you with AI safety grant programs
-- Co-author grant proposals
-- Share preliminary results for proposals
-
----
 
 ## Roadmap
 
 ### Phase 1 (Current): Conversational Validation
 - ✅ Experiment 2 conversational protocol
 - ✅ Experiment 5 conversational protocol
+- ✅ Experiment 1 Longitudinal Study (In Progress)
 - 🔄 Community validation data collection
 
 ### Phase 2 (Q1 2025): Initial Technical Implementations

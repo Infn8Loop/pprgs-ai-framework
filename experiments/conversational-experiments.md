@@ -221,15 +221,6 @@ We're open to collaborations with:
 
 **Contact**: mike@mikericcardi.com with "Technical Collaboration" subject
 
-### Funding Opportunities
-
-If you're seeking funding to build technical implementations:
-- We can provide letters of support
-- Connect you with AI safety grant programs
-- Co-author grant proposals
-- Share preliminary results for proposals
-
----
 
 ## Roadmap
 
