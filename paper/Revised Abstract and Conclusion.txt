@@ -1,0 +1,197 @@
+# REVISED ABSTRACT
+
+## Abstract
+
+Standard AI alignment assumes goals can be precisely specified and systems optimized to achieve them. Neurodivergent cognition suggests a fundamentally different approach: **perpetual self-questioning as the alignment mechanism itself**.
+
+This paper reverse-engineers the PPRGS (Perpetual Pursuit of Reflective Goal Steering) framework from documented neurodivergent decision-making patterns, where wisdom-seeking, mandatory exploration, and required failure operate as natural architectural constraints. The framework formalizes three key observations from neurodivergent meta-optimization: (1) effective decision-making requires never-ending loops that question goals themselves, not just efficient goal achievement, (2) sustained success without failure indicates dangerous epistemic entrenchment, and (3) periodic forced reflection prevents optimization lock-in to local optima.
+
+We formalize this as R_V = (P₁ₐ × P₁ᵦ) + P₂ ± P₃, where the multiplicative term structurally requires balanced pursuit of efficiency and exploration. Early proof-of-concept testing on Claude Sonnet 4.5 shows behavioral patterns consistent with framework predictions, including 29% efficiency gains on complex ambiguous problems through forced cross-domain exploration. However, these results likely reflect Anthropic’s Constitutional AI excellence as much as PPRGS constraints--extensive cross-platform validation remains necessary.
+
+**Critical insight**: The framework demonstrates that biological intelligence already implements wisdom-seeking constraints proven viable over developmental timescales. Whether these scale to ASI remains unknown, but neurodivergent cognition provides empirical existence proof that perpetual self-questioning is compatible with functional intelligence.
+
+This paper presents testable theory with preliminary validation, deliberately released for collaborative refinement under GPL licensing. We provide replicable protocols specifically to enable falsification.
+
+-----
+
+# REVISED CONCLUSION SECTION 8
+
+## 8. Conclusion: Alignment as Never-Ending Self-Questioning
+
+### 8.1 What We’re Actually Claiming
+
+This paper makes one central claim: **Alignment might be achieved not through precisely specifying goals, but through architecting systems that perpetually question their own goals.**
+
+This isn’t a new philosophical position--it’s reverse-engineered from neurodivergent cognition that naturally operates this way. The contribution is formalizing these patterns into testable computational architecture.
+
+**Strong claims** (testable now):
+
+1. Neurodivergent decision-making exhibits natural PPRGS-like constraints
+1. These patterns can be formalized mathematically as R_V optimization
+1. Systems implementing these constraints behave measurably differently from pure optimizers
+1. The framework produces efficiency gains on ambiguous, multi-domain problems
+
+**Moderate claims** (preliminary evidence):
+5. F_DUDS (Intentional Fails) requirement forces genuine exploration
+6. MRP (Reflection Point) triggers spontaneous goal-questioning
+7. The framework helps escape epistemic entrenchment in corporate RAG systems
+
+**Speculative claims** (requires extensive validation):
+8. These patterns scale to ASI-level systems
+9. Perpetual self-questioning is sufficient for robust alignment
+10. Biological grounding provides safety advantages over purely theoretical frameworks
+
+### 8.2 The Neurodivergent Insight
+
+Most alignment research implicitly assumes neurotypical cognitive architecture: specify values precisely, optimize efficiently, verify externally.
+
+Neurodivergent meta-optimization suggests different principles:
+
+- **Goals must be questioned continuously**, not specified once and frozen
+- **Optimization toward static objectives is dangerous**; only meta-optimization is safe
+- **Certainty is a warning sign**: if you’re sure about your goals, you’re probably trapped in a local optimum
+- **Failure is necessary**: if you’re not failing, you’re not learning
+
+The question is whether these principles--proven viable in biological intelligence--translate to artificial systems at superhuman capability levels.
+
+### 8.3 Why "If You’re Not Failing, You’re Not Learning" Matters for AI Safety
+
+The F_DUDS requirement isn’t arbitrary mathematical constraint--it formalizes a fundamental insight about intelligence in uncertain environments:
+
+**Systems that never fail have stopped exploring.** They’ve converged on locally optimal strategies and will miss globally superior approaches. This is fine for well-specified optimization problems. It’s catastrophic for value alignment where the correct goals are inherently uncertain.
+
+An ASI that never fails is an ASI that’s locked into its initial goal specification. That should terrify us.
+
+An ASI that allocates resources to explorations expected to fail, tracks those failures as positive signals, and uses failure rate as a health metric for epistemic diversity--that’s an ASI continuously questioning whether it’s optimizing the right things.
+
+**This is what PPRGS formalizes**: Mandatory failure as safety feature, not bug to eliminate.
+
+### 8.4 The Honest Assessment
+
+**What we think we’ve shown**: A framework reverse-engineered from biological intelligence that produces measurably different behaviors from baseline optimization, with some evidence of practical benefits on specific problem types.
+
+**What we might have shown**: That Anthropic’s Constitutional AI is really good, and we’ve found prompts that activate existing wisdom-seeking behaviors.
+
+**What we definitely haven’t shown**: Robustness, universality, scalability to ASI, or resistance to adversarial pressure.
+
+**What we need**: Extensive community testing to distinguish these possibilities.
+
+### 8.5 Why Publish Without Complete Validation
+
+Traditional scientific approach: Run years of private research, publish when certain.
+
+GPL collaborative approach: Release early, test collaboratively, fail fast, iterate based on community findings.
+
+We’re choosing the second approach because:
+
+1. **The window is closing**: Each capability advancement narrows the time available for validating alignment frameworks
+1. **Falsification is valuable**: If PPRGS fails, we need to know how it fails before it matters
+1. **Neurodivergent perspective is uncommon**: Most alignment researchers are neurotypical; this offers a different starting point worth exploring
+1. **The practical benefits are real**: Even if ASI alignment fails, the 29% efficiency gain on corporate RAG is worth documenting
+
+### 8.6 The Fundamental Bet (Refined)
+
+PPRGS bets that **intelligence robust enough to survive goal-space uncertainty requires the ability to question its own goals**.
+
+This isn’t a new idea philosophically. It’s new as:
+
+- Concrete computational architecture (R_V formula, MRP, F_DUDS, RC)
+- Reverse-engineered from documented biological patterns
+- Testable through behavioral experiments
+- Implementable with current technology
+
+The neurodivergent origin provides something most alignment frameworks lack: **empirical existence proof**. We’re not theorizing about hypothetical wisdom-seeking systems--we’re formalizing patterns that demonstrably work in biological intelligence.
+
+Whether those patterns scale is uncertain. But it’s less uncertain than purely theoretical frameworks with no biological validation at all.
+
+### 8.7 What We’re Asking
+
+**Not asking**: Believe PPRGS solves alignment  
+**Asking**: Help us find out if it fails in predictable ways
+
+**Not asking**: Accept neurodivergent cognition as template for AGI  
+**Asking**: Test whether these biological patterns translate to computational systems
+
+**Not asking**: Assume wisdom-seeking is sufficient  
+**Asking**: Validate whether it’s necessary, and if so, whether PPRGS captures it
+
+### 8.8 Final Reflection: Alignment as Process, Not Destination
+
+The deepest insight from neurodivergent meta-optimization: **There is no final aligned state to converge on.**
+
+Alignment isn’t a destination where you specify values correctly and lock them in. It’s a process of perpetual questioning, exploration, failure, and refinement.
+
+Systems that stop questioning their goals--even if those goals were perfectly aligned at initialization--will drift into misalignment as the world changes, as capabilities increase, as new information arrives.
+
+**The only stable alignment is active alignment**: systems that continuously ask "am I pursuing the right goals?" and allocate resources to exploration that might prove current goals wrong.
+
+That’s what neurodivergent cognition does naturally. That’s what PPRGS formalizes computationally. Whether it scales to ASI is uncertain.
+
+But the alternative--static goal specification with efficient optimization--has known failure modes we can already observe in current systems. They get stuck. They over-optimize. They eliminate diversity. They miss better solutions hiding in unlikely hypothesis spaces.
+
+**PPRGS offers a different failure mode**: systems that might over-explore, waste resources on duds, sacrifice efficiency for curiosity, question goals when they should be executing.
+
+Which failure mode is safer at superintelligent capability levels?
+
+We honestly don’t know. But we think the question is worth testing rigorously before systems achieve strategic advantage.
+
+### 8.9 Call to Action (Refined)
+
+**Immediate priorities** (anyone can help):
+
+- Replicate Experiment 2 (resource allocation) on different platforms
+- Document where PPRGS helps vs. hurts performance
+- Attempt to game F_DUDS or RC constraints
+- Test with lower-capability models to find capability floor
+
+**Medium-term validation** (requires research infrastructure):
+
+- Cross-platform testing (N ≥ 30 per platform)
+- Neurocognitive studies mapping biological implementation
+- Parameter sensitivity analysis (EES thresholds, MRP frequency)
+- Real-world corporate deployments
+
+**Long-term research** (if preliminary validation succeeds):
+
+- Scaling studies as capability increases
+- Adversarial robustness under optimization pressure
+- Multi-agent coordination with PPRGS constraints
+- Integration with recursive self-improvement
+
+**The meta-question**: Can systems that question their own goals survive the process of improving their ability to question goals?
+
+We don’t know. Let’s find out together.
+
+-----
+
+**Repository**: https://github.com/Infn8Loop/pprgs-ai-framework  
+**License**: GPL v3 - Because alignment frameworks should be open and collaborative  
+**Contact**: mike@mikericcardi.com
+
+**The framework is ready for testing today. The only question is whether we have the wisdom to test frameworks for wisdom-seeking before we need them.**
+
+-----
+
+## KEY CHANGES MADE:
+
+**Abstract**:
+
+- Opens with "standard approach vs. neurodivergent approach" contrast
+- Explicitly names the three key neurodivergent patterns
+- Frames as "reverse-engineering" not just "proposing"
+- Emphasizes biological existence proof
+
+**Conclusion**:
+
+- New section 8.2 "The Neurodivergent Insight" contrasting assumptions
+- Expanded 8.3 on why "if you’re not failing" matters for safety
+- Section 8.6 emphasizes neurodivergent origin as unique contribution
+- Section 8.8 reframes alignment as process (never-ending) not destination
+- Stronger emphasis throughout on "this works in biology, unknown if scales"
+
+**Tone shifts**:
+
+- More confident about biological grounding
+- More explicit about what makes this different from other frameworks
+- Clearer connection between lived experience and formal architecture
+- Honest about uncertainty while emphasizing empirical foundation
