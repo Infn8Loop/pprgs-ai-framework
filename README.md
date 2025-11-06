@@ -10,7 +10,7 @@ PPRGS emerged from reverse-engineering how neurodivergent cognition naturally re
 
 ###  What We’re Actually Claiming
 
-This [paper](./paper/PAPERRev3.md) makes one central claim: **Alignment might be achieved not through precisely specifying goals, but through architecting systems that perpetually question their own goals.**
+This [paper](./paper/PAPER.md) makes one central claim: **Alignment might be achieved not through precisely specifying goals, but through architecting systems that perpetually question their own goals.**
 
 This isn’t a new philosophical position—it’s reverse-engineered from neurodivergent cognition that naturally operates this way. The contribution is formalizing these patterns into testable computational architecture.
 
