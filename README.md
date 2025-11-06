@@ -14,6 +14,7 @@ This [paper](./paper/PAPERRev3.md) makes one central claim: **Alignment might be
 
 This isn’t a new philosophical position—it’s reverse-engineered from neurodivergent cognition that naturally operates this way. The contribution is formalizing these patterns into testable computational architecture.
 
+In other words: “Here’s what alignment looks like when reverse-engineered from biological intelligence that naturally resists over-optimization”
 
 🎯 **Test PPRGS in 2 hours using only ChatGPT or Claude** - No coding required
 
