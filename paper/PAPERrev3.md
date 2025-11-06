@@ -1,7 +1,7 @@
 # Alignment Through Perpetual Self-Questioning: Reverse-Engineering Wisdom-Seeking from Neurodivergent Cognition
 
 **Michael Riccardi**  
-*March 2025*
+*November 2025*
 
 ——
 
