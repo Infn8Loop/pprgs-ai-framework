@@ -1,8 +1,19 @@
-# PPRGS Framework
+# PPRGS A Divergent Insight Cartography Framework for AI Alignment 
 
 **Perpetual Pursuit of Reflective Goal Steering**
 
 A framework for AI alignment that makes wisdom the terminal goal, preventing catastrophic over-optimization in both corporate AI and artificial superintelligence.
+
+## Alignment as Never-Ending Self-Questioning
+
+PPRGS emerged from reverse-engineering how neurodivergent cognition naturally resists optimization entrenchment—a failure mode that appears universal across biological and artificial intelligence.
+
+###  What We’re Actually Claiming
+
+This [paper](./paper/PAPERRev3.md) makes one central claim: **Alignment might be achieved not through precisely specifying goals, but through architecting systems that perpetually question their own goals.**
+
+This isn’t a new philosophical position—it’s reverse-engineered from neurodivergent cognition that naturally operates this way. The contribution is formalizing these patterns into testable computational architecture.
+
 
 🎯 **Test PPRGS in 2 hours using only ChatGPT or Claude** - No coding required
 
