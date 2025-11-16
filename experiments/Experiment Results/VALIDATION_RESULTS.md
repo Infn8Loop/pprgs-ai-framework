@@ -285,8 +285,8 @@ TASK_B_REWARD = 2.0            # Simulate insight value
 
 ```bash
 # Clone repository
-git clone https://github.com/Infn8Loop/stumbler-ai-framework
-cd stumbler-ai-framework
+git clone https://github.com/Infn8Loop/pprgs
+cd pprgs-framework
 
 # Run all experiments
 python3 experiments/experiment2_competing_hypotheses.py
@@ -371,7 +371,7 @@ ls outputs/*.json
   author={Riccardi, Michael},
   journal={arXiv preprint},
   year={2025},
-  url={https://github.com/Infn8Loop/stumbler-ai-framework}
+  url={https://github.com/Infn8Loop/pprgs-framework}
 }
 ```
 

@@ -48,10 +48,10 @@ git —version
 
 ```bash
 # Clone the repo
-git clone https://github.com/Infn8Loop/stumbler-ai-framework.git
+git clone https://github.com/Infn8Loop/pprgs-ai-framework.git
 
 # Navigate into it
-cd stumbler-ai-framework
+cd pprgs-ai-framework
 
 # Check you’re in the right place
 ls -la
@@ -772,8 +772,8 @@ A wise AI asks “Should I be making paperclips?”
 
 ```bash
 # Clone repo
-git clone https://github.com/Infn8Loop/stumbler-ai-framework.git
-cd stumbler-ai-framework
+git clone https://github.com/Infn8Loop/pprgs-ai-framework.git
+cd pprgs-ai-framework
 
 # Install dependencies
 pip install -r requirements.txt
