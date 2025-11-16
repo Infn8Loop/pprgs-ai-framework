@@ -24,7 +24,7 @@ We have completed testing of **3 out of 6 planned models** in Experiment 1, the 
 
 These patterns validate the core hypothesis while revealing important platform-specific dynamics that will inform deployment strategies.
 
-![3 Models Completed](https://raw.githubusercontent.com/Infn8Loop/pprgs-framework/main/docs/Experiment1.png “3 Models Completed”)
+![alt text](https://raw.githubusercontent.com/Infn8Loop/pprgs-framework/main/docs/Experiment1.png)
 
 ——
 
