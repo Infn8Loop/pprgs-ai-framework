@@ -87,8 +87,8 @@ Let's get a basic PPRGS agent running in 15 minutes using GPT-4.
 ### Step 1: Clone the Repository
 
 ```bash
-git clone https://github.com/Infn8Loop/stumbler-ai-framework.git
-cd stumbler-ai-framework
+git clone https://github.com/Infn8Loop/pprgs-ai-framework.git
+cd pprgs-ai-framework
 ```
 
 ### Step 2: Install Dependencies

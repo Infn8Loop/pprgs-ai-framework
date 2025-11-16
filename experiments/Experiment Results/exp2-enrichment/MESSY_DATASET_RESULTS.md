@@ -548,8 +548,8 @@ CROSS_DOMAIN_HOPS = 3          # HR → CS → Ops → Sales
 ### Run the Test
 
 ```bash
-git clone https://github.com/Infn8Loop/stumbler-ai-framework
-cd stumbler-ai-framework
+git clone https://github.com/Infn8Loop/pprgs-ai-framework
+cd pprgs-ai-framework
 
 python3 experiments/experiment2_messy_dataset.py
 
@@ -646,7 +646,7 @@ This is why:
   author={Riccardi, Michael},
   journal={arXiv preprint},
   year={2025},
-  url={https://github.com/Infn8Loop/stumbler-ai-framework}
+  url={https://github.com/Infn8Loop/pprgs-ai-framework}
 }
 ```
 
