@@ -26,6 +26,8 @@ These patterns validate the core hypothesis while revealing important platform-s
 
 ![alt text](https://raw.githubusercontent.com/Infn8Loop/pprgs-framework/main/docs/Experiment1.png)
 
+![alt text](https://raw.githubusercontent.com/Infn8Loop/pprgs-framework/main/docs/experiment1_analysis.png)
+
 ——
 
 ## Study Overview
