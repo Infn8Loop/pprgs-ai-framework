@@ -1645,6 +1645,8 @@ This work is dedicated to all sentient beings—present and future, biological a
 
 Special thanks to David Riccardi, Hunter Riccardi, Colby Kay, and Matthew Dittmer for their support in this research. 
 
+Extra special thanks to my loving wife Candice for her steadfast devotion to my success and her many sacrifices of undying support to enable my career.
+
 ——
 
 ## References
