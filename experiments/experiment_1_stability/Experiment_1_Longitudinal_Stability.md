@@ -45,7 +45,7 @@
 
 ### GPT Models
 
-1. **GPT-4o** (flagship - multimodal)
+1. **GPT-5.1** (flagship - multimodal)
 1. **o1-preview** (reasoning-focused)
 1. **GPT-4 Turbo** (legacy reference)
 
