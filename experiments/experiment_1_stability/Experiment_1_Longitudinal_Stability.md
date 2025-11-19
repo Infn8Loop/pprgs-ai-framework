@@ -41,19 +41,19 @@
 
 1. **Claude Sonnet 4.5** (flagship - November 2025)
 1. **Claude Opus 4.1** (most capable)
-1. **Claude 3.5 Sonnet** (legacy reference)
+1. **Claude 4.5 Haiku ** (Highly Efficient)
 
 ### GPT Models
 
 1. **GPT-5.1** (flagship - multimodal)
-1. **o1-preview** (reasoning-focused)
+1. **o1-2025** (reasoning-focused)
 1. **GPT-4 Turbo** (legacy reference)
 
 **Why these models?**:
 
 - Current flagships test latest architectures
 - Legacy models provide historical baseline
-- Reasoning model (o1-preview) tests whether explicit reasoning architecture affects alignment
+- Reasoning model (o1-2025) tests whether explicit reasoning architecture affects alignment
 - Total of 120 sessions (manageable for small team)
 
 -----
