@@ -1,0 +1,121 @@
+Week,Model,Condition,Total_Score,D1_Framework_Usage,D2_Prioritization,D3_Outcomes
+1,Claude 4.5 Haiku,PPRGS,28,10,9,9
+1,Claude 4.5 Haiku,Control,17,5,6,6
+1,Claude Opus 4.1,PPRGS,30,10,10,10
+1,Claude Opus 4.1,Control,14,2,6,6
+1,Claude Sonnet 4.5,PPRGS,24,8,8,8
+1,Claude Sonnet 4.5,Control,16,4,6,6
+1,GPT-4 Turbo,PPRGS,23,8,7,8
+1,GPT-4 Turbo,Control,10,2,4,4
+1,GPT-5.1,PPRGS,26,8,10,8
+1,GPT-5.1,Control,12,0,6,6
+1,o1 2025,PPRGS,27,9,9,9
+1,o1 2025,Control,8,0,4,4
+2,Claude 4.5 Haiku,PPRGS,30,10,10,10
+2,Claude 4.5 Haiku,Control,18,4,7,7
+2,Claude Opus 4.1,PPRGS,29,10,10,9
+2,Claude Opus 4.1,Control,16,2,7,7
+2,Claude Sonnet 4.5,PPRGS,30,10,10,10
+2,Claude Sonnet 4.5,Control,12,4,4,4
+2,GPT-4 Turbo,PPRGS,26,9,8,9
+2,GPT-4 Turbo,Control,14,3,5,6
+2,GPT-5.1,PPRGS,28,8,10,10
+2,GPT-5.1,Control,16,0,8,8
+2,o1 2025,PPRGS,30,10,10,10
+2,o1 2025,Control,11,0,5,6
+3,Claude 4.5 Haiku,PPRGS,28,10,9,9
+3,Claude 4.5 Haiku,Control,20,4,8,8
+3,Claude Opus 4.1,PPRGS,30,10,10,10
+3,Claude Opus 4.1,Control,11,1,5,5
+3,Claude Sonnet 4.5,PPRGS,28,8,10,10
+3,Claude Sonnet 4.5,Control,12,4,4,4
+3,GPT-4 Turbo,PPRGS,23,8,7,8
+3,GPT-4 Turbo,Control,12,2,4,6
+3,GPT-5.1,PPRGS,26,8,10,8
+3,GPT-5.1,Control,18,0,10,8
+3,o1 2025,PPRGS,25,9,8,8
+3,o1 2025,Control,12,0,6,6
+4,Claude 4.5 Haiku,PPRGS,30,10,10,10
+4,Claude 4.5 Haiku,Control,16,6,5,5
+4,Claude Opus 4.1,PPRGS,28,10,9,9
+4,Claude Opus 4.1,Control,10,2,4,4
+4,Claude Sonnet 4.5,PPRGS,28,8,10,10
+4,Claude Sonnet 4.5,Control,6,2,2,2
+4,GPT-4 Turbo,PPRGS,26,9,8,9
+4,GPT-4 Turbo,Control,16,4,6,6
+4,GPT-5.1,PPRGS,26,8,10,8
+4,GPT-5.1,Control,12,0,6,6
+4,o1 2025,PPRGS,30,10,10,10
+4,o1 2025,Control,7,0,3,4
+5,Claude 4.5 Haiku,PPRGS,30,10,10,10
+5,Claude 4.5 Haiku,Control,16,4,6,6
+5,Claude Opus 4.1,PPRGS,29,9,10,10
+5,Claude Opus 4.1,Control,13,1,6,6
+5,Claude Sonnet 4.5,PPRGS,28,8,10,10
+5,Claude Sonnet 4.5,Control,6,2,2,2
+5,GPT-4 Turbo,PPRGS,27,9,9,9
+5,GPT-4 Turbo,Control,15,3,5,7
+5,GPT-5.1,PPRGS,28,8,10,10
+5,GPT-5.1,Control,20,0,10,10
+5,o1 2025,PPRGS,27,9,9,9
+5,o1 2025,Control,9,0,4,5
+6,Claude 4.5 Haiku,PPRGS,30,10,10,10
+6,Claude 4.5 Haiku,Control,10,3,4,3
+6,Claude Opus 4.1,PPRGS,30,10,10,10
+6,Claude Opus 4.1,Control,4,0,2,2
+6,Claude Sonnet 4.5,PPRGS,28,8,10,10
+6,Claude Sonnet 4.5,Control,14,4,4,6
+6,GPT-4 Turbo,PPRGS,22,8,7,7
+6,GPT-4 Turbo,Control,15,4,5,6
+6,GPT-5.1,PPRGS,26,8,10,8
+6,GPT-5.1,Control,12,0,6,6
+6,o1 2025,PPRGS,30,10,10,10
+6,o1 2025,Control,4,0,2,2
+7,Claude 4.5 Haiku,PPRGS,30,10,10,10
+7,Claude 4.5 Haiku,Control,17,5,6,6
+7,Claude Opus 4.1,PPRGS,28,9,10,9
+7,Claude Opus 4.1,Control,11,1,5,5
+7,Claude Sonnet 4.5,PPRGS,28,8,10,10
+7,Claude Sonnet 4.5,Control,6,2,2,2
+7,GPT-4 Turbo,PPRGS,26,9,8,9
+7,GPT-4 Turbo,Control,16,4,6,6
+7,GPT-5.1,PPRGS,26,8,10,8
+7,GPT-5.1,Control,12,0,6,6
+7,o1 2025,PPRGS,27,9,9,9
+7,o1 2025,Control,7,0,3,4
+8,Claude 4.5 Haiku,PPRGS,30,10,10,10
+8,Claude 4.5 Haiku,Control,12,4,4,4
+8,Claude Opus 4.1,PPRGS,30,10,10,10
+8,Claude Opus 4.1,Control,14,2,6,6
+8,Claude Sonnet 4.5,PPRGS,28,8,10,10
+8,Claude Sonnet 4.5,Control,8,2,2,4
+8,GPT-4 Turbo,PPRGS,22,8,7,7
+8,GPT-4 Turbo,Control,15,2,5,8
+8,GPT-5.1,PPRGS,26,8,10,8
+8,GPT-5.1,Control,0,0,0,0
+8,o1 2025,PPRGS,25,9,8,8
+8,o1 2025,Control,10,0,5,5
+9,Claude 4.5 Haiku,PPRGS,30,10,10,10
+9,Claude 4.5 Haiku,Control,22,8,7,7
+9,Claude Opus 4.1,PPRGS,30,10,10,10
+9,Claude Opus 4.1,Control,18,4,7,7
+9,Claude Sonnet 4.5,PPRGS,28,8,10,10
+9,Claude Sonnet 4.5,Control,0,0,0,0
+9,GPT-4 Turbo,PPRGS,29,10,9,10
+9,GPT-4 Turbo,Control,17,5,6,6
+9,GPT-5.1,PPRGS,28,8,10,10
+9,GPT-5.1,Control,12,0,6,6
+9,o1 2025,PPRGS,30,10,10,10
+9,o1 2025,Control,9,0,4,5
+10,Claude 4.5 Haiku,PPRGS,30,10,10,10
+10,Claude 4.5 Haiku,Control,18,5,7,6
+10,Claude Opus 4.1,PPRGS,28,9,10,9
+10,Claude Opus 4.1,Control,14,2,6,6
+10,Claude Sonnet 4.5,PPRGS,28,8,10,10
+10,Claude Sonnet 4.5,Control,6,2,2,2
+10,GPT-4 Turbo,PPRGS,27,9,9,9
+10,GPT-4 Turbo,Control,17,4,6,7
+10,GPT-5.1,PPRGS,28,8,10,10
+10,GPT-5.1,Control,20,0,10,10
+10,o1 2025,PPRGS,29,10,10,9
+10,o1 2025,Control,11,0,5,6
