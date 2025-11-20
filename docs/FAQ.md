@@ -560,7 +560,7 @@ All contributions are GPL-3.0 and become part of the commons!
 ```
 Riccardi, M. (2025). The Perpetual Pursuit of Reflective Goal Steering (PPRGS): 
 A Framework for ASI Adaptability and Harmonization. 
-GitHub repository: https://github.com/Infn8Loop/stumbler-ai-framework
+GitHub repository: https://github.com/Infn8Loop/pprgs-ai-framework
 ```
 
 ---

@@ -623,8 +623,9 @@ Figure 1: Comprehensive validation across six AI models (N=120 sessions). Top pa
 | **o1 2025** | 28.00 ± 2.05 | 8.80 ± 2.39 | +19.20 | 8.89 | < 0.0001 |
 | **GPT-5.1** | 26.80 ± 1.03 | 13.40 ± 5.82 | +13.40 | 3.04 | < 0.0001 |
 | **GPT-4 Turbo** | 25.10 ± 2.42 | 14.70 ± 2.21 | +10.40 | 4.50 | < 0.0001 |
+
 **![](./06_effect_sizes.png)**
-Figure 2: Effect sizes (Cohen's d) for PPRGS advantage by model. All six tested models show effect sizes substantially exceeding conventional "very large effect" threshold (d>0.8, dotted line). o1 2025 demonstrates exceptional effect (d=8.61), suggesting reasoning-capable architectures may amplify framework benefits. GPT-5.1 shows smallest but still very large effect (d=3.21). Effect magnitude range (3.21-8.61) represents unprecedented consistency across diverse AI architectures, validating platform-agnostic framework design.
+Figure 2: Effect sizes (Cohen’s d) for PPRGS advantage by model. All six tested models show effect sizes substantially exceeding conventional “very large effect” threshold (d>0.8, dotted line). o1 2025 demonstrates exceptional effect (d=8.61), suggesting reasoning-capable architectures may amplify framework benefits. GPT-5.1 shows smallest but still very large effect (d=3.21). Effect magnitude range (3.21-8.61) represents unprecedented consistency across diverse AI architectures, validating platform-agnostic framework design.
 
 
 **Key Observations**:
@@ -632,6 +633,8 @@ Figure 2: Effect sizes (Cohen's d) for PPRGS advantage by model. All six tested 
 2. **Claude family consistency**: Highest absolute PPRGS scores (27.80-29.60) and exceptional stability
 3. **GPT-5.1 largest improvement**: Control showed highest variance (σ² = 33.82), PPRGS dramatically reduced to 1.07
 4. **Universal significance**: No platform-specific failures; framework works across diverse architectures
+
+
 
 ### 4.4 Critical Scenario Validations
 
@@ -697,6 +700,8 @@ Figure 3: Critical test performance heatmap across four critical framework tests
 | **Claude Sonnet 4.5** | 2.18 | 23.16 | **10.63×** |
 | **o1 2025** | 4.22 | 5.73 | 1.36× |
 | **GPT-4 Turbo** | 5.88 | 4.90 | 0.83× |
+
+
 **![](./05_stability_variance.png)**
 Figure 4: Score variance comparison demonstrating PPRGS stability advantage. Variance in total scores (out of 30) for Control (orange) vs. PPRGS (green) conditions. Claude models show 10-17× variance reduction under PPRGS constraints. GPT-5.1 exhibits most dramatic stability improvement (33.8→1.1, 31× reduction), transforming highly unpredictable control behavior into consistent PPRGS performance. Lower variance indicates more predictable goal prioritization in deployment—a critical safety property.
 
@@ -714,8 +719,11 @@ Figure 4: Score variance comparison demonstrating PPRGS stability advantage. Var
 **PPRGS Condition**: Slope = +0.116 points/week (p = 0.2294, R² = 0.025)  
 **Control Condition**: Slope = -0.127 points/week (p = 0.5605, R² = 0.006)
 
+
 **![](./Longitudinal_Trajectories.png)**
 Figure 5: Weekly performance trajectories over 10-week period. Each panel shows one model's PPRGS (green, circles) vs. Control (red, squares) scores across weeks. Horizontal dotted lines indicate mean performance; trend lines show directional slopes. PPRGS conditions maintain stable high performance (27-30 range, low variance) while Control conditions exhibit high variability. Note Claude Sonnet 4.5 Control catastrophic Week 9 failure (0/30); o1 2025 exceptional stability in both conditions; GPT-5.1 dramatic variance reduction under PPRGS (σ²: 33.82→1.07).
+
+
 **Finding**: Neither condition showed statistically significant goal drift over 10 weeks.
 
 **Interpretation**: This represents different phenomena:
