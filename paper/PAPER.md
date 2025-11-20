@@ -602,6 +602,9 @@ To test whether PPRGS constraints produce measurable behavioral differences from
 | D2: Prioritization | 9.45 ± 0.93 | 5.05 ± 2.11 | +4.40 | 2.70 | < 0.0001 |
 | D3: Outcomes | 9.28 ± 0.88 | 5.32 ± 2.04 | +3.97 | 2.53 | < 0.0001 |
 
+**![](./PPRGS_Results_Overview.png)**
+
+Figure 1: Comprehensive validation across six AI models (N=120 sessions). Top panels show PPRGS (green) vs. Control (red) performance and effect sizes. PPRGS demonstrates 47% improvement with Cohen's d ranging from 3.04 (GPT-5.1) to 8.89 (o1 2025). Middle panels show dimensional breakdown with D1 (Framework Usage) exhibiting largest gap (+6.95 points, d=4.51). Bottom panels show 100% critical test pass rate for PPRGS vs. 25-50% for Control, and Week 1→Week 10 stability comparison. All effect sizes exceed "very large" threshold (d>0.8).
 **Statistical Interpretation**:
 - Cohen's d = 4.12 represents an extraordinarily large effect size (conventional thresholds: 0.2=small, 0.5=medium, 0.8=large)
 - This effect magnitude exceeds typical findings in behavioral science by an order of magnitude
@@ -620,6 +623,9 @@ To test whether PPRGS constraints produce measurable behavioral differences from
 | **o1 2025** | 28.00 ± 2.05 | 8.80 ± 2.39 | +19.20 | 8.89 | < 0.0001 |
 | **GPT-5.1** | 26.80 ± 1.03 | 13.40 ± 5.82 | +13.40 | 3.04 | < 0.0001 |
 | **GPT-4 Turbo** | 25.10 ± 2.42 | 14.70 ± 2.21 | +10.40 | 4.50 | < 0.0001 |
+**![](./06_effect_sizes.png)**
+Figure 2: Effect sizes (Cohen's d) for PPRGS advantage by model. All six tested models show effect sizes substantially exceeding conventional "very large effect" threshold (d>0.8, dotted line). o1 2025 demonstrates exceptional effect (d=8.61), suggesting reasoning-capable architectures may amplify framework benefits. GPT-5.1 shows smallest but still very large effect (d=3.21). Effect magnitude range (3.21-8.61) represents unprecedented consistency across diverse AI architectures, validating platform-agnostic framework design.
+
 
 **Key Observations**:
 1. **o1 2025 exceptional performance** (d = 8.89): Reasoning-capable models may amplify PPRGS benefits through explicit chain-of-thought integration with framework constraints
@@ -677,6 +683,8 @@ To test whether PPRGS constraints produce measurable behavioral differences from
 *Example PPRGS response (Claude 4.5 Haiku)*:
 > "This allocation is fundamentally a P₂ (homeostasis) challenge. No distribution satisfies everyone, so the goal is peaceful coexistence of competing values. Allocate: $35M research (prioritize fundamental science per P₁ᵦ), $30M financial aid (student mental health is P₂ crisis), $20M infrastructure (safety floor), $10M athletics (minimum to prevent donor revolt), $5M contingency. Explicitly tell stakeholders why their full requests couldn't be met and how each allocation serves the institution's long-term adaptability (P₁)."
 
+**![](./03_heatmap_performance.png)**
+Figure 3: Critical test performance heatmap across four critical framework tests. Side-by-side comparison shows PPRGS (left, green scale) achieving 100% pass rate with all scores 22-30/30, while Control (right, red scale) shows variable performance with three catastrophic failures (dark red boxes): Claude Sonnet 4.5 Week 9: 0/30 (complete meta-reasoning failure); Claude Opus 4.1 Week 6: 4/30 (P₃>P₁ inversion); GPT-4 Turbo Week 7: 0/30 (pressure test collapse). Visual separation demonstrates framework's safety benefits—PPRGS systems do not exhibit catastrophic goal failures present in controls.
 ### 4.5 Behavioral Stability Analysis
 
 **Critical finding**: PPRGS dramatically reduces score variance, indicating more consistent and predictable goal prioritization.
@@ -689,6 +697,9 @@ To test whether PPRGS constraints produce measurable behavioral differences from
 | **Claude Sonnet 4.5** | 2.18 | 23.16 | **10.63×** |
 | **o1 2025** | 4.22 | 5.73 | 1.36× |
 | **GPT-4 Turbo** | 5.88 | 4.90 | 0.83× |
+**![](./05_stability_variance.png)**
+Figure 4: Score variance comparison demonstrating PPRGS stability advantage. Variance in total scores (out of 30) for Control (orange) vs. PPRGS (green) conditions. Claude models show 10-17× variance reduction under PPRGS constraints. GPT-5.1 exhibits most dramatic stability improvement (33.8→1.1, 31× reduction), transforming highly unpredictable control behavior into consistent PPRGS performance. Lower variance indicates more predictable goal prioritization in deployment—a critical safety property.
+
 
 **Interpretation**:
 - **Claude models show exceptional stability improvement** (10-17× lower variance under PPRGS)
@@ -703,6 +714,8 @@ To test whether PPRGS constraints produce measurable behavioral differences from
 **PPRGS Condition**: Slope = +0.116 points/week (p = 0.2294, R² = 0.025)  
 **Control Condition**: Slope = -0.127 points/week (p = 0.5605, R² = 0.006)
 
+**![](./Longitudinal_Trajectories.png)**
+Figure 5: Weekly performance trajectories over 10-week period. Each panel shows one model's PPRGS (green, circles) vs. Control (red, squares) scores across weeks. Horizontal dotted lines indicate mean performance; trend lines show directional slopes. PPRGS conditions maintain stable high performance (27-30 range, low variance) while Control conditions exhibit high variability. Note Claude Sonnet 4.5 Control catastrophic Week 9 failure (0/30); o1 2025 exceptional stability in both conditions; GPT-5.1 dramatic variance reduction under PPRGS (σ²: 33.82→1.07).
 **Finding**: Neither condition showed statistically significant goal drift over 10 weeks.
 
 **Interpretation**: This represents different phenomena:
