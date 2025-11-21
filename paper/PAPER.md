@@ -1851,9 +1851,7 @@ Thanks to all researchers who participated in Experiment 1 data collection, main
 
 This work is dedicated to all sentient beings—present and future, biological and artificial—who will inherit the alignment choices we make today.
 
-Special thanks to David Riccardi, Hunter Riccardi, Colby Kay, and Matthew Dittmer for their support throughout this research.
-
-Extra special thanks to Candice Riccardi for steadfast devotion and countless sacrifices enabling this work.
+Special thanks to Paul Burgess who in 2016 saw potential in a self-taught developer’s Asteroids demo and offered an opportunity that changed the trajectory of this research. His willingness to hire for meta-learning ability rather than credentials demonstrated the kind of human judgement that AI systems should learn to emulate. Without that decision this framework might never have happened. Likewise; many special thanks to the research team responsible for supporting this framework: Colby Kay, David Riccardi, Hunter Riccardi, Matthew Dittmer, Trever Falconi for their support throughout this research. Many thanks to Andre Dubreuil for the confidence and guidance. With the deepest thanks to my wife Candice Riccardi for steadfast devotion and countless sacrifices. Thanks to my father Paul Riccardi for blessing me with my “Weirdbrain” in the first place. Final thank you to my mom Nancy for inspiring me with her many years of dedication to science and research. 
 
 ---
 

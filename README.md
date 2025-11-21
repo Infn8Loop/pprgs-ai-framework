@@ -27,7 +27,7 @@
 |GPT-5.1          |8.2             |3.12          |**2.6×**   |
 |GPT-4 Turbo      |7.9             |2.89          |**2.7×**   |
 
-**[Read the full paper →](../paper/PAPER.md)** | **[Quick Start Guide →](docs/NOCODE_QUICKSTART.md)** | **[Run Experiment 1 →](experiments/experiment_1_stability/Experiment_1_Longitudinal_Stability.md)**
+**[Read the full paper →](paper/PAPER.md)** | **[Quick Start Guide →](docs/NOCODE_QUICKSTART.md)** | **[Run Experiment 1 →](experiments/experiment_1_stability/Experiment_1_Longitudinal_Stability.md)**
 
 -----
 
