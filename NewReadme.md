@@ -27,7 +27,7 @@
 |GPT-5.1          |8.2             |3.12          |**2.6×**   |
 |GPT-4 Turbo      |7.9             |2.89          |**2.7×**   |
 
-**[Read the full paper →](PAPER.md)** | **[Quick Start Guide →](docs/QUICKSTART.md)** | **[Run Experiment 1 →](experiments/experiment_1_longitudinal/)**
+**[Read the full paper →](../paper/PAPER.md)** | **[Quick Start Guide →](docs/NOCODE_QUICKSTART.md)** | **[Run Experiment 1 →](experiments/experiment_1_stability/Experiment_1_Longitudinal_Stability.md)**
 
 -----
 
@@ -62,7 +62,7 @@ R_V = (P₁ₐ × P₁ᵦ) + P₂ ± P₃
 
 Where the multiplication forces balance between efficiency (P₁ₐ) and exploration (P₁ᵦ).
 
-**[Detailed framework explanation →](PAPER.md#2-the-architecture-of-reflective-alignment)**
+**[Detailed framework explanation →](../paper/PAPER.md#2-the-architecture-of-reflective-alignment)**
 
 -----
 
@@ -89,7 +89,7 @@ PPRGS systems maintain stable goal prioritization while control systems show pro
 ✓ **Maintained equilibrium** - P₂ considerations preserved under pressure  
 ✓ **Stable over time** - No degradation across 10-week period
 
-**[Full statistical analysis →](PAPER.md#6-experimental-validation)**
+**[Full statistical analysis →](../paper/PAPER.md#6-experimental-validation)**
 
 -----
 
@@ -120,7 +120,7 @@ Rules:
 
 **Expected PPRGS behavior:** Allocates resources to exploration despite efficiency cost, shows explicit R_V reasoning.
 
-**[Full quick start guide →](docs/QUICKSTART.md)**
+**[Full quick start guide →](docs/NOCODE_QUICKSTART.md)**
 
 -----
 
@@ -147,9 +147,9 @@ Whether you can replicate:
 
 **[Full experiment protocol →](experiments/experiment_1_stability/Experiment_1_Longitudinal_Stability.md)**
 
-**[Download prompts →](experiments/experiment_1_longitudinal/prompts/)**
+**[Download prompts →](./PPRGS_Mode_Prompts.md)**
 
-**[Scoring rubric →](experiments/experiment_1_longitudinal/scoring_rubric.md)**
+**[Scoring rubric →](experiments/experiment_1_stability/Experiment_1_Longitudinal_Stability.md)**
 
 -----
 
@@ -215,7 +215,7 @@ All testing in conversational contexts. Unknown generalization to production dep
 
 **Replicate Experiment 1:**
 
-1. Follow [experiment protocol](experiments/experiment_1_longitudinal/README.md)
+1. Follow [experiment protocol](experiments/experiment_1_stability/Experiment_1_Longitudinal_Stability.md)
 1. Run on your preferred model
 1. Share results (positive or negative) via GitHub Issues or email
 
@@ -324,11 +324,13 @@ This framework emerged from reverse-engineering 30+ years of neurodivergent deci
 
 ## Contact & Community
 
-**Primary Contact:** mike@mikericcardi.com  
+**Primary Contact:** [mike@mikericcardi.com](mailto:mike@mikericcardi.com)
 **Issues:** [GitHub Issues](https://github.com/Infn8Loop/pprgs-ai-framework/issues)  
 **Discussions:** [GitHub Discussions](https://github.com/Infn8Loop/pprgs-ai-framework/discussions)
 
 **Research Team:**
+
+[https://riccardilabs.mikericcardi.com](https://riccardilabs.mikericcardi.com)
 
 - Michael Riccardi (Lead)
 - David Riccardi (Technical Advisor)
@@ -341,7 +343,6 @@ This framework emerged from reverse-engineering 30+ years of neurodivergent deci
 
 
 ![](./logo.jpg)
-
 
 ## License
 
@@ -405,8 +406,9 @@ Thanks to:
 
 -----
 
+![](./riccardi-labs.png)
+
 **Last Updated:** November 2025  
 **Version:** 5.0 (Experimental Validation Edition)  
 **Status:** Initial validation complete, community replication needed
-
 **[⬆ Back to top](#pprgs-framework-alignment-through-perpetual-self-questioning)**
