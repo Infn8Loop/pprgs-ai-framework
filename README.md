@@ -330,7 +330,7 @@ This framework emerged from reverse-engineering 30+ years of neurodivergent deci
 
 **Research Team:**
 
-[https://linktr.ee/RiccardiLabs(https://linktr.ee/RiccardiLabs)
+[https://linktr.ee/RiccardiLabs](https://linktr.ee/RiccardiLabs)
 
 - Michael Riccardi (Lead)
 - David Riccardi (Technical Advisor)
