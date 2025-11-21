@@ -2,8 +2,6 @@
 
 **What if AI alignment requires systems that distrust their own optimization?**
 
-![](./logo.jpg)
-
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![Status: Experimental Validation](https://img.shields.io/badge/Status-Experimental%20Validation-green.svg)]()
 [![Contributions Welcome](https://img.shields.io/badge/Contributions-Welcome-brightgreen.svg)]()
@@ -340,6 +338,10 @@ This framework emerged from reverse-engineering 30+ years of neurodivergent deci
 - Matthew Dittmer (Research Engineer)
 
 -----
+
+
+![](./logo.jpg)
+
 
 ## License
 
