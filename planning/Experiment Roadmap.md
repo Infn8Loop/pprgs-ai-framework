@@ -7,6 +7,9 @@
 **Last Updated**: November 5, 2025  
 **Status**: Active - Ready to Launch
 
+
+**Experiment 1 completed, this roadmap needs updating!**
+
 ——
 
 ## Research Team

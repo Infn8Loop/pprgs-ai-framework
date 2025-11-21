@@ -18,3 +18,14 @@ Addition of No Code testing
 Expansion of theory to include Conscious adjacent processing, and DPI protocol. 
 Updated Experimental Roadmap
 Confirmed direction to shift to GPL License Permanently (but this was updated initially 1-2 weeks ago) Oct 20th? approx. 
+
+## Version 3.0 11/20/25
+
+**First validated experiment:** [October 18, 2025]
+
+Completed experiment 1 with exceptional results
+See experiments / experiment 1 / completed experiment 1 for details
+5th Major revision of the research Paper ready to publish
+cleaning up the repository of leftover md files, fixing links, etc.
+Updated research team - it’s growing! 
+Added Logos and custom prompts
