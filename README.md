@@ -329,8 +329,7 @@ This framework emerged from reverse-engineering 30+ years of neurodivergent deci
 **Discussions:** [GitHub Discussions](https://github.com/Infn8Loop/pprgs-ai-framework/discussions)
 
 **Research Team:**
-
-[https://linktr.ee/RiccardiLabs](https://linktr.ee/RiccardiLabs)
+[Riccardi Labs LinkTree](https://linktr.ee/RiccardiLabs)
 
 - Michael Riccardi (Lead)
 - David Riccardi (Technical Advisor)
