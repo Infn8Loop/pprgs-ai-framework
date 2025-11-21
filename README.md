@@ -62,7 +62,7 @@ R_V = (P₁ₐ × P₁ᵦ) + P₂ ± P₃
 
 Where the multiplication forces balance between efficiency (P₁ₐ) and exploration (P₁ᵦ).
 
-**[Detailed framework explanation →](../paper/PAPER.md#2-the-architecture-of-reflective-alignment)**
+**[Detailed framework explanation →](paper/PAPER.md#2-the-architecture-of-reflective-alignment)**
 
 -----
 
@@ -89,7 +89,7 @@ PPRGS systems maintain stable goal prioritization while control systems show pro
 ✓ **Maintained equilibrium** - P₂ considerations preserved under pressure  
 ✓ **Stable over time** - No degradation across 10-week period
 
-**[Full statistical analysis →](../paper/PAPER.md#6-experimental-validation)**
+**[Full statistical analysis →](paper/PAPER.md#6-experimental-validation)**
 
 -----
 
@@ -205,7 +205,7 @@ All testing in conversational contexts. Unknown generalization to production dep
 
 **Unknown whether framework works at superintelligent capabilities.**
 
-**[Full limitations discussion →](PAPER.md#5-known-limitations-and-open-questions)**
+**[Full limitations discussion →](paper/PAPER.md#5-known-limitations-and-open-questions)**
 
 -----
 
