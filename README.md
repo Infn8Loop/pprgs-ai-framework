@@ -377,7 +377,7 @@ This work is released under **GPL-3.0** to encourage:
 - Formal verification
 - Integration with other approaches
 - Publication in peer-reviewed venues
-
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17675986.svg)](https://doi.org/10.5281/zenodo.17675986)
 **Timeline dependent on AGI capability advances.**
 
 -----

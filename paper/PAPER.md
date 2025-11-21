@@ -1890,7 +1890,7 @@ Special thanks to Paul Burgess who in 2016 saw potential in a self-taught develo
 **Version**: 5.0 (November 2025)—Experimental Validation Edition  
 **Status**: Framework with longitudinal validation (d = 4.12)—Community replication needed
 
-**DOI**: [To be assigned upon ArXiv publication]
+**DOI**: [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17675986.svg)](https://doi.org/10.5281/zenodo.17675986)
 
 ---
 
