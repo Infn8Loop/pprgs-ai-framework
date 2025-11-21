@@ -2,7 +2,7 @@
 
 **What if AI alignment requires systems that distrust their own optimization?**
 
-<img src=“https://raw.githubusercontent.com/Infn8Loop/pprgs-ai-framework/refs/heads/main/logo.jpg” width=“100px”>
+<picture src=“https://raw.githubusercontent.com/Infn8Loop/pprgs-ai-framework/refs/heads/main/logo.jpg” width=“100px”>
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![Status: Experimental Validation](https://img.shields.io/badge/Status-Experimental%20Validation-green.svg)]()
