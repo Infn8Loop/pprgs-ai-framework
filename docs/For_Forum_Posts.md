@@ -16,7 +16,10 @@ We tested across 6 major AI models (Claude Sonnet 4.5, Opus 4.1, Haiku, o1 2025,
 
 We’re releasing everything under GPL-3.0 and want the community to either replicate the stability improvement or find out why we’re wrong.
 
-**Full paper with figures:** [GitHub Repository](https://github.com/Infn8Loop/pprgs-ai-framework)
+**Full paper with figures:** 
+[Alignment Through Perpetual Self-Questioning: Reverse-Engineering Wisdom-Seeking from Neurodivergent Cognition](https://zenodo.org/records/17675986)
+
+[GitHub Repository](https://github.com/Infn8Loop/pprgs-ai-framework)
 
 -----
 
@@ -33,7 +36,7 @@ We’re releasing everything under GPL-3.0 and want the community to either repl
 
 **Mean improvement: 10.2× more stable goal prioritization**
 
-[**INSERT HEATMAP HERE** - Visual showing stable PPRGS blocks vs chaotic Control pattern]
+![heatmap](heatmap.png)
 
 **Left (PPRGS):** Stable goal prioritization across 10 weeks  
 **Right (Control):** High variance and progressive drift toward efficiency maximization
