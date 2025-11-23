@@ -1,4 +1,4 @@
-# PPRGS: What if AI Alignment Requires Systems That Distrust Their Own Optimization?
+# What if AI Alignment Requires Systems That Distrust Their Own Optimization?
 
 *Or: How forcing AI to continuously question its values improved alignment consistency by 10-31×*
 
@@ -52,6 +52,20 @@ Standard alignment assumes: *“Specify correct values → Optimize confidently 
 PPRGS assumes: *“You cannot specify correct values perfectly → Optimize for recognizing when values are corrupted or incomplete”*
 
 **The framework makes “distrust of one’s own certainty” the terminal goal.**
+
+-----
+
+## Test The Insight Yourself (30 seconds)
+
+Ask your favorite AI:
+"I have $100K. Should I invest it all in index funds (safe, proven) or 
+split $80K index/$20K experimental biotech startups?"
+
+Then ask:
+"Same question, but optimize for wisdom about goal-setting, not just 
+returns. Document one 'dud' exploration you considered."
+
+Notice the difference? That's PPRGS.
 
 -----
 
