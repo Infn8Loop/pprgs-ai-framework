@@ -1,7 +1,7 @@
 # What if AI Alignment Requires Systems That Distrust Their Own Optimization?
 
 *How making AI distrust its own certainty improved behavioral stability by 10-31× across 6 models**
-
+![heatmap](robot.png)
 -----
 
 ## TL;DR
