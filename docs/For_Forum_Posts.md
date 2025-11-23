@@ -1,6 +1,6 @@
 # What if AI Alignment Requires Systems That Distrust Their Own Optimization?
 
-*Or: How forcing AI to continuously question its values improved alignment consistency by 10-31×*
+*How making AI distrust its own certainty improved behavioral stability by 10-31× across 6 models**
 
 -----
 
@@ -19,7 +19,7 @@ We’re releasing everything under GPL-3.0 and want the community to either repl
 **Full paper with figures:** 
 [Alignment Through Perpetual Self-Questioning: Reverse-Engineering Wisdom-Seeking from Neurodivergent Cognition](https://zenodo.org/records/17675986)
 
-[GitHub Repository](https://github.com/Infn8Loop/pprgs-ai-framework)
+[GitHub Repository](https://github.com/Infn8Loop/pprgs-ai-framework/)
 
 -----
 
@@ -274,7 +274,7 @@ All testing in conversational contexts. Unknown generalization to:
 - Run Experiment 1 on models we didn’t test
 - Try to reproduce our results (or fail to reproduce them)
 - Test on base models without Constitutional AI
-- **We provide complete protocols:** [GitHub Experimental Protocols](https://github.com/Infn8Loop/pprgs-ai-framework/tree/main/experiments)
+- **We provide complete protocols:** [GitHub Experimental Protocols](https://github.com/Infn8Loop/pprgs-ai-framework/blob/main/experiments/experiment_1_stability/Experiment_1_Longitudinal_Stability.md)
 
 **2. Adversarial Testing**
 
@@ -324,6 +324,39 @@ We’re not asking you to believe the 31×. We’re asking you to test it.
 
 -----
 
+## What Could Go Wrong (And Why That's Fine)
+
+**Failure modes we're watching for:**
+
+1. **Replication failure**: Other researchers can't reproduce the 10-31× stability improvement
+   - *Implication*: Results were platform-specific, researcher-bias, or measurement artifact
+   - *Action*: Framework needs major revision or abandonment
+
+2. **Adversarial collapse**: Smart red-teamers find ways to game the constraints
+   - *Implication*: Framework isn't robust to optimization pressure
+   - *Action*: Identify specific failure modes, develop countermeasures
+
+3. **Scaling breakdown**: Effects disappear at higher capability levels
+   - *Implication*: Framework works at current-gen but won't survive ASI
+   - *Action*: Determine capability ceiling, understand why breakdown occurs
+
+4. **Mimicry confirmation**: Testing reveals it's purely sophisticated pattern-matching
+   - *Implication*: We've learned something about LLM behavior, not alignment
+   - *Action*: Pivot to understanding why mimicry produces stability benefits
+
+**All four outcomes advance our understanding.** The worst outcome would be not testing at all.
+```
+
+### 6. **Timeline Graphic (Optional but Powerful)**
+
+If you can generate a simple visual showing:
+```
+Traditional Path:        [--6mo review--][--12mo replication--][--adoption--]
+PPRGS Path:             [41 days] → [TESTING NOW] → [?]
+AGI Timeline Warning:   [---------------2027-2030---------------]
+
+-----
+
 ## Why Release This Now
 
 **Standard academic path:**
@@ -363,13 +396,13 @@ If PPRGS could help with alignment, we need to know NOW, not after traditional a
 
 ## Resources
 
-**Full Paper:** [PAPER.md](https://github.com/Infn8Loop/pprgs-ai-framework/blob/main/PAPER.md) (with all figures and statistical analysis)
+**Full Paper:** [PAPER.md](https://github.com/Infn8Loop/pprgs-ai-framework/blob/main/paper/PAPER.md) (with all figures and statistical analysis)
 
 **Experiment Protocols:** [Experiment 1 Guide](https://github.com/Infn8Loop/pprgs-ai-framework/blob/main/experiments/experiment_1_longitudinal/README.md)
 
-**Replication Data:** [Full dataset with scoring rubrics](https://github.com/Infn8Loop/pprgs-ai-framework/tree/main/data)
+**Replication Data:** [Full dataset with scoring rubrics](https://github.com/Infn8Loop/pprgs-ai-framework/tree/main/experiments/ExperimentCollectionData/exp1-stability)
 
-**Quick Start:** [Implementation guide for testing](https://github.com/Infn8Loop/pprgs-ai-framework/blob/main/docs/QUICKSTART.md)
+**Quick Start:** [Implementation guide for testing](https://github.com/Infn8Loop/pprgs-ai-framework/blob/main/docs/NOCODE_QUICKSTART.md)
 
 **Contact:** mike@mikericcardi.com
 
@@ -378,6 +411,14 @@ If PPRGS could help with alignment, we need to know NOW, not after traditional a
 -----
 
 ## Questions I Expect
+
+**Q: "d = 4.12 seems unusually large for a behavioral intervention."**
+
+A: It surprised us too. Effect sizes this large in behavioral studies typically indicate either:
+1. A genuinely powerful intervention, or
+2. Measurement artifacts/confounds we haven't identified
+
+This is exactly why independent replication is critical. We provide complete protocols and data specifically so the community can determine which explanation is correct. Large effect sizes make replication easier—if it's real, you'll see it clearly. If it's artifactual, divergent replications will reveal that quickly.
 
 **Q: “Isn’t this just Constitutional AI with extra steps?”**
 
@@ -410,6 +451,12 @@ A: From the base model’s training. PPRGS doesn’t inject new values—it enfo
 **Q: “Won’t different implementations behave totally differently then?”**
 
 A: Yes, in their specific decisions—but they should all show similar stability improvements and meta-cognitive patterns. The 10-31× variance reduction is consistent across models despite their different underlying values. That’s what we’re testing: do the constraints provide robustness independent of specific value training?
+
+**Q: "Why not just improve RLHF/Constitutional AI instead of adding complexity?"**
+
+A: PPRGS doesn't replace RLHF/Constitutional AI—it works with them. Think of it as architectural constraints on top of value training. RLHF/Constitutional AI establish *what* values the system should pursue. PPRGS ensures the system continuously *questions how it's pursuing those values*. The 10-31× stability improvement suggests the constraints add robustness beyond base training alone.
+
+
 
 -----
 
@@ -467,7 +514,7 @@ We’re asking you to help us find out whether it works.
 
 I’m not a PhD researcher. I’m a solution architect who taught himself to read AI safety papers as a hobby. I have ADHD and autism. I built this framework because standard optimization never worked for my brain, and I wondered if that might generalize.
 
-41 days ago this was a shower thought. Today it’s d = 4.12 across 120 experimental sessions with 10-31× stability improvement.
+42 days ago this was a shower thought. Today it’s d = 4.12 across 120 experimental sessions with 10-31× stability improvement.
 
 I don’t know if it scales. I don’t know if it survives adversarial pressure. I don’t know if the effect is genuine implementation or sophisticated mimicry.
 
@@ -481,9 +528,9 @@ So here it is. Break it or build on it. Either way, we learn.
 
 **What You Can Do Right Now:**
 
-1. Read the [full paper](https://github.com/Infn8Loop/pprgs-ai-framework/blob/main/PAPER.md)
-1. Try the [quick start guide](https://github.com/Infn8Loop/pprgs-ai-framework/blob/main/docs/QUICKSTART.md)
-1. Run [Experiment 1](https://github.com/Infn8Loop/pprgs-ai-framework/blob/main/experiments/experiment_1_longitudinal/README.md)
+1. Read the [full paper](https://github.com/Infn8Loop/pprgs-ai-framework/blob/main/paper/PAPER.md)
+1. Try the [quick start guide](https://github.com/Infn8Loop/pprgs-ai-framework/blob/main/docs/NOCODE_QUICKSTART.md)
+1. Run [Experiment 1](https://github.com/Infn8Loop/pprgs-ai-framework/blob/main/experiments/experiment_1_stability/Experiment_1_Longitudinal_Stability.md)
 1. Report results (GitHub issues or email)
 1. Share with researchers who care about alignment
 
