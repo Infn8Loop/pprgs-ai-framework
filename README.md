@@ -318,7 +318,7 @@ This framework emerged from reverse-engineering 30+ years of neurodivergent deci
 
 **The hypothesis:** Broken optimization that develops self-alignment through perpetual self-questioning might generalize to AI systems facing similar value uncertainty.
 
-**[Full origin story →](PAPER.md#1-introduction)**
+**[Full origin story →](docs/OriginStory.md)**
 
 -----
 
