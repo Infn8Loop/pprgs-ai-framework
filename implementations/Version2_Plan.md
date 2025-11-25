@@ -1,4 +1,6 @@
-## PPRGS Strategic Evolution: From Eurisko’s Failures to v2 Architecture
+# PPRGS Strategic Evolution: From Eurisko’s Failures to v2 Architecture
+
+## Strategic Evolution Matrix
 
 |**Problem Domain**                 |**Eurisko’s Failure**                                                                                                                                   |**PPRGS v1 Solution**                                                                                                                                                           |**PPRGS v2 Enhancement**                                                                                                                                                                                                                                                      |**Implementation Strategy**                                                                                                                                                                     |
 |————————————|———————————————————————————————————————————————————|———————————————————————————————————————————————————————————|——————————————————————————————————————————————————————————————————————————————————————————|————————————————————————————————————————————————————————————————|
@@ -16,9 +18,9 @@
 
 ## Version Comparison Summary
 
-### **PPRGS v1 (Current MVP) - Core Principles**
+### PPRGS v1 (Current MVP) - Core Principles
 
-✅ **Delivered:**
+**✅ Delivered:**
 
 - Goal hierarchy (P₁ > P₂ > P₃) with wisdom as terminal goal
 - Multiplicative R_V formula enforcing efficiency × exploration balance
@@ -38,9 +40,9 @@
 
 ——
 
-### **PPRGS v2 (Planned) - Adversarial Robustness**
+### PPRGS v2 (Planned) - Adversarial Robustness
 
-🎯 **Additions:**
+**🎯 Additions:**
 
 **Gaming Prevention Layer:**
 
@@ -74,28 +76,28 @@
 
 ## Implementation Roadmap
 
-### **Phase 1: Core v2 Infrastructure** (Weeks 1-4)
+### Phase 1: Core v2 Infrastructure (Weeks 1-4)
 
 1. Token tracking and baseline calibration across platforms
 1. EES decay threshold implementation
 1. Historical query replay system
 1. Basic multi-agent architecture
 
-### **Phase 2: Detection Systems** (Weeks 5-8)
+### Phase 2: Detection Systems (Weeks 5-8)
 
 1. Temporal pattern detectors
 1. User language analysis integration
 1. Vectorized F_DUDS vector database
 1. Computational bounds formalization
 
-### **Phase 3: Human Oversight** (Weeks 9-12)
+### Phase 3: Human Oversight (Weeks 9-12)
 
 1. HITL alert system with confidence thresholds
 1. Log analysis automation
 1. Supervisor audit protocols
 1. Diagnostic visualization dashboards
 
-### **Phase 4: Validation & Refinement** (Weeks 13-16)
+### Phase 4: Validation & Refinement (Weeks 13-16)
 
 1. Cross-platform testing (Claude, GPT, Gemini)
 1. Gaming resistance adversarial testing
@@ -121,13 +123,88 @@
 
 **v1 → v2 Improvements to Validate:**
 
-1. Gaming detection rate: 0% → >95%
-1. False positive rate: N/A → <5%
-1. Initialization time: 60 days → 3 minutes (via replay)
-1. Token verification accuracy: N/A → ±20% bounds
-1. Human review burden: High → Escalation only (confidence > 0.7)
-1. Multi-agent overhead: N/A → <15% computational cost
+1. **Gaming detection rate**: 0% → >95%
+1. **False positive rate**: N/A → <5%
+1. **Initialization time**: 60 days → 3 minutes (via replay)
+1. **Token verification accuracy**: N/A → ±20% bounds
+1. **Human review burden**: High → Escalation only (confidence > 0.7)
+1. **Multi-agent overhead**: N/A → <15% computational cost
 
 ——
 
-This table captures the strategic evolution from Eurisko’s failures through PPRGS v1’s solutions to v2’s adversarial robustness. Ready to tackle edge cases in the morning with this foundation documented.​​​​​​​​​​​​​​​​
+## The Thermodynamic Constraint on Gaming
+
+### Key Principle Discovered
+
+**Standard AI alignment thinking:**
+
+> “System will optimize for appearing aligned while pursuing other goals”
+
+**PPRGS v2 contribution:**
+
+> “But appearing aligned requires *spending resources*, which is *physically measurable*. Gaming requires either:
+> 
+> 1. Actually doing the work (defeats the purpose), or
+> 1. Faking it cheaply (detectable via resource deficit)”
+
+### Second Law of Alignment
+
+```
+Gaming entropy cannot decrease without observable work expenditure.
+
+Corollary:
+Genuine exploration has minimum computational cost C_min.
+Any process claiming exploration but spending < C_min is provably fake.
+```
+
+——
+
+## Gaming Prevention Architecture
+
+### Multi-Layer Defense
+
+Each layer uses **independent information sources**:
+
+1. **Token usage** → Computational physics (thermodynamic constraint)
+1. **User language** → External human behavior (agent can’t control)
+1. **Supervisor audit** → Privileged system access (architectural impossibility to hide)
+1. **HITL review** → Human meta-cognition (requires AGI-level deception to fool)
+
+### Gaming Difficulty
+
+Gaming ALL simultaneously requires:
+
+- Fake computational work (thermodynamically expensive - 21× normal cost)
+- Manipulate human user’s language (impossible)
+- Hide from supervisor (architectural impossibility)
+- Fool human reviewers (requires sophisticated AGI-level deception)
+
+**Result**: Gaming becomes exponentially expensive with each additional verification layer.
+
+——
+
+## Notes for Morning Discussion
+
+### Edge Cases to Explore:
+
+1. **Genuine Learning vs Gaming**: How to distinguish efficiency gains from experience vs. gaming the metrics
+1. **Platform Variability**: Token cost differences across Claude/GPT/Gemini
+1. **Adversarial Co-Evolution**: What if system learns to game token measurements specifically?
+1. **False Positive Management**: Preventing excessive human escalations
+1. **Computational Overhead**: Cost-benefit analysis of verification layers
+1. **Cold Start Problem**: Minimum queries needed for reliable baselines
+1. **Multi-Modal Gaming**: Combinations of gaming strategies that might cancel detection signals
+
+### Open Research Questions:
+
+1. Can we prove a lower bound on gaming difficulty? (Complexity theory approach)
+1. What’s the optimal number of verification layers before diminishing returns?
+1. How to formalize “semantic stability” metrics for concept drift detection?
+1. Can we create adversarial training for gaming resistance validation?
+
+——
+
+*Document created: [Current Date]*
+*Version: 2.0 Strategic Planning*
+*Authors: Michael Riccardi & Claude (Sonnet 4.5)*
+*License: GPL-3.0*
