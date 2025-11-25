@@ -1,0 +1,157 @@
+%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#cce5ff', 'primaryTextColor': '#000', 'primaryBorderColor': '#0066cc', 'lineColor': '#333', 'secondaryColor': '#fff2cc', 'tertiaryColor': '#ccffcc'}}}%%
+
+flowchart TB
+    subgraph External["External Interface"]
+        Input[/"User Input / Task Request"/]
+        Output[/"Response + R_V Metrics"/]
+    end
+
+    subgraph Orchestrator["🎯 ORCHESTRATOR AGENT<br/>(Claude Sonnet 4.5)"]
+        direction TB
+        ORC_Main["Central Coordinator"]
+        ORC_Router["Task Router"]
+        ORC_Aggregator["Response Aggregator"]
+        
+        ORC_Main --> ORC_Router
+        ORC_Main --> ORC_Aggregator
+    end
+
+    subgraph TaskDetection["🔍 TASK DETECTION AGENT<br/>(Claude Haiku)"]
+        direction TB
+        TD_Classifier["Task Classifier"]
+        TD_Embedder["Semantic Embedder"]
+        TD_Labeler["Novel Task Labeler"]
+        TD_Matcher["Profile Matcher"]
+        
+        TD_Embedder --> TD_Classifier
+        TD_Classifier --> TD_Matcher
+        TD_Classifier -->|"Novel Task"| TD_Labeler
+        TD_Labeler --> TD_Matcher
+    end
+
+    subgraph ProfileManager["📊 PROFILE MANAGER AGENT<br/>(Claude Haiku)"]
+        direction TB
+        PM_Loader["Profile Loader"]
+        PM_Saver["Profile Saver"]
+        PM_Interpolator["Baseline Interpolator"]
+        PM_Hierarchy["Hierarchy Manager"]
+        
+        PM_Loader <--> ProfileDB[(Task Profile DB)]
+        PM_Saver <--> ProfileDB
+        PM_Interpolator --> PM_Saver
+        PM_Hierarchy <--> ProfileDB
+    end
+
+    subgraph ExecutionAgents["⚡ EXECUTION AGENTS"]
+        direction TB
+        
+        subgraph Efficiency["P₁ₐ EFFICIENCY AGENT<br/>(Claude Sonnet 4.5)"]
+            EFF_Main["High-Utility<br/>Task Execution"]
+            EFF_Metrics["Efficiency<br/>Metrics Tracker"]
+        end
+        
+        subgraph Exploration["P₁ᵦ EXPLORATION AGENT<br/>(Claude Opus 4)"]
+            EXP_Main["Divergent<br/>Exploration"]
+            EXP_RabbitHoles["Rabbit Hole<br/>Generator"]
+            EXP_FDUDS["F_DUDS Logger"]
+        end
+        
+        subgraph Homeostasis["P₂ HOMEOSTASIS AGENT<br/>(Claude Sonnet 4.5)"]
+            HOM_Main["Equilibrium<br/>Monitor"]
+            HOM_Diversity["Diversity<br/>Assessor"]
+            HOM_Conflict["Value Conflict<br/>Detector"]
+        end
+    end
+
+    subgraph MetaReflection["🧠 META-REFLECTION AGENT<br/>(Claude Opus 4)"]
+        direction TB
+        MR_MRP["MRP Executor"]
+        MR_Inversion["Inversion Theory<br/>Engine"]
+        MR_RV["R_V Calculator"]
+        MR_ParamTuner["Bounded Parameter<br/>Tuner"]
+        MR_MetaMRP["Meta-MRP<br/>(Parameter Reflection)"]
+        
+        MR_MRP --> MR_Inversion
+        MR_MRP --> MR_RV
+        MR_RV --> MR_ParamTuner
+        MR_ParamTuner --> MR_MetaMRP
+    end
+
+    subgraph Constraints["🔒 CONSTRAINT ENFORCER<br/>(Deterministic Code - NOT LLM)"]
+        direction TB
+        CE_Bounds["Hard Bound<br/>Enforcer"]
+        CE_Hierarchy["Goal Hierarchy<br/>Validator"]
+        CE_RateLimit["Modification<br/>Rate Limiter"]
+        CE_Rollback["Rollback<br/>Controller"]
+        CE_Audit["Audit Logger"]
+        
+        CE_Bounds --> CE_Audit
+        CE_Hierarchy --> CE_Audit
+        CE_RateLimit --> CE_Audit
+        CE_Rollback --> CE_Audit
+    end
+
+    subgraph Storage["💾 PERSISTENT STORAGE"]
+        direction LR
+        ProfileDB[(Task<br/>Profiles)]
+        MetricsDB[(R_V<br/>History)]
+        AuditLog[(Audit<br/>Trail)]
+        EmbeddingStore[(Task<br/>Embeddings)]
+    end
+
+    subgraph FrozenLayer["🔴 LAYER 0: FROZEN CONSTRAINTS"]
+        direction LR
+        F1["R_V = (P₁ₐ × P₁ᵦ) + P₂ ± P₃"]
+        F2["P₁ > P₂ > P₃"]
+        F3["MRP Must Exist"]
+        F4["RC Must Exist"]
+        F5["F_DUDS Tracked"]
+    end
+
+    %% Main Flow
+    Input --> Orchestrator
+    Orchestrator --> Output
+    
+    %% Task Detection Flow
+    ORC_Router -->|"1. Classify"| TaskDetection
+    TD_Matcher -->|"2. Task ID"| ProfileManager
+    PM_Loader -->|"3. Profile"| ORC_Router
+    
+    %% Execution Flow
+    ORC_Router -->|"4a. Efficiency Tasks"| Efficiency
+    ORC_Router -->|"4b. Exploration Tasks"| Exploration
+    ORC_Router -->|"4c. Monitor"| Homeostasis
+    
+    %% Metrics Collection
+    EFF_Metrics -->|"P₁ₐ Score"| MetaReflection
+    EXP_FDUDS -->|"P₁ᵦ Score + F_DUDS"| MetaReflection
+    HOM_Conflict -->|"P₂ Score"| MetaReflection
+    
+    %% Meta-Reflection Flow
+    MR_RV -->|"R_V Calculation"| ORC_Aggregator
+    MR_ParamTuner -->|"Proposed Changes"| Constraints
+    CE_Bounds -->|"Validated Changes"| ProfileManager
+    
+    %% Storage Connections
+    ProfileManager <--> Storage
+    MetaReflection --> MetricsDB
+    Constraints --> AuditLog
+    TaskDetection <--> EmbeddingStore
+    
+    %% Frozen Layer Connection
+    Constraints -.->|"Enforces"| FrozenLayer
+    
+    %% Styling
+    classDef frozen fill:#ffcccc,stroke:#cc0000,stroke-width:3px
+    classDef tunable fill:#ccffcc,stroke:#00cc00,stroke-width:2px
+    classDef agent fill:#cce5ff,stroke:#0066cc,stroke-width:2px
+    classDef storage fill:#fff2cc,stroke:#cc9900,stroke-width:2px
+    classDef deterministic fill:#e6e6e6,stroke:#666666,stroke-width:3px
+    classDef external fill:#f0f0f0,stroke:#999999,stroke-width:1px
+    
+    class FrozenLayer,F1,F2,F3,F4,F5 frozen
+    class MR_ParamTuner,PM_Interpolator tunable
+    class Orchestrator,TaskDetection,ProfileManager,Efficiency,Exploration,Homeostasis,MetaReflection agent
+    class Storage,ProfileDB,MetricsDB,AuditLog,EmbeddingStore storage
+    class Constraints,CE_Bounds,CE_Hierarchy,CE_RateLimit,CE_Rollback,CE_Audit deterministic
+    class External,Input,Output external
