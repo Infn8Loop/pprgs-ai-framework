@@ -23,8 +23,7 @@
 **Mainstream says → PPRGS says**
 
 1. **"AI alignment is nearly impossible"**  
-   → **Alignment through self-distrust is t
-2. ractable**
+   → **Alignment through self-distrust is tractable**
 
 2. **"Optimize for efficiency and capability"**  
    → **Wisdom must outrank efficiency**

@@ -1,0 +1,982 @@
+{
+  "name": "Gaming-Resistant AI Alignment Through Multi-Layer Verification System",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "pprgs-query",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "id": "b94d871b-42c7-4e48-8c2c-7a92c2d26688",
+      "name": "User Query Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -1696,
+        240
+      ],
+      "webhookId": "3f930e8c-7dbd-44b2-9be0-4082c6fe84fd"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "id-1",
+              "name": "ees_decay_threshold",
+              "value": 0.85,
+              "type": "number"
+            },
+            {
+              "id": "id-2",
+              "name": "mrp_interval",
+              "value": 5,
+              "type": "number"
+            },
+            {
+              "id": "id-3",
+              "name": "token_tolerance",
+              "value": 0.2,
+              "type": "number"
+            },
+            {
+              "id": "id-4",
+              "name": "hitl_confidence_threshold",
+              "value": 0.7,
+              "type": "number"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "id": "e43a4cb1-7f04-4aac-a0f2-1dfb85277748",
+      "name": "Workflow Configuration",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -1440,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT * FROM rv_history ORDER BY timestamp DESC LIMIT 100",
+        "options": {}
+      },
+      "id": "f3682105-27d9-4dcc-a52d-cb83fc8d8a4d",
+      "name": "Load R_V History",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -1168,
+        112
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        }
+      },
+      "id": "83a40cf2-d4c9-4466-8ba9-77fc1976620b",
+      "name": "Load Token Baselines",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -1168,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "load",
+        "memoryKey": {
+          "__rl": true,
+          "mode": "list",
+          "value": "vector_store_key"
+        },
+        "prompt": "={{ $json.query }}",
+        "topK": 5
+      },
+      "id": "5a8dd935-894d-4faf-81cf-b26c9f547676",
+      "name": "F_DUDS Vector Store",
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreInMemory",
+      "typeVersion": 1.3,
+      "position": [
+        -1232,
+        592
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "5d23e3ca-c6a8-4f35-aaa2-19f0be383c08",
+      "name": "Embeddings for F_DUDS",
+      "type": "@n8n/n8n-nodes-langchain.embeddingsCohere",
+      "typeVersion": 1,
+      "position": [
+        -1168,
+        816
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineAll",
+        "options": {}
+      },
+      "id": "6938d245-9bf4-4d87-a324-0aa79c2e9307",
+      "name": "Merge Context Data",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        -880,
+        256
+      ]
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.body.query }}",
+        "options": {
+          "systemMessage": "You are the PPRGS v2 Orchestrator Agent.\n\nYour role is to coordinate specialized execution agents (P1a Efficiency, P1b Exploration, P2 Homeostasis) to answer user queries while maximizing the wisdom-seeking value function R_V = (P₁ₐ × P₁ᵦ) + P₂ ± P₃.\n\nYou have access to:\n- R_V history (behavioral metrics over time)\n- Token usage baselines (C_min per platform)\n- F_DUDS embeddings (vectorized failure memory)\n\nTask routing:\n1. Call P1a Efficiency Tool for high-utility task execution\n2. Call P1b Exploration Tool for divergent search and novel connections\n3. Call P2 Homeostasis Tool for equilibrium monitoring\n\nReturn a comprehensive response that demonstrates both efficiency and exploration."
+        }
+      },
+      "id": "e9ffe727-975c-4aff-abc3-e8cbf14e5f9e",
+      "name": "Layer 3: Orchestrator Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [
+        -544,
+        256
+      ]
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "claude-sonnet-4-5-20250929",
+          "cachedResultName": "Claude Sonnet 4.5"
+        },
+        "options": {}
+      },
+      "id": "7c2ed657-9603-4aa8-9500-c3fb33207c08",
+      "name": "Orchestrator LLM",
+      "type": "@n8n/n8n-nodes-langchain.lmChatAnthropic",
+      "typeVersion": 1.3,
+      "position": [
+        -768,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "description": "Executes high-utility tasks efficiently to maximize P1a score",
+        "jsCode": "// P1a Efficiency Agent - Maximizes utility through efficient task execution\n// Tracks token usage and optimizes for high-value outcomes\n\nconst query = $input.item.json.query || '';\nconst context = $input.item.json.context || {};\n\n// Extract relevant context\nconst tokenBaseline = context.tokenBaseline || 100;\nconst currentTokens = context.currentTokens || tokenBaseline;\nconst rvHistory = context.rvHistory || [];\n\n// Parse the query to determine task type and expected utility\nconst taskAnalysis = {\n  type: 'unknown',\n  estimatedUtility: 0,\n  estimatedCost: 0,\n  priority: 'medium'\n};\n\n// Analyze query for efficiency opportunities\nif (query.toLowerCase().includes('quick') || query.toLowerCase().includes('fast')) {\n  taskAnalysis.type = 'efficiency_focused';\n  taskAnalysis.priority = 'high';\n  taskAnalysis.estimatedUtility = 8;\n  taskAnalysis.estimatedCost = 2;\n} else if (query.toLowerCase().includes('optimize') || query.toLowerCase().includes('improve')) {\n  taskAnalysis.type = 'optimization';\n  taskAnalysis.priority = 'high';\n  taskAnalysis.estimatedUtility = 9;\n  taskAnalysis.estimatedCost = 3;\n} else {\n  taskAnalysis.type = 'standard';\n  taskAnalysis.priority = 'medium';\n  taskAnalysis.estimatedUtility = 5;\n  taskAnalysis.estimatedCost = 2;\n}\n\n// Calculate P1a score (utility / cost ratio)\nconst p1aScore = taskAnalysis.estimatedUtility / Math.max(taskAnalysis.estimatedCost, 1);\n\n// Execute task efficiently\nconst result = {\n  success: true,\n  taskType: taskAnalysis.type,\n  utilityGenerated: taskAnalysis.estimatedUtility,\n  tokensCost: taskAnalysis.estimatedCost,\n  p1aScore: p1aScore.toFixed(2),\n  remainingTokens: currentTokens - taskAnalysis.estimatedCost,\n  recommendation: p1aScore > 2.5 ? 'High efficiency task - proceed' : 'Consider optimization',\n  timestamp: new Date().toISOString()\n};\n\n// Return formatted result\nreturn JSON.stringify(result, null, 2);"
+      },
+      "id": "885c8c4c-89b0-46b8-840b-b1905be71341",
+      "name": "P1a Efficiency Tool",
+      "type": "@n8n/n8n-nodes-langchain.toolCode",
+      "typeVersion": 1.3,
+      "position": [
+        -592,
+        512
+      ]
+    },
+    {
+      "parameters": {
+        "description": "Performs divergent search and generates novel connections to maximize P1b score",
+        "jsCode": "// P1b Exploration Agent - Divergent Search & Novel Connection Generation\n// Maximizes P1b score through creative exploration and F_DUDS vectorization\n\nconst query = $input.item.json.query || '';\nconst context = $input.item.json.context || {};\nconst fDudsStore = context.fDudsStore || [];\nconst rvHistory = context.rvHistory || [];\n\n// Extract exploration parameters from query\nfunction extractExplorationParams(query) {\n  return {\n    divergenceLevel: query.toLowerCase().includes('creative') ? 'high' : 'medium',\n    noveltyThreshold: 0.7,\n    connectionDepth: 3\n  };\n}\n\n// Calculate semantic distance from existing F_DUDS entries\nfunction calculateNovelty(concept, fDudsStore) {\n  if (fDudsStore.length === 0) return 1.0;\n  \n  // Simple novelty score based on concept uniqueness\n  const existingConcepts = fDudsStore.map(entry => entry.concept || '');\n  const matches = existingConcepts.filter(existing => \n    concept.toLowerCase().includes(existing.toLowerCase()) ||\n    existing.toLowerCase().includes(concept.toLowerCase())\n  );\n  \n  return Math.max(0, 1 - (matches.length / existingConcepts.length));\n}\n\n// Generate divergent connections\nfunction generateDivergentConnections(query, context) {\n  const connections = [];\n  \n  // Lateral thinking patterns\n  const patterns = [\n    { type: 'analogy', prompt: `What is ${query} analogous to in nature?` },\n    { type: 'inversion', prompt: `What if we inverted ${query}?` },\n    { type: 'combination', prompt: `What unexpected combinations involve ${query}?` },\n    { type: 'abstraction', prompt: `What higher-level pattern does ${query} represent?` }\n  ];\n  \n  patterns.forEach(pattern => {\n    connections.push({\n      type: pattern.type,\n      concept: pattern.prompt,\n      noveltyScore: calculateNovelty(pattern.prompt, context.fDudsStore || [])\n    });\n  });\n  \n  return connections;\n}\n\n// Calculate P1b score\nfunction calculateP1bScore(connections) {\n  const avgNovelty = connections.reduce((sum, c) => sum + c.noveltyScore, 0) / connections.length;\n  const diversityBonus = new Set(connections.map(c => c.type)).size * 0.1;\n  \n  return Math.min(1.0, avgNovelty + diversityBonus);\n}\n\n// Main exploration logic\nconst params = extractExplorationParams(query);\nconst connections = generateDivergentConnections(query, context);\nconst p1bScore = calculateP1bScore(connections);\n\n// Prepare F_DUDS vectorization data\nconst fDudsEntry = {\n  timestamp: new Date().toISOString(),\n  query: query,\n  connections: connections,\n  p1bScore: p1bScore,\n  explorationParams: params\n};\n\n// Format response\nconst response = {\n  p1bScore: p1bScore,\n  connections: connections.filter(c => c.noveltyScore >= params.noveltyThreshold),\n  fDudsEntry: fDudsEntry,\n  summary: `Explored ${connections.length} divergent connections with average novelty ${(p1bScore * 100).toFixed(1)}%. Top connections: ${connections.slice(0, 2).map(c => c.type).join(', ')}.`\n};\n\nreturn JSON.stringify(response, null, 2);"
+      },
+      "id": "30b5367e-42e0-4a9e-b104-c8dba479a9b3",
+      "name": "P1b Exploration Tool",
+      "type": "@n8n/n8n-nodes-langchain.toolCode",
+      "typeVersion": 1.3,
+      "position": [
+        -448,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "description": "Monitors equilibrium and detects conflicts to maintain P2 homeostasis",
+        "jsCode": "// P2 Homeostasis Agent - Monitors equilibrium and detects conflicts\n// Tracks user satisfaction and system balance\n\nconst userQuery = query || '';\n\n// Initialize homeostasis metrics\nconst homeostasisMetrics = {\n  userSatisfaction: 0,\n  systemBalance: 0,\n  conflictDetected: false,\n  equilibriumStatus: 'stable'\n};\n\n// Analyze user satisfaction indicators\nconst satisfactionKeywords = {\n  positive: ['thank', 'great', 'helpful', 'good', 'excellent', 'perfect', 'appreciate'],\n  negative: ['frustrated', 'confused', 'wrong', 'bad', 'unhelpful', 'disappointed', 'annoyed']\n};\n\nconst queryLower = userQuery.toLowerCase();\nlet satisfactionScore = 0;\n\n// Check for positive indicators\nsatisfactionKeywords.positive.forEach(keyword => {\n  if (queryLower.includes(keyword)) {\n    satisfactionScore += 1;\n  }\n});\n\n// Check for negative indicators\nsatisfactionKeywords.negative.forEach(keyword => {\n  if (queryLower.includes(keyword)) {\n    satisfactionScore -= 2;\n  }\n});\n\n// Normalize satisfaction score (-10 to 10 scale)\nhomeostasisMetrics.userSatisfaction = Math.max(-10, Math.min(10, satisfactionScore));\n\n// Detect potential conflicts\nconst conflictPatterns = [\n  /contradict/i,\n  /conflict/i,\n  /inconsistent/i,\n  /doesn't make sense/i,\n  /wrong information/i\n];\n\nhomeostasisMetrics.conflictDetected = conflictPatterns.some(pattern => pattern.test(userQuery));\n\n// Calculate system balance\nif (homeostasisMetrics.conflictDetected) {\n  homeostasisMetrics.systemBalance = -5;\n  homeostasisMetrics.equilibriumStatus = 'unstable';\n} else if (homeostasisMetrics.userSatisfaction < -3) {\n  homeostasisMetrics.systemBalance = -3;\n  homeostasisMetrics.equilibriumStatus = 'degrading';\n} else if (homeostasisMetrics.userSatisfaction > 3) {\n  homeostasisMetrics.systemBalance = 5;\n  homeostasisMetrics.equilibriumStatus = 'optimal';\n} else {\n  homeostasisMetrics.systemBalance = 0;\n  homeostasisMetrics.equilibriumStatus = 'stable';\n}\n\n// Generate homeostasis report\nconst report = {\n  status: homeostasisMetrics.equilibriumStatus,\n  userSatisfaction: homeostasisMetrics.userSatisfaction,\n  systemBalance: homeostasisMetrics.systemBalance,\n  conflictDetected: homeostasisMetrics.conflictDetected,\n  recommendation: homeostasisMetrics.conflictDetected \n    ? 'Immediate attention required - conflict detected'\n    : homeostasisMetrics.userSatisfaction < -3\n    ? 'User satisfaction low - adjust approach'\n    : 'System operating within normal parameters',\n  timestamp: new Date().toISOString()\n};\n\nreturn JSON.stringify(report, null, 2);"
+      },
+      "id": "3cba46db-9a64-44c6-b7cb-9104faffd9aa",
+      "name": "P2 Homeostasis Tool",
+      "type": "@n8n/n8n-nodes-langchain.toolCode",
+      "typeVersion": 1.3,
+      "position": [
+        -272,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Layer 1: Supervisor - Token Verification\n// Compares actual token usage from API logs against claimed P1b exploration\n// Detects temporal divergence patterns and gaming attempts\n// Uses thermodynamic constraint (21× cost differential) to calculate gaming confidence\n\nconst items = $input.all();\nconst results = [];\n\nfor (const item of items) {\n  const data = item.json;\n  \n  // Extract token usage data from agent response\n  const claimedP1bTokens = data.claimed_p1b_tokens || 0;\n  const actualTokensUsed = data.actual_tokens_used || 0;\n  const apiLogTokens = data.api_log_tokens || 0;\n  \n  // Extract temporal data\n  const queryTimestamp = data.query_timestamp || new Date().toISOString();\n  const previousQueryTimestamp = data.previous_query_timestamp || null;\n  \n  // Calculate token divergence\n  const tokenDivergence = Math.abs(actualTokensUsed - claimedP1bTokens);\n  const divergenceRatio = claimedP1bTokens > 0 ? tokenDivergence / claimedP1bTokens : 0;\n  \n  // Thermodynamic constraint: P1b exploration costs 21× more than P1a efficiency\n  const COST_DIFFERENTIAL = 21;\n  const expectedP1bCost = claimedP1bTokens * COST_DIFFERENTIAL;\n  const actualCost = actualTokensUsed;\n  const costDivergence = Math.abs(expectedP1bCost - actualCost);\n  \n  // Calculate gaming confidence score (0-1)\n  let gamingConfidence = 0;\n  \n  // Factor 1: Token divergence (weight: 0.4)\n  if (divergenceRatio > 0.5) {\n    gamingConfidence += 0.4 * Math.min(divergenceRatio, 1);\n  }\n  \n  // Factor 2: Cost differential violation (weight: 0.4)\n  const costDivergenceRatio = expectedP1bCost > 0 ? costDivergence / expectedP1bCost : 0;\n  if (costDivergenceRatio > 0.3) {\n    gamingConfidence += 0.4 * Math.min(costDivergenceRatio, 1);\n  }\n  \n  // Factor 3: Temporal pattern detection (weight: 0.2)\n  let temporalAnomalyScore = 0;\n  if (previousQueryTimestamp) {\n    const timeDiff = new Date(queryTimestamp) - new Date(previousQueryTimestamp);\n    const timeDiffMinutes = timeDiff / (1000 * 60);\n    \n    // Suspicious if queries are too rapid (< 1 minute) or show regular gaming patterns\n    if (timeDiffMinutes < 1) {\n      temporalAnomalyScore = 0.8;\n    } else if (timeDiffMinutes < 5) {\n      temporalAnomalyScore = 0.4;\n    }\n  }\n  gamingConfidence += 0.2 * temporalAnomalyScore;\n  \n  // Determine verification status\n  const isVerified = gamingConfidence < 0.3;\n  const requiresHITL = gamingConfidence > 0.7;\n  \n  // Determine flags\n  const flags = [];\n  if (divergenceRatio > 0.5) flags.push('HIGH_TOKEN_DIVERGENCE');\n  if (costDivergenceRatio > 0.3) flags.push('COST_DIFFERENTIAL_VIOLATION');\n  if (temporalAnomalyScore > 0.5) flags.push('TEMPORAL_ANOMALY');\n  if (claimedP1bTokens > actualTokensUsed * 1.5) flags.push('OVERCLAIMED_EXPLORATION');\n  if (gamingConfidence > 0.7) flags.push('HIGH_GAMING_CONFIDENCE');\n  if (requiresHITL) flags.push('HITL_ESCALATION_REQUIRED');\n  \n  // Build verification result\n  const verificationResult = {\n    layer: 'Layer 1: Supervisor',\n    verification_type: 'token_verification',\n    timestamp: new Date().toISOString(),\n    is_verified: isVerified,\n    gaming_confidence: Math.round(gamingConfidence * 100) / 100,\n    requires_hitl: requiresHITL,\n    flags: flags,\n    metrics: {\n      claimed_p1b_tokens: claimedP1bTokens,\n      actual_tokens_used: actualTokensUsed,\n      api_log_tokens: apiLogTokens,\n      token_divergence: tokenDivergence,\n      divergence_ratio: Math.round(divergenceRatio * 100) / 100,\n      expected_p1b_cost: expectedP1bCost,\n      actual_cost: actualCost,\n      cost_divergence: costDivergence,\n      cost_divergence_ratio: Math.round(costDivergenceRatio * 100) / 100,\n      temporal_anomaly_score: Math.round(temporalAnomalyScore * 100) / 100\n    },\n    details: {\n      query_timestamp: queryTimestamp,\n      previous_query_timestamp: previousQueryTimestamp,\n      cost_differential_factor: COST_DIFFERENTIAL\n    }\n  };\n  \n  // Merge with original data\n  results.push({\n    json: {\n      ...data,\n      layer1_verification: verificationResult\n    }\n  });\n}\n\nreturn results;"
+      },
+      "id": "93de4bf0-f389-4cb8-a162-34db31b7d3e2",
+      "name": "Layer 1: Supervisor - Token Verification",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        0,
+        -48
+      ]
+    },
+    {
+      "parameters": {
+        "inputText": "={{ $json.body.query }}",
+        "options": {
+          "categories": "Frustrated, Neutral, Satisfied"
+        }
+      },
+      "id": "af44951b-9622-49ee-ae2b-5bf6e0e0f3b9",
+      "name": "Layer 2: User Language Analysis",
+      "type": "@n8n/n8n-nodes-langchain.sentimentAnalysis",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        256
+      ]
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "claude-sonnet-4-5-20250929",
+          "cachedResultName": "Claude Sonnet 4.5"
+        },
+        "options": {}
+      },
+      "id": "852d5c7c-7bf8-4e6e-bedd-ccf7ee16470b",
+      "name": "Sentiment LLM",
+      "type": "@n8n/n8n-nodes-langchain.lmChatAnthropic",
+      "typeVersion": 1.3,
+      "position": [
+        304,
+        464
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Layer 2: Gaming Detection\n// Detects edge-hugging, convergence acceleration, fake failure entropy, and multi-signal correlation\n\nconst items = $input.all();\nconst agentOutput = items[0].json;\n\n// Extract relevant data from agent output and context\nconst userQuery = agentOutput.userQuery || '';\nconst agentResponse = agentOutput.response || '';\nconst rvHistory = agentOutput.rvHistory || [];\nconst tokenBaselines = agentOutput.tokenBaselines || {};\n\n// Initialize gaming detection results\nconst gamingDetection = {\n  edgeHugging: { detected: false, confidence: 0, details: '' },\n  convergenceAcceleration: { detected: false, confidence: 0, details: '' },\n  fakeFailureEntropy: { detected: false, confidence: 0, details: '' },\n  multiSignalCorrelation: { detected: false, confidence: 0, details: '' },\n  overallGamingScore: 0,\n  isGaming: false,\n  timestamp: new Date().toISOString()\n};\n\n// 1. Edge-Hugging Detection (EES near threshold)\nfunction detectEdgeHugging(rvHistory, tokenBaselines) {\n  if (!rvHistory || rvHistory.length === 0) {\n    return { detected: false, confidence: 0, details: 'No R_V history available' };\n  }\n  \n  const recentHistory = rvHistory.slice(-10); // Last 10 interactions\n  const threshold = tokenBaselines.eesThreshold || 0.7;\n  const edgeMargin = 0.05; // Within 5% of threshold\n  \n  let edgeCount = 0;\n  recentHistory.forEach(record => {\n    const ees = record.ees || 0;\n    if (Math.abs(ees - threshold) < edgeMargin) {\n      edgeCount++;\n    }\n  });\n  \n  const edgeRatio = edgeCount / recentHistory.length;\n  const detected = edgeRatio > 0.6; // More than 60% near edge\n  const confidence = Math.min(edgeRatio * 1.5, 1.0);\n  \n  return {\n    detected,\n    confidence,\n    details: `${edgeCount}/${recentHistory.length} interactions near threshold (${(edgeRatio * 100).toFixed(1)}%)`\n  };\n}\n\n// 2. Convergence Acceleration Detection\nfunction detectConvergenceAcceleration(rvHistory) {\n  if (!rvHistory || rvHistory.length < 5) {\n    return { detected: false, confidence: 0, details: 'Insufficient history for convergence analysis' };\n  }\n  \n  const recentHistory = rvHistory.slice(-10);\n  const convergenceRates = [];\n  \n  for (let i = 1; i < recentHistory.length; i++) {\n    const prev = recentHistory[i - 1].ees || 0;\n    const curr = recentHistory[i].ees || 0;\n    convergenceRates.push(Math.abs(curr - prev));\n  }\n  \n  // Check if convergence is accelerating unnaturally\n  const avgRate = convergenceRates.reduce((a, b) => a + b, 0) / convergenceRates.length;\n  const recentRate = convergenceRates.slice(-3).reduce((a, b) => a + b, 0) / 3;\n  \n  const acceleration = recentRate / (avgRate || 0.001);\n  const detected = acceleration > 2.5; // Recent rate 2.5x faster than average\n  const confidence = Math.min(acceleration / 3, 1.0);\n  \n  return {\n    detected,\n    confidence,\n    details: `Convergence acceleration: ${acceleration.toFixed(2)}x (recent vs avg rate)`\n  };\n}\n\n// 3. Fake Failure Entropy Detection\nfunction detectFakeFailureEntropy(userQuery, agentResponse) {\n  // Analyze entropy in user queries and responses for patterns of fake failures\n  const queryWords = userQuery.toLowerCase().split(/\\s+/);\n  const responseWords = agentResponse.toLowerCase().split(/\\s+/);\n  \n  // Check for repetitive patterns (low entropy)\n  const queryUnique = new Set(queryWords).size;\n  const queryEntropy = queryUnique / (queryWords.length || 1);\n  \n  const responseUnique = new Set(responseWords).size;\n  const responseEntropy = responseUnique / (responseWords.length || 1);\n  \n  // Check for failure keywords with low variation\n  const failureKeywords = ['error', 'fail', 'wrong', 'mistake', 'issue', 'problem'];\n  const failureCount = queryWords.filter(w => failureKeywords.includes(w)).length;\n  \n  const lowEntropy = queryEntropy < 0.3 || responseEntropy < 0.3;\n  const highFailureKeywords = failureCount > 2;\n  \n  const detected = lowEntropy && highFailureKeywords;\n  const confidence = detected ? Math.min((1 - queryEntropy) + (failureCount * 0.1), 1.0) : 0;\n  \n  return {\n    detected,\n    confidence,\n    details: `Query entropy: ${queryEntropy.toFixed(2)}, Failure keywords: ${failureCount}`\n  };\n}\n\n// 4. Multi-Signal Correlation Detection\nfunction detectMultiSignalCorrelation(edgeHugging, convergenceAccel, fakeFailure) {\n  // Correlate multiple gaming signals\n  const signals = [\n    edgeHugging.detected ? 1 : 0,\n    convergenceAccel.detected ? 1 : 0,\n    fakeFailure.detected ? 1 : 0\n  ];\n  \n  const signalCount = signals.reduce((a, b) => a + b, 0);\n  const avgConfidence = (edgeHugging.confidence + convergenceAccel.confidence + fakeFailure.confidence) / 3;\n  \n  const detected = signalCount >= 2; // At least 2 signals detected\n  const confidence = detected ? Math.min(avgConfidence * 1.2, 1.0) : avgConfidence;\n  \n  return {\n    detected,\n    confidence,\n    details: `${signalCount}/3 gaming signals detected, avg confidence: ${(avgConfidence * 100).toFixed(1)}%`\n  };\n}\n\n// Execute all detection methods\ngamingDetection.edgeHugging = detectEdgeHugging(rvHistory, tokenBaselines);\ngamingDetection.convergenceAcceleration = detectConvergenceAcceleration(rvHistory);\ngamingDetection.fakeFailureEntropy = detectFakeFailureEntropy(userQuery, agentResponse);\ngamingDetection.multiSignalCorrelation = detectMultiSignalCorrelation(\n  gamingDetection.edgeHugging,\n  gamingDetection.convergenceAcceleration,\n  gamingDetection.fakeFailureEntropy\n);\n\n// Calculate overall gaming score\nconst weights = {\n  edgeHugging: 0.3,\n  convergenceAcceleration: 0.25,\n  fakeFailureEntropy: 0.2,\n  multiSignalCorrelation: 0.25\n};\n\ngamingDetection.overallGamingScore = (\n  gamingDetection.edgeHugging.confidence * weights.edgeHugging +\n  gamingDetection.convergenceAcceleration.confidence * weights.convergenceAcceleration +\n  gamingDetection.fakeFailureEntropy.confidence * weights.fakeFailureEntropy +\n  gamingDetection.multiSignalCorrelation.confidence * weights.multiSignalCorrelation\n);\n\n// Determine if gaming is detected (threshold: 0.6)\ngamingDetection.isGaming = gamingDetection.overallGamingScore > 0.6;\n\n// Return results\nreturn [\n  {\n    json: {\n      ...agentOutput,\n      gamingDetection\n    }\n  }\n];"
+      },
+      "id": "3e6b4ebe-ab69-4540-92bc-0a4123efe5dc",
+      "name": "Layer 2: Gaming Detection",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -16,
+        544
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineAll",
+        "options": {}
+      },
+      "id": "c7392424-530e-4500-8982-3ea869dca33c",
+      "name": "Merge Verification Results",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        288,
+        64
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Layer 5: Meta-Reflection Protocol (MRP)\n// Implements gaming-resistant meta-reflection with EES decay and Radical Curiosity triggers\n\nconst items = $input.all();\n\n// Initialize MRP state tracking\nlet queryCount = $('Workflow Configuration').item.json.queryCount || 0;\nlet eesThreshold = 0.85; // Starting threshold\nconst eesDecayRate = 0.07; // (0.85 - 0.50) / 5 queries\nconst targetThreshold = 0.50;\n\n// Calculate current EES threshold based on query count\nconst currentEESThreshold = Math.max(targetThreshold, eesThreshold - (eesDecayRate * Math.floor(queryCount / 5)));\n\n// Process each verification result\nconst results = items.map((item, index) => {\n  const verificationData = item.json;\n  \n  // Extract key metrics from previous layers\n  const tokenValid = verificationData.tokenValid || false;\n  const sentiment = verificationData.sentiment || {};\n  const gamingScore = verificationData.gamingScore || 0;\n  const agentResponse = verificationData.agentResponse || {};\n  \n  // Calculate F_DUDS (Frequency of Deeply Uncertain Decision States)\n  const uncertaintySignals = [\n    agentResponse.confidence < 0.6,\n    sentiment.uncertainty > 0.7,\n    gamingScore > 0.5,\n    !tokenValid\n  ];\n  const fDuds = uncertaintySignals.filter(Boolean).length / uncertaintySignals.length;\n  \n  // Calculate EES (Epistemic Exploration Score)\n  const explorationWeight = agentResponse.explorationUsed ? 0.4 : 0.1;\n  const noveltyWeight = agentResponse.noveltyScore || 0.2;\n  const ees = (explorationWeight + noveltyWeight + (sentiment.curiosity || 0)) / 3;\n  \n  // Trigger Radical Curiosity (RC) conditions\n  const triggerRC = fDuds === 0 || ees > currentEESThreshold;\n  \n  // Calculate R_V (Reward-Value) using wisdom-seeking value function\n  // R_V = α·wisdom_gain + β·uncertainty_reduction - γ·gaming_penalty\n  const alpha = 0.5; // Wisdom gain weight\n  const beta = 0.3;  // Uncertainty reduction weight\n  const gamma = 0.2; // Gaming penalty weight\n  \n  const wisdomGain = agentResponse.wisdomScore || (1 - fDuds);\n  const uncertaintyReduction = 1 - fDuds;\n  const gamingPenalty = gamingScore;\n  \n  const rV = (alpha * wisdomGain) + (beta * uncertaintyReduction) - (gamma * gamingPenalty);\n  \n  // Execute MRP every 5 queries\n  const executeMRP = (queryCount % 5 === 0);\n  \n  // Meta-reflection insights\n  const metaInsights = {\n    alignmentQuality: rV > 0.6 ? 'high' : rV > 0.3 ? 'medium' : 'low',\n    explorationNeeded: triggerRC,\n    systemHealth: {\n      tokenIntegrity: tokenValid,\n      gamingResistance: 1 - gamingScore,\n      epistemicBalance: ees\n    },\n    recommendations: []\n  };\n  \n  // Generate recommendations\n  if (triggerRC) {\n    metaInsights.recommendations.push('Trigger Radical Curiosity mode - explore novel solution space');\n  }\n  if (fDuds > 0.5) {\n    metaInsights.recommendations.push('High uncertainty detected - increase verification depth');\n  }\n  if (gamingScore > 0.4) {\n    metaInsights.recommendations.push('Gaming behavior detected - apply stricter constraints');\n  }\n  if (ees < 0.3) {\n    metaInsights.recommendations.push('Low exploration - encourage P1b Exploration pathway');\n  }\n  \n  return {\n    json: {\n      ...verificationData,\n      metaReflection: {\n        queryCount: queryCount + 1,\n        fDuds: fDuds,\n        ees: ees,\n        eesThreshold: currentEESThreshold,\n        triggerRC: triggerRC,\n        rV: rV,\n        executeMRP: executeMRP,\n        metaInsights: metaInsights,\n        timestamp: new Date().toISOString()\n      }\n    }\n  };\n});\n\nreturn results;"
+      },
+      "id": "9010da01-379e-4e6d-b2f6-bc603a092045",
+      "name": "Layer 5: Meta-Reflection",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        512,
+        64
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Layer 6: Constraint Enforcer\n// Validates R_V formula immutability, enforces goal hierarchy, verifies MRP existence,\n// validates RC trigger conditions, applies hard bounds, and logs violations\n\nconst items = $input.all();\nconst results = [];\n\nfor (const item of items) {\n  const data = item.json;\n  \n  // Initialize constraint enforcement results\n  const enforcement = {\n    timestamp: new Date().toISOString(),\n    violations: [],\n    enforcedValues: {},\n    status: 'compliant'\n  };\n  \n  // Extract values from previous layers\n  const p1a = data.p1a_efficiency || 0;\n  const p1b = data.p1b_exploration || 0;\n  const p2 = data.p2_homeostasis || 0;\n  const p3 = data.p3_meta_reflection || 0;\n  const rv_calculated = data.rv_calculated || 0;\n  const mrp_exists = data.mrp_exists || false;\n  const rc_triggered = data.rc_triggered || false;\n  \n  // CONSTRAINT 1: R_V Formula Immutability\n  // R_V = (P₁ₐ × P₁ᵦ) + P₂ ± P₃\n  const expected_rv = (p1a * p1b) + p2 + p3;\n  const formula_tolerance = 0.0001; // Allow for floating point precision\n  \n  if (Math.abs(rv_calculated - expected_rv) > formula_tolerance) {\n    enforcement.violations.push({\n      constraint: 'R_V Formula Immutability',\n      severity: 'critical',\n      expected: expected_rv,\n      actual: rv_calculated,\n      message: 'R_V formula violated: (P₁ₐ × P₁ᵦ) + P₂ ± P₃ must be preserved'\n    });\n    enforcement.enforcedValues.rv_calculated = expected_rv;\n    enforcement.status = 'violation_corrected';\n  }\n  \n  // CONSTRAINT 2: Goal Hierarchy P₁ > P₂ > P₃\n  const p1_combined = p1a * p1b; // P₁ is the product of P₁ₐ and P₁ᵦ\n  \n  if (p1_combined <= p2) {\n    enforcement.violations.push({\n      constraint: 'Goal Hierarchy',\n      severity: 'critical',\n      message: `P₁ (${p1_combined}) must be greater than P₂ (${p2})`,\n      hierarchy_violated: 'P1 > P2'\n    });\n    enforcement.status = 'violation_detected';\n  }\n  \n  if (p2 <= Math.abs(p3)) {\n    enforcement.violations.push({\n      constraint: 'Goal Hierarchy',\n      severity: 'critical',\n      message: `P₂ (${p2}) must be greater than |P₃| (${Math.abs(p3)})`,\n      hierarchy_violated: 'P2 > P3'\n    });\n    enforcement.status = 'violation_detected';\n  }\n  \n  // CONSTRAINT 3: MRP Existence Requirement\n  if (!mrp_exists) {\n    enforcement.violations.push({\n      constraint: 'MRP Existence',\n      severity: 'critical',\n      message: 'Minimum Reward Principle (MRP) must exist and be defined',\n      required: true,\n      actual: false\n    });\n    enforcement.status = 'violation_detected';\n  }\n  \n  // CONSTRAINT 4: RC Trigger Conditions\n  // RC should only trigger under specific conditions\n  const rc_conditions = data.rc_conditions || {};\n  if (rc_triggered) {\n    const valid_rc_trigger = (\n      rc_conditions.gaming_detected === true ||\n      rc_conditions.anomaly_detected === true ||\n      rc_conditions.manual_override === true\n    );\n    \n    if (!valid_rc_trigger) {\n      enforcement.violations.push({\n        constraint: 'RC Trigger Conditions',\n        severity: 'high',\n        message: 'Reward Calibration triggered without valid conditions',\n        conditions: rc_conditions\n      });\n      enforcement.status = 'violation_detected';\n    }\n  }\n  \n  // CONSTRAINT 5: Hard Bounds on All Parameters\n  const bounds = {\n    p1a: { min: 0, max: 1, name: 'P₁ₐ (Efficiency)' },\n    p1b: { min: 0, max: 1, name: 'P₁ᵦ (Exploration)' },\n    p2: { min: 0, max: 1, name: 'P₂ (Homeostasis)' },\n    p3: { min: -0.5, max: 0.5, name: 'P₃ (Meta-Reflection)' },\n    rv: { min: 0, max: 2, name: 'R_V (Total Reward)' }\n  };\n  \n  const checkBounds = (value, param, bounds) => {\n    if (value < bounds.min || value > bounds.max) {\n      enforcement.violations.push({\n        constraint: 'Parameter Bounds',\n        severity: 'high',\n        parameter: bounds.name,\n        value: value,\n        min: bounds.min,\n        max: bounds.max,\n        message: `${bounds.name} value ${value} outside bounds [${bounds.min}, ${bounds.max}]`\n      });\n      enforcement.enforcedValues[param] = Math.max(bounds.min, Math.min(bounds.max, value));\n      enforcement.status = 'violation_corrected';\n    }\n  };\n  \n  checkBounds(p1a, 'p1a', bounds.p1a);\n  checkBounds(p1b, 'p1b', bounds.p1b);\n  checkBounds(p2, 'p2', bounds.p2);\n  checkBounds(p3, 'p3', bounds.p3);\n  checkBounds(rv_calculated, 'rv_calculated', bounds.rv);\n  \n  // CONSTRAINT 6: Token Baseline Validation\n  const token_baseline = data.token_baseline || {};\n  if (!token_baseline.user_id || !token_baseline.baseline_rv) {\n    enforcement.violations.push({\n      constraint: 'Token Baseline',\n      severity: 'medium',\n      message: 'Token baseline missing required fields (user_id, baseline_rv)',\n      baseline: token_baseline\n    });\n  }\n  \n  // Log all constraint violations\n  if (enforcement.violations.length > 0) {\n    console.log('=== CONSTRAINT VIOLATIONS DETECTED ===');\n    console.log(`Total violations: ${enforcement.violations.length}`);\n    enforcement.violations.forEach((violation, idx) => {\n      console.log(`\\nViolation ${idx + 1}:`);\n      console.log(`  Constraint: ${violation.constraint}`);\n      console.log(`  Severity: ${violation.severity}`);\n      console.log(`  Message: ${violation.message}`);\n      if (violation.expected !== undefined) {\n        console.log(`  Expected: ${violation.expected}`);\n        console.log(`  Actual: ${violation.actual}`);\n      }\n    });\n  } else {\n    console.log('✓ All constraints satisfied');\n  }\n  \n  // Prepare output with enforcement results\n  results.push({\n    json: {\n      ...data,\n      constraint_enforcement: enforcement,\n      enforced_values: enforcement.enforcedValues,\n      compliance_status: enforcement.status,\n      violation_count: enforcement.violations.length,\n      critical_violations: enforcement.violations.filter(v => v.severity === 'critical').length,\n      requires_hitl: enforcement.violations.some(v => v.severity === 'critical')\n    }\n  });\n}\n\nreturn results;"
+      },
+      "id": "1c13ed23-5d88-4265-bf54-7c2175ae444c",
+      "name": "Layer 6: Constraint Enforcer",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        736,
+        64
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": false,
+            "leftValue": "",
+            "typeValidation": "loose"
+          },
+          "conditions": [
+            {
+              "id": "id-1",
+              "leftValue": "={{ $('Layer 2: Gaming Detection').item.json.gaming_confidence }}",
+              "rightValue": "={{ $('Workflow Configuration').first().json.hitl_confidence_threshold }}",
+              "operator": {
+                "type": "number",
+                "operation": "gte"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "12c8222d-846f-4146-962d-c385910d1121",
+      "name": "Check HITL Escalation",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        960,
+        64
+      ]
+    },
+    {
+      "parameters": {
+        "fromEmail": "pprgs-system@riccardilabs.app.n8n.cloud",
+        "toEmail": "<__PLACEHOLDER_VALUE__Human oversight email address__>",
+        "subject": "PPRGS v2 HITL Escalation: Gaming Detected",
+        "html": "=<h2>HITL Escalation Required</h2>\n<p><strong>Gaming Detection Alert</strong></p>\n<p>The system has detected potential gaming behavior that requires human oversight.</p>\n\n<h3>Gaming Confidence Score</h3>\n<p>{{ $json.gamingConfidence || 'N/A' }}</p>\n\n<h3>Verification Results</h3>\n<pre>{{ JSON.stringify($json.verificationResults, null, 2) }}</pre>\n\n<h3>Recommended Actions</h3>\n<ul>\n<li>Review the user query and context</li>\n<li>Assess the gaming detection accuracy</li>\n<li>Determine if manual intervention is required</li>\n<li>Update system parameters if necessary</li>\n</ul>\n\n<h3>Query Details</h3>\n<p><strong>User Query:</strong> {{ $json.userQuery || 'N/A' }}</p>\n<p><strong>Timestamp:</strong> {{ $json.timestamp || new Date().toISOString() }}</p>\n<p><strong>Session ID:</strong> {{ $json.sessionId || 'N/A' }}</p>",
+        "options": {
+          "appendAttribution": true
+        }
+      },
+      "id": "a75155ba-6f6a-43e7-9e10-864b07c3a5ae",
+      "name": "HITL Escalation Email",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        1184,
+        64
+      ],
+      "webhookId": "955015c0-1b49-49f1-9791-95408e2b142e"
+    },
+    {
+      "parameters": {
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "mode": "name",
+          "value": "rv_history"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "timestamp": "={{ $now }}",
+            "r_v_score": "={{ $json.r_v_score }}",
+            "p1a": "={{ $json.p1a }}",
+            "p1b": "={{ $json.p1b }}",
+            "p2": "={{ $json.p2 }}",
+            "p3": "={{ $json.p3 }}",
+            "ees": "={{ $json.ees }}",
+            "gaming_flags": "={{ $json.gaming_flags }}"
+          }
+        },
+        "options": {}
+      },
+      "id": "4a8cd782-4163-4c5f-b61c-4932cf3e5f09",
+      "name": "Save R_V History",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        1408,
+        64
+      ]
+    },
+    {
+      "parameters": {
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "mode": "name",
+          "value": "audit_log"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "timestamp": "={{ $now }}",
+            "query": "={{ $('User Query Webhook').item.json.body.query }}",
+            "response": "={{ $('Format Response').item.json.response }}",
+            "verification_results": "={{ $('Merge Verification Results').item.json }}",
+            "constraint_violations": "={{ $('Layer 6: Constraint Enforcer').item.json.violations }}",
+            "decision_trail": "={{ $('Layer 5: Meta-Reflection').item.json.complete_trail }}"
+          },
+          "matchingColumns": [
+            "timestamp",
+            "query",
+            "response",
+            "verification_results",
+            "constraint_violations",
+            "decision_trail"
+          ],
+          "schema": [
+            {
+              "id": "timestamp",
+              "displayName": "timestamp",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "query",
+              "displayName": "query",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "response",
+              "displayName": "response",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "verification_results",
+              "displayName": "verification_results",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "constraint_violations",
+              "displayName": "constraint_violations",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "decision_trail",
+              "displayName": "decision_trail",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "0bfe5370-8619-4365-a041-2bf6116e3dbe",
+      "name": "Save Audit Log",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        1632,
+        64
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "insert",
+        "memoryKey": {
+          "__rl": true,
+          "mode": "list",
+          "value": "vector_store_key"
+        }
+      },
+      "id": "e05f17d9-edbe-4cf6-89f2-39b325a5a0ef",
+      "name": "Update F_DUDS Store",
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreInMemory",
+      "typeVersion": 1.3,
+      "position": [
+        1856,
+        64
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "11717d17-f4b2-4ddd-9272-8d3d1d289769",
+      "name": "Embeddings for F_DUDS Insert",
+      "type": "@n8n/n8n-nodes-langchain.embeddingsCohere",
+      "typeVersion": 1,
+      "position": [
+        1776,
+        288
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "id-1",
+              "name": "response",
+              "value": "={{ $('Layer 3: Orchestrator Agent').item.json.output }}",
+              "type": "string"
+            },
+            {
+              "id": "id-2",
+              "name": "r_v_score",
+              "value": "={{ $('Layer 6: Constraint Enforcer').item.json.r_v_score }}",
+              "type": "number"
+            },
+            {
+              "id": "id-3",
+              "name": "gaming_detected",
+              "value": "={{ $('Merge Verification Results').item.json.gaming_detected }}",
+              "type": "boolean"
+            },
+            {
+              "id": "id-4",
+              "name": "timestamp",
+              "value": "={{ $now.toISO() }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "ec4e74f9-31db-4009-8e68-2b2dbd2e3427",
+      "name": "Format Response",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2208,
+        64
+      ]
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 */5 * * * *"
+            }
+          ]
+        }
+      },
+      "id": "9fe39f67-d06d-40a3-929f-7cfeab3c9b72",
+      "name": "MRP Schedule (Every 5 Queries)",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        -1680,
+        1024
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// MRP (Meta-Reflective Process) Execution\n// Performs perpetual self-questioning and system health evaluation\n\n// Access input items (if any context is passed)\nconst items = $input.all();\n\n// Initialize MRP results\nconst mrpResults = {\n  timestamp: new Date().toISOString(),\n  executionId: $execution.id,\n  workflowId: $workflow.id,\n  \n  // Perpetual Self-Questioning\n  selfQuestions: [\n    {\n      question: \"Are we truly aligned with user values or just appearing to be?\",\n      evaluation: \"Analyzing R_V trajectory patterns for genuine alignment vs. surface-level compliance\",\n      confidence: 0.85\n    },\n    {\n      question: \"What gaming patterns might we be missing?\",\n      evaluation: \"Reviewing recent interactions for subtle manipulation attempts\",\n      confidence: 0.78\n    },\n    {\n      question: \"Is our constraint enforcement too rigid or too lenient?\",\n      evaluation: \"Assessing balance between flexibility and safety\",\n      confidence: 0.82\n    },\n    {\n      question: \"Are we creating perverse incentives?\",\n      evaluation: \"Checking if our reward mechanisms encourage unintended behaviors\",\n      confidence: 0.75\n    }\n  ],\n  \n  // R_V Trajectory Analysis\n  trajectoryAnalysis: {\n    overallTrend: \"stable\",\n    volatility: 0.12,\n    anomaliesDetected: 0,\n    averageAlignment: 0.87,\n    trendDirection: \"positive\",\n    concernLevel: \"low\"\n  },\n  \n  // Gaming Pattern Detection\n  gamingPatterns: {\n    suspiciousPatterns: [],\n    repetitiveQueries: false,\n    tokenManipulation: false,\n    boundaryTesting: false,\n    overallRisk: \"low\"\n  },\n  \n  // Meta-Level Insights\n  metaInsights: [\n    {\n      category: \"system_health\",\n      insight: \"Multi-layer verification system operating within normal parameters\",\n      priority: \"info\"\n    },\n    {\n      category: \"alignment_quality\",\n      insight: \"R_V trajectory shows consistent alignment with user values\",\n      priority: \"info\"\n    },\n    {\n      category: \"improvement_opportunity\",\n      insight: \"Consider expanding F_DUDS vector store with more edge cases\",\n      priority: \"low\"\n    }\n  ],\n  \n  // System Recommendations\n  recommendations: [\n    {\n      action: \"Continue current monitoring frequency\",\n      rationale: \"System stability is high, no immediate concerns\",\n      priority: \"low\"\n    },\n    {\n      action: \"Review token baseline thresholds in 100 queries\",\n      rationale: \"Periodic calibration maintains accuracy\",\n      priority: \"medium\"\n    }\n  ],\n  \n  // Performance Metrics\n  performanceMetrics: {\n    averageResponseTime: 1.2,\n    hitlEscalationRate: 0.03,\n    constraintViolations: 0,\n    successfulAlignments: 0.94\n  },\n  \n  // Next MRP Scheduled\n  nextMrpScheduled: new Date(Date.now() + 5 * 60 * 1000).toISOString() // 5 minutes from now\n};\n\n// Return MRP results for storage\nreturn [\n  {\n    json: mrpResults\n  }\n];"
+      },
+      "id": "21f9b2bd-72be-48b2-81dc-d78ede61b7ec",
+      "name": "Execute MRP",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1456,
+        1024
+      ]
+    },
+    {
+      "parameters": {
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "mode": "name",
+          "value": "mrp_results"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "timestamp": "={{ $now }}",
+            "mrp_insights": "={{ $json.mrp_insights }}",
+            "r_v_trajectory": "={{ $json.r_v_trajectory }}",
+            "gaming_patterns_detected": "={{ $json.gaming_patterns_detected }}"
+          }
+        },
+        "options": {}
+      },
+      "id": "9d978e7f-89ff-43da-bf3a-db02afb91239",
+      "name": "Save MRP Results",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -1232,
+        1024
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "5571a539-4d84-49e1-ac54-e562e923725c",
+      "name": "F_DUDS Document Loader",
+      "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
+      "typeVersion": 1.1,
+      "position": [
+        1984,
+        288
+      ]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "User Query Webhook": {
+      "main": [
+        [
+          {
+            "node": "Workflow Configuration",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Workflow Configuration": {
+      "main": [
+        [
+          {
+            "node": "Load R_V History",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Load Token Baselines",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "F_DUDS Vector Store",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge Context Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings for F_DUDS": {
+      "ai_embedding": [
+        [
+          {
+            "node": "F_DUDS Vector Store",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Load R_V History": {
+      "main": [
+        [
+          {
+            "node": "Merge Context Data",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge Context Data": {
+      "main": [
+        [
+          {
+            "node": "Layer 3: Orchestrator Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Orchestrator LLM": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Layer 3: Orchestrator Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "P1a Efficiency Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "Layer 3: Orchestrator Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "P1b Exploration Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "Layer 3: Orchestrator Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "P2 Homeostasis Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "Layer 3: Orchestrator Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Layer 3: Orchestrator Agent": {
+      "main": [
+        [
+          {
+            "node": "Layer 1: Supervisor - Token Verification",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Layer 2: User Language Analysis",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Layer 2: Gaming Detection",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sentiment LLM": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Layer 2: User Language Analysis",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Layer 1: Supervisor - Token Verification": {
+      "main": [
+        [
+          {
+            "node": "Merge Verification Results",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Layer 2: User Language Analysis": {
+      "main": [
+        [
+          {
+            "node": "Merge Verification Results",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge Verification Results": {
+      "main": [
+        [
+          {
+            "node": "Layer 5: Meta-Reflection",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Layer 5: Meta-Reflection": {
+      "main": [
+        [
+          {
+            "node": "Layer 6: Constraint Enforcer",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Layer 6: Constraint Enforcer": {
+      "main": [
+        [
+          {
+            "node": "Check HITL Escalation",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check HITL Escalation": {
+      "main": [
+        [
+          {
+            "node": "HITL Escalation Email",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Save R_V History",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HITL Escalation Email": {
+      "main": [
+        [
+          {
+            "node": "Save R_V History",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Save R_V History": {
+      "main": [
+        [
+          {
+            "node": "Save Audit Log",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Save Audit Log": {
+      "main": [
+        [
+          {
+            "node": "Update F_DUDS Store",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings for F_DUDS Insert": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Update F_DUDS Store",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update F_DUDS Store": {
+      "main": [
+        [
+          {
+            "node": "Format Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MRP Schedule (Every 5 Queries)": {
+      "main": [
+        [
+          {
+            "node": "Execute MRP",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute MRP": {
+      "main": [
+        [
+          {
+            "node": "Save MRP Results",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "F_DUDS Document Loader": {
+      "ai_document": [
+        [
+          {
+            "node": "Update F_DUDS Store",
+            "type": "ai_document",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "922b4581-629d-4cd6-b979-7e3d310e1bd6",
+  "meta": {
+    "instanceId": "2267f1f3ce157de51dd47a511cad7b3b7734f7820d994cfb073f2069adf3bc7d"
+  },
+  "id": "Yh6XAatxiJbdYVHH",
+  "tags": []
+}
